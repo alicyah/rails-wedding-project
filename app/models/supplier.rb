@@ -4,6 +4,7 @@ class Supplier < ApplicationRecord
   has_many :supplier_areas
   has_many :reviews
   has_many :availabilities
+  has_many :images
   has_many :areas, through: :supplier_areas
   has_many :users, through: :reviews
   validates :owner, :description, :email, presence: true
