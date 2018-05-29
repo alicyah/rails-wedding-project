@@ -10,8 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-ActiveRecord::Schema.define(version: 2018_05_29_144040) do
+ActiveRecord::Schema.define(version: 2018_05_29_144943) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,36 +23,16 @@ ActiveRecord::Schema.define(version: 2018_05_29_144040) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
-  
-  create_table "bundles", force: :cascade do |t|
-    t.string "state"
+
+  create_table "availabilities", force: :cascade do |t|
     t.date "starts_on"
     t.date "ends_on"
-    t.bigint "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_bundles_on_user_id"
-  end
-
-  create_table "images", force: :cascade do |t|
-    t.string "photo"
     t.bigint "supplier_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["supplier_id"], name: "index_images_on_supplier_id"
+    t.index ["supplier_id"], name: "index_availabilities_on_supplier_id"
   end
 
-  create_table "reviews", force: :cascade do |t|
-    t.text "content"
-    t.integer "rating"
-    t.bigint "supplier_id"
-    t.bigint "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["supplier_id"], name: "index_reviews_on_supplier_id"
-    t.index ["user_id"], name: "index_reviews_on_user_id"
-  end 
-    
   create_table "bundle_lines", force: :cascade do |t|
     t.bigint "supplier_id"
     t.bigint "bundle_id"
@@ -71,6 +50,14 @@ ActiveRecord::Schema.define(version: 2018_05_29_144040) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_bundles_on_user_id"
+  end
+
+  create_table "images", force: :cascade do |t|
+    t.string "photo"
+    t.bigint "supplier_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["supplier_id"], name: "index_images_on_supplier_id"
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -133,13 +120,11 @@ ActiveRecord::Schema.define(version: 2018_05_29_144040) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "bundles", "users"
-  add_foreign_key "images", "suppliers"
-  add_foreign_key "reviews", "suppliers"
-  add_foreign_key "reviews", "users"
+  add_foreign_key "availabilities", "suppliers"
   add_foreign_key "bundle_lines", "bundles"
   add_foreign_key "bundle_lines", "suppliers"
   add_foreign_key "bundles", "users"
+  add_foreign_key "images", "suppliers"
   add_foreign_key "reviews", "suppliers"
   add_foreign_key "reviews", "users"
   add_foreign_key "supplier_areas", "areas"
