@@ -5,5 +5,5 @@ Rails.application.routes.draw do
   resources :suppliers, only: [:show, :index] do
     resources :reviews, only: [:index]
   end
-  retources :bundles, except: [:edit, :update]
+  resources :bundles, except: [:edit, :update]
 end
