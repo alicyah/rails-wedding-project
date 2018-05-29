@@ -1,4 +1,6 @@
 class Supplier < ApplicationRecord
+  has_many :bundle_line
+  has_many :supplier_area
   belongs_to :service
   has_many :reviews
   validates :owner, :description, :email, presence: true
