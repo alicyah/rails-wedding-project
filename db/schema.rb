@@ -15,14 +15,27 @@ ActiveRecord::Schema.define(version: 2018_05_29_122912) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-
   create_table "services", force: :cascade do |t|
     t.string "category"
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
-  
+
+  create_table "suppliers", force: :cascade do |t|
+    t.string "owner"
+    t.text "description"
+    t.float "avg_rating"
+    t.string "originality"
+    t.string "email"
+    t.integer "capacity"
+    t.string "address"
+    t.bigint "service_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["service_id"], name: "index_suppliers_on_service_id"
+  end
+    
   create_table "areas", force: :cascade do |t|
     t.string "country"
     t.string "region"
@@ -61,5 +74,6 @@ ActiveRecord::Schema.define(version: 2018_05_29_122912) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "suppliers", "services"
   add_foreign_key "bundles", "users"
 end
