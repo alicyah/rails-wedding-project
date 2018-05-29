@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_29_122752) do
+ActiveRecord::Schema.define(version: 2018_05_29_122912) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,6 +35,25 @@ ActiveRecord::Schema.define(version: 2018_05_29_122752) do
     t.datetime "updated_at", null: false
     t.index ["service_id"], name: "index_suppliers_on_service_id"
   end
+    
+  create_table "areas", force: :cascade do |t|
+    t.string "country"
+    t.string "region"
+    t.string "department"
+    t.string "city"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+  
+  create_table "bundles", force: :cascade do |t|
+    t.string "state"
+    t.date "starts_on"
+    t.date "ends_on"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_bundles_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -56,4 +75,5 @@ ActiveRecord::Schema.define(version: 2018_05_29_122752) do
   end
 
   add_foreign_key "suppliers", "services"
+  add_foreign_key "bundles", "users"
 end
