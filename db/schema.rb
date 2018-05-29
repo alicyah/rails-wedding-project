@@ -41,7 +41,7 @@ ActiveRecord::Schema.define(version: 2018_05_29_144943) do
     t.index ["bundle_id"], name: "index_bundle_lines_on_bundle_id"
     t.index ["supplier_id"], name: "index_bundle_lines_on_supplier_id"
   end
-
+  
   create_table "bundles", force: :cascade do |t|
     t.string "state"
     t.date "starts_on"
@@ -70,7 +70,7 @@ ActiveRecord::Schema.define(version: 2018_05_29_144943) do
     t.index ["supplier_id"], name: "index_reviews_on_supplier_id"
     t.index ["user_id"], name: "index_reviews_on_user_id"
   end
-
+  
   create_table "services", force: :cascade do |t|
     t.string "category"
     t.string "name"
