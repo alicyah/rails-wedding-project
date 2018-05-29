@@ -73,6 +73,17 @@ ActiveRecord::Schema.define(version: 2018_05_29_144040) do
     t.index ["user_id"], name: "index_bundles_on_user_id"
   end
 
+  create_table "reviews", force: :cascade do |t|
+    t.text "content"
+    t.integer "rating"
+    t.bigint "supplier_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["supplier_id"], name: "index_reviews_on_supplier_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
+  end
+
   create_table "services", force: :cascade do |t|
     t.string "category"
     t.string "name"
@@ -129,6 +140,8 @@ ActiveRecord::Schema.define(version: 2018_05_29_144040) do
   add_foreign_key "bundle_lines", "bundles"
   add_foreign_key "bundle_lines", "suppliers"
   add_foreign_key "bundles", "users"
+  add_foreign_key "reviews", "suppliers"
+  add_foreign_key "reviews", "users"
   add_foreign_key "supplier_areas", "areas"
   add_foreign_key "supplier_areas", "suppliers"
   add_foreign_key "suppliers", "services"
