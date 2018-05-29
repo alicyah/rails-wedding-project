@@ -1,4 +1,5 @@
 class Area < ApplicationRecord
+  has_many :supplier_areas
   before_validation :validation_area
 
   private
