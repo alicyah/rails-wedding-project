@@ -1,5 +1,32 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="container">
+  <h1>Pages#home</h1>
+  <p>Find me in app/views/pages/home.html.erb</p>
 
-<div class= "btn"> Click here </div>
-<div class= "btn-validate"> book now </div>
+  <div class="btn btn-link"> Click here </div>
+  <div class="btn-validate"> book now </div>
+  <div class="btn-validate" id="lock"><i class="fas fa-lock-open"></i></div>
+</div>
+
+<script>
+  const lock = document.getElementById("lock");
+
+  function mouseOver(lock) {
+    lock.addEventListener("mouseover", (event) => {
+    const icon = event.currentTarget.firstChild
+    icon.classList.remove("fa-lock-open");
+    icon.classList.add("fa-lock");
+  })
+  };
+
+  function mouseOut(lock) {
+    lock.addEventListener("mouseout", (event) => {
+    const icon = event.currentTarget.firstChild
+    icon.classList.remove("fa-lock");
+    icon.classList.add("fa-lock-open");
+  })
+  };
+
+  mouseOver(lock);
+  mouseOut(lock);
+
+</script>
