@@ -1,0 +1,20 @@
+.styled-form {
+  height: 40px;
+  width: 440px;
+  background-color: $light-gray;
+  border-radius: 7px;
+  border: solid 3px $blue;
+  color: $blue;
+  font-size: 24px;
+  font-weight: 700;
+  text-align: center;
+  margin: 15px;
+  &::placeholder {
+    color: $blue;
+    font-weight: 400;
+  }
+  &:focus {
+    background-color: $blue;
+    color: $yellow;
+  }
+}
