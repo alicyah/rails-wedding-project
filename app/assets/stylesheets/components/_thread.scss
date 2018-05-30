@@ -1,55 +1,81 @@
-#progressbar {
-  margin-bottom: 30px;
-  overflow: hidden;
-  /*CSS counters to number the steps*/
-  counter-reset: none;
-}
+.b-box {
+  margin: 50px;
+  &--dots {
+    position: relative;
 
-#progressbar li {
-  list-style-type: none;
-  color: $blue;
-  text-transform: uppercase;
-  font-size: 9px;
-  width: 33.33%;
-  float: left;
-  position: relative;
-  justify-content: left;
-}
-#progressbar li:before {
-  content: counter(step);
-  counter-increment: step;
-  width: 20px;
-  line-height: 20px;
-  display: block;
-  font-size: 10px;
-  color: #333;
-  background: white;
-  border-radius: 10px;
-  margin: 0 auto 5px auto;
-}
-/*progressbar connectors*/
-#progressbar li:after {
-  content: '';
-  width: 100%;
-  height: 2px;
-  background: $blue;
-  position: absolute;
-  left: -50%;
-  top: 9px;
-  z-index: -1; /*put it behind the numbers*/
-}
-#progressbar li:first-child:after {
-  /*connector not needed before the first step*/
-  content: none;
-}
-/*marking active/completed steps green*/
-/*The number of the step and the connector before it = green*/
-#progressbar li.active:before,  #progressbar li.active:after{
-  background: $blue;
-  color: white;
-}
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 
+    width: 100%;
+    max-width: 1000px;
+    height: 15px;
 
+    &:after {
+      position: absolute;
+      display: block;
+      content: '';
 
+      top: 50%;
+      left: 1px;
 
+      height: 1px;
+      width: calc(100% - 2px);
 
+      background: $blue;
+
+      transform: translateY(-50%);
+      -moz-transform: translateY(-50%);
+      -o-transform: translateY(-50%);
+    }
+
+    &__item {
+      position: relative;
+      display: block;
+
+      width: 10px;
+      height: 10px;
+
+      background: $yellow;
+      border-radius: 50%;
+
+      z-index: 1;
+
+      &.is-active {
+        background: $blue;
+
+        &:before {
+          position: absolute;
+          display: block;
+          content: '';
+
+          top: 50%;
+          right: 1px;
+
+          height: 1px;
+          width: calc(400/4 * 1px);
+
+          background: gray;
+          background: $blue;
+
+          transform: translateY(-50%);
+          -moz-transform: translateY(-50%);
+          -o-transform: translateY(-50%);
+        }
+      }
+
+      &:first-child {
+        &:before {
+          display: none;
+        }
+      }
+
+    }
+  }
+}
+.big {
+  height: 50px;
+  width: 50px;
+  background: $light-gray;
+  border: 1px solid $blue;
+}
