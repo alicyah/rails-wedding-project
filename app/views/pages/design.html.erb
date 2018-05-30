@@ -8,21 +8,184 @@
 
   <div>
     <h1>Form</h1>
+    <form>
+      <input type="text" name="date" placeholder="Quand ?" class="styled-form"><br>
+      <input type="text" name="location" placeholder="Où ?" class="styled-form">
+    </form>
   </div>
   <div>
-    <h1>fil d'ariane</h1>
+    <h1>Fils d'Ariane</h1>
   </div>
   <div>
     <h1>cartes à pictos</h1>
+    <div class="service-cards">
+      <div class="service-card" id="location">
+        <div>
+          <%= image_tag 'wedding-location.png', class:'big-picture' %>
+          <h4>Lieu</h4>
+        </div>
+      </div>
+      <div class="service-card" id="food">
+        <div>
+          <%= image_tag 'food.png', class:'big-picture' %>
+          <h4>Traiteur</h4>
+        </div>
+      </div>
+      <div class="service-card" id="music">
+        <div>
+          <%= image_tag 'music.png', class:'big-picture' %>
+          <h4>Musique</h4>
+        </div>
+      </div>
+      <div class="service-card" id="photo">
+        <div>
+          <%= image_tag 'photo.png', class:'big-picture' %>
+          <h4>Photographe</h4>
+        </div>
+      </div>
+      <div class="service-card" id="flower">
+        <div>
+          <%= image_tag 'flower.png', class:'big-picture' %>
+          <h4>Fleuriste</h4>
+        </div>
+      </div>
+      <div class="service-card" id="animation">
+        <div>
+          <%= image_tag 'animation.png', class:'big-picture' %>
+          <h4>Animations</h4>
+        </div>
+      </div>
+    </div>
+    <div class="service-cards">
+      <div class="chosen-service" id="location">
+        <div>
+          <i class="far fa-check-circle"></i>
+          <h4>Lieu ajouté à votre liste service.</h4>
+        </div>
+      </div>
+      <div class="chosen-service" id="food">
+        <div>
+          <i class="far fa-check-circle"></i>
+          <h4>Traiteur ajouté à votre liste service.</h4>
+        </div>
+      </div>
+      <div class="chosen-service" id="music">
+        <div>
+          <i class="far fa-check-circle"></i>
+          <h4>Musique ajouté à votre liste service.</h4>
+        </div>
+      </div>
+      <div class="chosen-service" id="photo">
+        <div>
+          <i class="far fa-check-circle"></i>
+          <h4>Photographe ajouté à votre liste service.</h4>
+        </div>
+      </div>
+      <div class="chosen-service" id="flower">
+        <div>
+          <i class="far fa-check-circle"></i>
+          <h4>Fleuriste ajouté à votre liste service.</h4>
+        </div>
+      </div>
+      <div class="chosen-service" id="animation">
+        <div>
+          <i class="far fa-check-circle"></i>
+          <h4>Animations ajoutées à votre liste service.</h4>
+        </div>
+      </div>
+    </div>
   </div>
   <div>
     <h1>cartes de prestations</h1>
+    <div class="card-supplier">
+      <%= link_to "#" do %>
+        <div class="card-supplier-image" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)),
+           url('<%= cl_image_path "jwu6iqplk4pud47gikn0", crop: :fill %>')" %>
+           <i class="fas fa-lock-open"></i>
+        </div>
+      <% end %>
+      <div class="card-supplier-footer">
+        <h3>NOM DE LA PRESTATION</h3>
+        <p id="card-originality">Originalité</p>
+        <p id="card-price" >5000€</p>
+        <%= link_to "+ Détails", "", class: "card-details" %>
+      </div>
+
+    </div>
   </div>
   <div>
     <h1>sliders</h1>
   </div>
   <div>
     <h1>pattern de liste</h1>
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="list-element first">
+          <div class="image"><%= image_tag 'wedding-location.png', class:'small-picture' %></div>
+          <div class="name"><h3>Domaine de Normandoux</h3></div>
+          <div class="price">
+            <div><h5>Prix</h5></div>
+            <div><h4>4000 <i class="fas fa-euro-sign"></i></h4></div>
+          </div>
+          <div class="angle"><i class="fas fa-angle-right"></i></div>
+        </div>
+      </div>
+      <div class="col-xs-12">
+        <div class="active-element">
+          <div class="image"><%= image_tag 'food.png', class:'small-picture' %></div>
+          <div class="name"><h3>Charles Traiteur</h3></div>
+          <div class="price">
+            <div><h5>Prix</h5></div>
+            <div><h4>2200 <i class="fas fa-euro-sign"></i></h4></div>
+          </div>
+          <div class="angle"><i class="fas fa-angle-down"></i></div>
+        </div>
+      </div>
+      <div class="col-xs-12">
+        <div class="list-element">
+          <div class="image"><%= image_tag 'music.png', class:'small-picture' %></div>
+          <div class="name"><h3>Music Event Agency</h3></div>
+          <div class="price">
+            <div><h5>Prix</h5></div>
+            <div><h4>1000 <i class="fas fa-euro-sign"></i></h4></div>
+          </div>
+          <div class="angle"><i class="fas fa-angle-right"></i></div>
+        </div>
+      </div>
+      <div class="col-xs-12">
+        <div class="list-element">
+          <div class="image"><%= image_tag 'photo.png', class:'small-picture' %></div>
+          <div class="name"><h3>Pantan Photographies</h3></div>
+          <div class="price">
+            <div><h5>Prix</h5></div>
+            <div><h4>740 <i class="fas fa-euro-sign"></i></h4></div>
+          </div>
+          <div class="angle"><i class="fas fa-angle-right"></i></div>
+        </div>
+      </div>
+      <div class="col-xs-12">
+        <div class="list-element">
+          <div class="image"><%= image_tag 'flower.png', class:'small-picture' %></div>
+          <div class="name"><h3>Bergamotte</h3></div>
+          <div class="price">
+            <div><h5>Prix</h5></div>
+            <div><h4>670 <i class="fas fa-euro-sign"></i></h4></div>
+          </div>
+          <div class="angle"><i class="fas fa-angle-right"></i></div>
+        </div>
+      </div>
+      <div class="col-xs-12">
+        <div class="list-element last">
+          <div class="image"><%= image_tag 'animation.png', class:'small-picture' %></div>
+          <div class="name"><h3>Tom le magicien</h3></div>
+          <div class="price">
+            <div><h5>Prix</h5></div>
+            <div><h4>1150 <i class="fas fa-euro-sign"></i></h4></div>
+          </div>
+          <div class="angle"><i class="fas fa-angle-right"></i></div>
+        </div>
+      </div>
+    </div>
   </div>
   <div>
     <h1>footer</h1>

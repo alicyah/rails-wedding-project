@@ -1,0 +1,74 @@
+.card-supplier {
+  height: 350px;
+  width: 350px;
+  border-radius: 10px;
+  box-shadow: 2px 2px 3px rgba(45, 64, 89, 0.25);
+  box-sizing: unset;
+  background-color: $blue;
+}
+
+.card-supplier-image {
+  height: 280px;
+  background-size: cover;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+  position: relative;
+  i {
+    color: $yellow;
+    opacity: 0.6;
+    font-size: 30px;
+    position: absolute;
+    top: 16px;
+    right: 20px;
+    &:hover {
+      font-size: 32px;
+      opacity: 1;
+    }
+  }
+}
+
+.card-supplier-footer {
+  position: relative;
+  height: 70px;
+  font-family: "Karla";
+  color: $yellow;
+  h3 {
+    font-family: "Karla" !important;
+    position: absolute;
+    top: 7px;
+    left: 20px;
+    font-weight: bolder;
+    font-size: 18px;
+    margin : 0;
+    line-height: 1.2;
+  }
+  #card-originality {
+    position: absolute;
+    bottom: 12px;
+    left: 20px;
+    margin: 0;
+    line-height: 1.2;
+    font-weight: lighter;
+  }
+  #card-price {
+    position: absolute;
+    top: 7px;
+    right: 20px;
+    margin: 0;
+    line-height: 1.2;
+  }
+  a.card-details {
+    position: absolute;
+    bottom: 12px;
+    right: 20px;
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.2;
+    opacity: 0.6;
+    color: $yellow;
+    &:hover {
+      text-decoration: none;
+      opacity: 1;
+    }
+  }
+}
