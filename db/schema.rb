@@ -43,7 +43,7 @@ ActiveRecord::Schema.define(version: 2018_05_31_174530) do
   end
 
   create_table "bundles", force: :cascade do |t|
-    t.string "state"
+    t.string "state", default: "pending"
     t.date "starts_on"
     t.date "ends_on"
     t.bigint "user_id"
