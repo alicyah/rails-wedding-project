@@ -8,7 +8,15 @@ class BundlesController < ApplicationController
 
   def create
     session[:bundle] = {}
-    category-name = []
+    session[:bundle][:starts_on] = params[:starts_on]
+    session[:bundle][:ends_on] = params[:ends_on]
+    session[:bundle][:where] = params[:where]
+    session[:bundle][:capacity] = params[:capacity]
+    session[:bundle][:budget] = params[:budget]
+    session[:bundle][:category_name] = []
+    category_name.each do |category|
+    end
+
     @bundle.user = current.user
     @bundle.save
 
