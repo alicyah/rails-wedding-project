@@ -1,0 +1,31 @@
+<div class="container">
+  <h1>Select services</h1>
+
+  <% case @services_selected.count %>
+  <% when 1 then %>
+    <div class="service-cards">
+    <% @services_selected.each do |service| %>
+      <div class="service-card" id="<%= service %>">
+          <div>
+            <%= image_tag "#{service}.png", class:'big-picture' %>
+            <h4><%= service.capitalize %></h4>
+          </div>
+        </div>
+    <% end %>
+    </div>
+  <% when 2 then %>
+    <div class="row ">
+      <% @services_selected.each do |service| %>
+        <div class="col-xs-6 offset-* ">
+          <div class="service-card" id="<%= service %>">
+            <div>
+              <%= image_tag "#{service}.png", class:'big-picture' %>
+              <h4><%= service.capitalize %></h4>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>
+
