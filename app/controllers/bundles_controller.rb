@@ -33,23 +33,24 @@ class BundlesController < ApplicationController
     # check availabilities
     event_days = (Date.yesterday..Date.tomorrow).map{ |a| a }
     @places_suppliers = @places_suppliers.select do |place|
-      availabilities_days = place.availaibilites.map do |avail|
+      place.availabilities.map do |avail|
         (avail.starts_on..avail.ends_on).map{ |a| a }.flatten.uniq.include?(event_days)
       end
     end
+
     # nb_days = end_date - start_date
     nb_days = event_days.count
     # price*nb_days <= 20% max_budget
-    budget = session[:bundle]["budget"]
+    budget = session[:bundle]["budget"].to_i
     @places_suppliers = @places_suppliers.select do |place|
-      place.price*nb_days <= 0.2*budget
+      place.price.to_f*nb_days <= 0.2*budget
     end
     # capacity >= nb_people expected
-    nb_people = session[:bundle]["capacity"]
+    nb_people = session[:bundle]["capacity"].to_i
     @places_suppliers = @places_suppliers.select do |place|
       place.capacity >= nb_people
     end
-    @markers = @places.map do |place|
+    @markers = @places_suppliers.map do |place|
       {
         lat: place.latitude,
         lng: place.longitude,
