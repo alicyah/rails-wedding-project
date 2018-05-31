@@ -13,18 +13,17 @@ class BundlesController < ApplicationController
     session[:bundle][:where] = params[:where]
     session[:bundle][:capacity] = params[:capacity]
     session[:bundle][:budget] = params[:budget]
-    session[:bundle][:category_name] = []
-    category_name.each do |category|
-    end
+    session[:bundle][:categories] = params[:categories]
 
-    @bundle.user = current.user
+    @bundle = Bundle.new
+    @bundle.user = current_user
     @bundle.save
 
-  if
-    redirect_to location_bundle_path(@bundle)
-  else
-    redirect_to services_bundle_path(@bundle)
-  end
+    if params[:categories].include?("location")
+      redirect_to location_bundle_path(@bundle)
+    else
+      redirect_to services_bundle_path(@bundle)
+    end
   end
 
   def location

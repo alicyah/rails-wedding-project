@@ -20,17 +20,20 @@
     <%= text_field_tag :where, params[:where], class: "form-control", placeholder: "Oú" %>
     <%= text_field_tag :capacity, params[:capacity], class: "form-control", placeholder: "Nombre d'invités" %>
     <%= text_field_tag :budget, params[:budget], class: "form-control", placeholder: "Budget" %>
-     <%= check_box_tag :location, checked = false, params[:location], placeholder: "location" %> Lieu
-     <%= check_box_tag :catering, checked = false, params[:catering], placeholder: "catering" %>
+
+    <%= check_box_tag "categories[]", :location, checked=false %>
+      Lieu
+    <%= check_box_tag "categories[]", :catering, checked=false %>
      Traiteur
-     <%= check_box_tag :music, checked = false, params[:music], placeholder: "music" %>
+    <%= check_box_tag "categories[]", :music, checked=false %>
      Musique
-     <%= check_box_tag :flower, checked = false, params[:flower], placeholder: "flower" %>
+    <%= check_box_tag "categories[]", :flower, checked=false %>
      Fleurs et déco
-     <%= check_box_tag :photograph, checked = false, params[:photograph], placeholder: "photograph" %>
-     Photograph
-      <%= check_box_tag :entertainment, checked = false, params[:entertainment], placeholder: "entertainment" %>
+    <%= check_box_tag "categories[]", :photograph, checked=false %>
+     Photographe
+    <%= check_box_tag "categories[]", :entertainment, checked=false %>
      Animation
+
     <div>
     <%= button_tag class:'btn-validate', type: "submit" do %>
       <span>Commencer</span>
