@@ -1,2 +1,38 @@
-<h1>Bundles#new</h1>
-<p>Find me in app/views/bundles/new.html.erb</p>
+<div class="b-box b-box--dots">
+  <span class="b-box--dots__item is-active"></span>
+  <span class="b-box--dots__item"></span>
+  <span class="b-box--dots__item"></span>
+  <span class="b-box--dots__item"></span>
+  <span class="b-box--dots__item big">Total Price</span>
+</div>
+
+<div class="list-items">
+  <div class="item">Recherche</div>
+  <div class="item"></div>
+  <div class="item"></div>
+  <div class="item"></div>
+</div>
+
+<%= form_tag bundles_path do %>
+  <%= text_field_tag :starts_on, params[:starts_on], class: "form-control", placeholder: "Start Date" %>
+  <%= text_field_tag :ends_on, params[:ends_on], class: "form-control", placeholder: "End Date" %>
+  <%= text_field_tag :where, params[:where], class: "form-control", placeholder: "Where" %>
+  <%= text_field_tag :capacity, params[:capacity], class: "form-control", placeholder: "Nombre d'invités" %>
+  <%= text_field_tag :max_price, params[:max_price], class: "form-control", placeholder: "Budget" %>
+   <%= check_box_tag :location, checked = false, params[:location], placeholder: "location" %> Lieu
+   <%= check_box_tag :catering, checked = false, params[:catering], placeholder: "catering" %>
+   Traiteur
+   <%= check_box_tag :music, checked = false, params[:music], placeholder: "music" %>
+   Musique
+   <%= check_box_tag :flower, checked = false, params[:flower], placeholder: "flower" %>
+   Fleurs et déco
+   <%= check_box_tag :photograph, checked = false, params[:photograph], placeholder: "photograph" %>
+   Photograph
+    <%= check_box_tag :entertainment, checked = false, params[:entertainment], placeholder: "entertainment" %>
+   Animation
+  <div>
+  <%= button_tag class:'btn-validate', type: "submit" do %>
+    <span>Commencer</span>
+    <% end %>
+  </div>
+<% end %>
