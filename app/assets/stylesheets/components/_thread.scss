@@ -87,10 +87,21 @@
   text-align: centre;
 }
 .list-items {
-  display: flex;
   color: $blue;
+  display: flex;
+  width: 80%;
+  margin: auto;
 }
 .item {
-  width: 20%;
-  text-align: center;
+  width: calc(770/4 * 1px);
+}
+.item-last {
+  width: calc(770/4 * 1px);
+}
+
+.icon-items {
+  color: $blue;
+  display: flex;
+  width: 80%;
+  margin: auto;
 }
