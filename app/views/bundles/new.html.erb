@@ -13,17 +13,16 @@
     <div class="item"></div>
     <div class="item"></div>
   </div>
-
   <%= form_tag bundles_path do %>
-    <%= text_field_tag :starts_on, params[:starts_on], class: "form-control styled-form datepicker start_date", placeholder: "Du..." %>
-    <%= text_field_tag :ends_on, params[:ends_on], class: "form-control styled-form datepicker end_date", placeholder: "Au..." %>
+    <%= text_field_tag :period, params[:period], class: "form-control styled-form datepicker start_date", placeholder: "Quand ?" %>
+    <%= hidden_field_tag :ends_on, params[:ends_on], class: "form-control styled-form datepicker end_date", placeholder: "Jusqu'au..." %>
     <%= text_field_tag :where, params[:where], class: "form-control styled-form", placeholder: "Oú ?" %>
     <%= text_field_tag :capacity, params[:capacity], class: "form-control styled-form", placeholder: "Nombre d'invités" %>
     <%= text_field_tag :budget, params[:budget], class: "form-control styled-form", placeholder: "Budget" %>
 
     <div class="service-cards">
 
-    <%= check_box_tag "categories[]", :location, checked=false %>
+    <%= check_box_tag "categories[]", :place, checked=false %>
        <div class="service-card" id="location">
         <div>
           <%= image_tag 'wedding-location.png', class:'big-picture' %>
