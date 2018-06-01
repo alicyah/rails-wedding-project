@@ -21,12 +21,19 @@
     <%= text_field_tag :budget, params[:budget], class: "form-control styled-form", placeholder: "Budget" %>
 
     <div class="service-cards">
-
     <%= check_box_tag "categories[]", :place, checked=false %>
        <div class="service-card" id="location">
         <div>
           <%= image_tag 'wedding-location.png', class:'big-picture' %>
           <h4>Lieu</h4>
+        </div>
+      </div>
+
+       <div class="service-cards">
+      <div class="chosen-service" id="location">
+        <div>
+          <i class="far fa-check-circle"></i>
+          <h4>Lieu ajouté à votre liste service.</h4>
         </div>
       </div>
 
@@ -38,6 +45,7 @@
           <h4>Traiteur</h4>
         </div>
       </div>
+
 
     <%= check_box_tag "categories[]", :music, checked=false %>
 
