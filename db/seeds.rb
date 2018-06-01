@@ -1,4 +1,6 @@
 Area.destroy_all
+Supplier.destroy_all
+Service.destroy_all
 
 areas = Area.create!([
   {country: "France", region: nil, department: nil},
@@ -117,6 +119,8 @@ areas = Area.create!([
   {country: "France", region: "La Réunion", department: "974 - La Réunion"},
   {country: "France", region: "La Réunion", department: "976 - Mayotte"}
 ])
+
+Area.create(areas)
 
 puts "Areas created"
 
