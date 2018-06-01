@@ -1,0 +1,13 @@
+<div class="container" id="container-tabs">
+  <h2>Voici les services sélectionnés.</h2>
+  <h5>Cliquez sur chacun d'entre eux pour pouvoir voir les prestataires qui matchent tous vos déirs !</h5>
+  <div class="tabs">
+    <% @services_selected.each do |service| %>
+      <a class="tab" href="#">
+        <h3><%= service.capitalize %></h3>
+      </a>
+    <% end %>
+  </div>
+</div>
+
+

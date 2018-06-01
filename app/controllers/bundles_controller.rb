@@ -61,5 +61,6 @@ class BundlesController < ApplicationController
   end
 
   def services
+    @services_selected = session[:bundle]["categories"]
   end
 end
