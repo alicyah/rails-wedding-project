@@ -13,6 +13,7 @@
     <div class="item"></div>
     <div class="item"></div>
   </div>
+
   <div class="form-search">
     <%= form_tag bundles_path do %>
       <%= text_field_tag :period, params[:period], class: "form-control styled-form datepicker start_date", placeholder: "Quand ?" %>
@@ -22,11 +23,11 @@
       <%= text_field_tag :budget, params[:budget], class: "form-control styled-form", placeholder: "Budget" %>
   </div>
     <div class="service-cards">
-      <%= check_box_tag "categories[]", :place, checked=false, id: :categories_place, class: "categories" %>
+      <%= check_box_tag "categories[]", :lieu, checked=false, id: :categories_place, class: "categories" %>
       <label for="categories_place" class="categories_place" id='location' >
         <div class="service-card not-selected label-handle" >
           <div>
-            <%= image_tag 'wedding-location.png', class:'big-picture' %>
+            <%= image_tag 'lieu.png', class:'big-picture' %>
             <h4>Lieu</h4>
           </div>
         </div>
@@ -39,11 +40,12 @@
     </label>
 
 
-      <%= check_box_tag "categories[]", :catering, checked=false, id: :categories_catering, class: "categories" %>
+
+      <%= check_box_tag "categories[]", :traiteur, checked=false, id: :categories_catering, class: "categories" %>
       <label for="categories_catering">
         <div class="service-card not-selected label-handle" id="food">
           <div>
-            <%= image_tag 'food.png', class:'big-picture' %>
+            <%= image_tag 'traiteur.png', class:'big-picture' %>
             <h4>Traiteur</h4>
           </div>
         </div>
@@ -56,13 +58,11 @@
       </label>
 
 
-
-
-    <%= check_box_tag "categories[]", :music, checked=false, id: :categories_music, class: "categories" %>
+    <%= check_box_tag "categories[]", :musique, checked=false, id: :categories_music, class: "categories" %>
     <label for="categories_music">
       <div class="service-card not-selected label-handle" id="music">
         <div>
-          <%= image_tag 'music.png', class:'big-picture' %>
+          <%= image_tag 'musique.png', class:'big-picture' %>
           <h4>Musique</h4>
         </div>
       </div>
@@ -74,11 +74,12 @@
       </div>
     </label>
 
-    <%= check_box_tag "categories[]", :flower, checked=false, id: :categories_flower, class: "categories" %>
+
+    <%= check_box_tag "categories[]", :fleuriste, checked=false, id: :categories_flower, class: "categories" %>
     <label for="categories_flower">
       <div class="service-card not-selected label-handle" id="flower">
         <div>
-          <%= image_tag 'flower.png', class:'big-picture' %>
+          <%= image_tag 'fleuriste.png', class:'big-picture' %>
           <h4>Fleuriste</h4>
         </div>
       </div>
@@ -90,11 +91,12 @@
       </div>
     </label>
 
-    <%= check_box_tag "categories[]", :photograph, checked=false, id: :categories_photograph, class: "categories" %>
+
+    <%= check_box_tag "categories[]", :photographe, checked=false, id: :categories_photograph, class: "categories" %>
     <label for="categories_photograph">
       <div class="service-card not-selected label-handle" id="photo">
         <div>
-          <%= image_tag 'photo.png', class:'big-picture' %>
+          <%= image_tag 'photographe.png', class:'big-picture' %>
           <h4>Photographe</h4>
         </div>
       </div>
@@ -107,11 +109,12 @@
     </label>
 
 
-    <%= check_box_tag "categories[]", :entertainment, checked=false, id: :categories_entertainment, class: "categories" %>
+
+    <%= check_box_tag "categories[]", :animations, checked=false, id: :categories_entertainment, class: "categories" %>
       <label for="categories_entertainment">
         <div class="service-card not-selected label-handle" id="animation">
           <div>
-          <%= image_tag 'animation.png', class:'big-picture' %>
+          <%= image_tag 'animations.png', class:'big-picture' %>
           <h4>Animations</h4>
           </div>
         </div>
