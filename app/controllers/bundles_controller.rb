@@ -18,7 +18,9 @@ class BundlesController < ApplicationController
     @bundle = Bundle.new
     @bundle.user = current_user
     @bundle.save
-    if params[:categories].include?("place")
+    if params[:categories].nil? || params[:period].nil? || params[:ends_on].nil? || params[:where].nil? || params[:capacity].nil? || params[:budget].nil?
+      render :new
+    elsif params[:categories].include?("lieu")
       redirect_to location_bundle_path(@bundle)
     else
       redirect_to services_bundle_path(@bundle)
@@ -48,7 +50,10 @@ class BundlesController < ApplicationController
   end
 
   def services
+    @suppliers = Supplier.all
     @services_selected = session[:bundle]["categories"]
+    # case @services_selected
+    # when "l"
   end
 
   def check_availabilities(suppliers)
