@@ -20,8 +20,8 @@
   <div class="container results-container">
     <div class="places-container">
       <div class="places-image">
-        <% @places_suppliers.images.each do |image| %>
-          <%= cl_image_tag image.photo %>
+        <% @places_suppliers.each do |supplier| %>
+          <%= cl_image_tag supplier.images.first.photo %>
         <% end %>
       </div>
     </div>

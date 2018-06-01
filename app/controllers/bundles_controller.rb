@@ -39,6 +39,7 @@ class BundlesController < ApplicationController
     @places_suppliers = check_budget(@places_suppliers)
     @places_suppliers = check_capacity(@places_suppliers)
     # raise
+
     @markers = @places_suppliers.map do |place|
       {
         lat: place.latitude,

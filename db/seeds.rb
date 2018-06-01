@@ -1,6 +1,4 @@
 Area.destroy_all
-Supplier.destroy_all
-Service.destroy_all
 
 areas = Area.create!([
   {country: "France", region: nil, department: nil},
@@ -119,8 +117,6 @@ areas = Area.create!([
   {country: "France", region: "La Réunion", department: "974 - La Réunion"},
   {country: "France", region: "La Réunion", department: "976 - Mayotte"}
 ])
-
-Area.create(areas)
 
 puts "Areas created"
 
@@ -331,5 +327,5 @@ castle = Image.new(supplier: yasmina)
 castle_url = "https://s-ec.bstatic.com/images/hotel/max1024x768/573/57346950.jpg"
 castle.remote_photo_url = castle_url
 castle.save!
-  
+
 puts "Finished"
