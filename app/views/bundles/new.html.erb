@@ -4,7 +4,7 @@
     <span class="b-box--dots__item"></span>
     <span class="b-box--dots__item"></span>
     <span class="b-box--dots__item"></span>
-    <span class="b-box--dots__item big">Total Price</span>
+    <span class="b-box--dots__item big">0 EUR</span>
   </div>
 
   <div class="list-items">
@@ -13,30 +13,75 @@
     <div class="item"></div>
     <div class="item"></div>
   </div>
-
   <%= form_tag bundles_path do %>
-    <%= text_field_tag :starts_on, params[:starts_on], class: "form-control", placeholder: "Du..." %>
-    <%= text_field_tag :ends_on, params[:ends_on], class: "form-control", placeholder: "Jusqu'au" %>
-    <%= text_field_tag :where, params[:where], class: "form-control", placeholder: "Oú" %>
-    <%= text_field_tag :capacity, params[:capacity], class: "form-control", placeholder: "Nombre d'invités" %>
-    <%= text_field_tag :budget, params[:budget], class: "form-control", placeholder: "Budget" %>
+    <%= text_field_tag :period, params[:period], class: "form-control styled-form datepicker start_date", placeholder: "Quand ?" %>
+    <%= hidden_field_tag :ends_on, params[:ends_on], class: "form-control styled-form datepicker end_date", placeholder: "Jusqu'au..." %>
+    <%= text_field_tag :where, params[:where], class: "form-control styled-form", placeholder: "Oú ?" %>
+    <%= text_field_tag :capacity, params[:capacity], class: "form-control styled-form", placeholder: "Nombre d'invités" %>
+    <%= text_field_tag :budget, params[:budget], class: "form-control styled-form", placeholder: "Budget" %>
+
+    <div class="service-cards">
 
     <%= check_box_tag "categories[]", :lieu, checked=false %>
-      Lieu
+       <div class="service-card" id="location">
+        <div>
+          <%= image_tag 'lieu.png', class:'big-picture' %>
+          <h4>Lieu</h4>
+        </div>
+      </div>
+
     <%= check_box_tag "categories[]", :traiteur, checked=false %>
-     Traiteur
+
+     <div class="service-card" id="food">
+        <div>
+          <%= image_tag 'traiteur.png', class:'big-picture' %>
+          <h4>Traiteur</h4>
+        </div>
+      </div>
+
     <%= check_box_tag "categories[]", :musique, checked=false %>
-     Musique
+
+     <div class="service-card" id="music">
+        <div>
+          <%= image_tag 'musique.png', class:'big-picture' %>
+          <h4>Musique</h4>
+        </div>
+      </div>
+
     <%= check_box_tag "categories[]", :fleuriste, checked=false %>
-     Fleurs et déco
+
+      <div class="service-card" id="flower">
+        <div>
+          <%= image_tag 'fleuriste.png', class:'big-picture' %>
+          <h4>Fleuriste</h4>
+        </div>
+      </div>
+
     <%= check_box_tag "categories[]", :photographe, checked=false %>
-     Photographe
+
+     <div class="service-card" id="photo">
+        <div>
+          <%= image_tag 'photographe.png', class:'big-picture' %>
+          <h4>Photographe</h4>
+        </div>
+      </div>
+
     <%= check_box_tag "categories[]", :animations, checked=false %>
-     Animation
-    <div>
-    <%= button_tag class:'btn-validate', type: "submit" do %>
-      <span>Commencer</span>
+
+     <div class="service-card" id="animation">
+        <div>
+          <%= image_tag 'animations.png', class:'big-picture' %>
+          <h4>Animations</h4>
+        </div>
+      </div>
+    </div>
+
+
+      <div>
+        <%= button_tag class:'btn-validate btn-search', type: "submit" do %>
+        <span>Commencer</span>
+        <% end %>
+      </div>
       <% end %>
     </div>
-  <% end %>
 </div>
