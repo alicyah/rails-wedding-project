@@ -48,6 +48,7 @@ class BundlesController < ApplicationController
   end
 
   def services
+    @services_selected = session[:bundle]["categories"]
   end
 
   def check_availabilities(suppliers)

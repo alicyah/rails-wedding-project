@@ -1,3 +1,5 @@
+Area.destroy_all
+
 areas = [
   {country: "France", region: nil, department: nil},
   {country: "France", region: "Bourgogne - Franche-Comté ", department: nil},
@@ -203,7 +205,6 @@ services = Service.create([
 
 puts "Services created"
 
-
 suppliers = Supplier.create!([
   {
     owner: "charles",
@@ -320,3 +321,4 @@ suppliers = Supplier.create!([
 ])
 
 puts "Suppliers created"
+puts "Finished"
