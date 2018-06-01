@@ -1,6 +1,6 @@
 Area.destroy_all
 
-areas = [
+areas = Area.create!([
   {country: "France", region: nil, department: nil},
   {country: "France", region: "Bourgogne - Franche-Comté ", department: nil},
   {country: "France", region: "Nouvelle Aquitaine", department: nil},
@@ -116,7 +116,7 @@ areas = [
   {country: "France", region: "Guyane", department: "973 - Guyane"},
   {country: "France", region: "La Réunion", department: "974 - La Réunion"},
   {country: "France", region: "La Réunion", department: "976 - Mayotte"}
-]
+])
 
 puts "Areas created"
 
@@ -321,4 +321,11 @@ suppliers = Supplier.create!([
 ])
 
 puts "Suppliers created"
+
+yasmina = Supplier.find(2)
+castle = Image.new(supplier: yasmina)
+castle_url = "https://s-ec.bstatic.com/images/hotel/max1024x768/573/57346950.jpg"
+castle.remote_photo_url = castle_url
+castle.save!
+  
 puts "Finished"
