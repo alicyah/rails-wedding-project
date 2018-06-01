@@ -1,31 +1,13 @@
-<div class="container">
-  <h1>Select services</h1>
-
-  <% case @services_selected.count %>
-  <% when 1 then %>
-    <div class="service-cards">
+<div class="container" id="container-tabs">
+  <h2>Voici les services sélectionnés.</h2>
+  <h5>Cliquez sur chacun d'entre eux pour pouvoir voir les prestataires qui matchent tous vos déirs !</h5>
+  <div class="tabs">
     <% @services_selected.each do |service| %>
-      <div class="service-card" id="<%= service %>">
-          <div>
-            <%= image_tag "#{service}.png", class:'big-picture' %>
-            <h4><%= service.capitalize %></h4>
-          </div>
-        </div>
+      <a class="tab" href="#">
+        <h3><%= service.capitalize %></h3>
+      </a>
     <% end %>
-    </div>
-  <% when 2 then %>
-    <div class="row ">
-      <% @services_selected.each do |service| %>
-        <div class="col-xs-6 offset-* ">
-          <div class="service-card" id="<%= service %>">
-            <div>
-              <%= image_tag "#{service}.png", class:'big-picture' %>
-              <h4><%= service.capitalize %></h4>
-            </div>
-          </div>
-        </div>
-      <% end %>
-    </div>
-  <% end %>
+  </div>
 </div>
+
 

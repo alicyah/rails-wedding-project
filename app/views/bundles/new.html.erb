@@ -21,19 +21,18 @@
     <%= text_field_tag :capacity, params[:capacity], class: "form-control", placeholder: "Nombre d'invités" %>
     <%= text_field_tag :budget, params[:budget], class: "form-control", placeholder: "Budget" %>
 
-    <%= check_box_tag "categories[]", :location, checked=false %>
+    <%= check_box_tag "categories[]", :lieu, checked=false %>
       Lieu
-    <%= check_box_tag "categories[]", :food, checked=false %>
+    <%= check_box_tag "categories[]", :traiteur, checked=false %>
      Traiteur
-    <%= check_box_tag "categories[]", :music, checked=false %>
+    <%= check_box_tag "categories[]", :musique, checked=false %>
      Musique
-    <%= check_box_tag "categories[]", :flower, checked=false %>
+    <%= check_box_tag "categories[]", :fleuriste, checked=false %>
      Fleurs et déco
-    <%= check_box_tag "categories[]", :photo, checked=false %>
+    <%= check_box_tag "categories[]", :photographe, checked=false %>
      Photographe
-    <%= check_box_tag "categories[]", :animation, checked=false %>
+    <%= check_box_tag "categories[]", :animations, checked=false %>
      Animation
-
     <div>
     <%= button_tag class:'btn-validate', type: "submit" do %>
       <span>Commencer</span>

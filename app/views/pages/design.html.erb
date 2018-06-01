@@ -96,37 +96,37 @@
     <div class="service-cards">
       <div class="service-card" id="location">
         <div>
-          <%= image_tag 'location.png', class:'big-picture' %>
+          <%= image_tag 'lieu.png', class:'big-picture' %>
           <h4>Lieu</h4>
         </div>
       </div>
       <div class="service-card" id="food">
         <div>
-          <%= image_tag 'food.png', class:'big-picture' %>
+          <%= image_tag 'traiteur.png', class:'big-picture' %>
           <h4>Traiteur</h4>
         </div>
       </div>
       <div class="service-card" id="music">
         <div>
-          <%= image_tag 'music.png', class:'big-picture' %>
+          <%= image_tag 'musique.png', class:'big-picture' %>
           <h4>Musique</h4>
         </div>
       </div>
       <div class="service-card" id="photo">
         <div>
-          <%= image_tag 'photo.png', class:'big-picture' %>
+          <%= image_tag 'photographe.png', class:'big-picture' %>
           <h4>Photographe</h4>
         </div>
       </div>
       <div class="service-card" id="flower">
         <div>
-          <%= image_tag 'flower.png', class:'big-picture' %>
+          <%= image_tag 'fleuriste.png', class:'big-picture' %>
           <h4>Fleuriste</h4>
         </div>
       </div>
       <div class="service-card" id="animation">
         <div>
-          <%= image_tag 'animation.png', class:'big-picture' %>
+          <%= image_tag 'animations.png', class:'big-picture' %>
           <h4>Animations</h4>
         </div>
       </div>
@@ -196,7 +196,7 @@
     <div class="row">
       <div class="col-xs-12">
         <div class="list-element first">
-          <div class="list-image"><%= image_tag 'wedding-location.png', class:'small-picture' %></div>
+          <div class="list-image"><%= image_tag 'lieu.png', class:'small-picture' %></div>
           <div class="list-title"><h3>Domaine de Normandoux</h3></div>
           <div class="price">
             <div><h5>Prix</h5></div>
@@ -207,7 +207,7 @@
       </div>
       <div class="col-xs-12">
         <div class="active-element">
-          <div class="list-image"><%= image_tag 'food.png', class:'small-picture' %></div>
+          <div class="list-image"><%= image_tag 'traiteur.png', class:'small-picture' %></div>
           <div class="list-title"><h3>Charles Traiteur</h3></div>
           <div class="price">
             <div><h5>Prix</h5></div>
@@ -218,7 +218,7 @@
       </div>
       <div class="col-xs-12">
         <div class="list-element">
-          <div class="list-image"><%= image_tag 'music.png', class:'small-picture' %></div>
+          <div class="list-image"><%= image_tag 'musique.png', class:'small-picture' %></div>
           <div class="list-title"><h3>Music Event Agency</h3></div>
           <div class="price">
             <div><h5>Prix</h5></div>
@@ -229,7 +229,7 @@
       </div>
       <div class="col-xs-12">
         <div class="list-element">
-          <div class="list-image"><%= image_tag 'photo.png', class:'small-picture' %></div>
+          <div class="list-image"><%= image_tag 'photographe.png', class:'small-picture' %></div>
           <div class="list-title"><h3>Pantan Photographies</h3></div>
           <div class="price">
             <div><h5>Prix</h5></div>
@@ -240,7 +240,7 @@
       </div>
       <div class="col-xs-12">
         <div class="list-element">
-          <div class="list-image"><%= image_tag 'flower.png', class:'small-picture' %></div>
+          <div class="list-image"><%= image_tag 'fleuriste.png', class:'small-picture' %></div>
           <div class="list-title"><h3>Bergamotte</h3></div>
           <div class="price">
             <div><h5>Prix</h5></div>
@@ -251,7 +251,7 @@
       </div>
       <div class="col-xs-12">
         <div class="list-element last">
-          <div class="list-image"><%= image_tag 'animation.png', class:'small-picture' %></div>
+          <div class="list-image"><%= image_tag 'animations.png', class:'small-picture' %></div>
           <div class="list-title"><h3>Tom le magicien</h3></div>
           <div class="price">
             <div><h5>Prix</h5></div>
@@ -423,26 +423,3 @@
   </div>
 </div>
 
-<script>
-  const lock = document.getElementById("lock");
-
-  function mouseOver(lock) {
-    lock.addEventListener("mouseover", (event) => {
-    const icon = event.currentTarget.firstChild
-    icon.classList.remove("fa-lock-open");
-    icon.classList.add("fa-lock");
-  })
-  };
-
-  function mouseOut(lock) {
-    lock.addEventListener("mouseout", (event) => {
-    const icon = event.currentTarget.firstChild
-    icon.classList.remove("fa-lock");
-    icon.classList.add("fa-lock-open");
-  })
-  };
-
-  mouseOver(lock);
-  mouseOut(lock);
-
-</script>
