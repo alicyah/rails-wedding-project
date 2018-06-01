@@ -7,5 +7,6 @@ import { French } from "flatpickr/dist/l10n/fr.js"
 flatpickr(".start_date", {
   altInput: true,
   locale: 'fr',
+  ariaDateFormat: 'j f Y',
   plugins: [new rangePlugin({ input: ".end_date"})]
 })

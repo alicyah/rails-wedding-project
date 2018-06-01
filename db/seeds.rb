@@ -118,10 +118,214 @@ areas = Area.create!([
   {country: "France", region: "La Réunion", department: "976 - Mayotte"}
 ])
 
+puts "Areas created"
+
+services = Service.create([
+  {
+    category: "traiteur",
+    name: "charles traiteur"
+    },
+  {
+    category: "traiteur",
+    name: "alicia traiteur"
+    },
+  {
+    category: "traiteur",
+    name: "yasmina traiteur"
+    },
+  {
+    category: "traiteur",
+    name: "kevin traiteur"
+    },
+  {
+    category: "musique",
+    name: "charles musique"
+    },
+  {
+    category: "musique",
+    name: "alicia musique"
+    },
+  {
+    category: "musique",
+    name: "yasmina musique"
+    },
+  {
+    category: "musique",
+    name: "julien musique"
+    },
+  {
+    category: "fleuriste",
+    name: "charles fleuriste"
+    },
+  {
+    category: "fleuriste",
+    name: "pierre fleuriste"
+    },
+  {
+    category: "fleuriste",
+    name: "maxime fleuriste"
+    },
+  {
+    category: "fleuriste",
+    name: "patrick fleuriste"
+    },
+  {
+    category: "photographe",
+    name: "charles photographe"
+    },
+  {
+    category: "photographe",
+    name: "pierre photographe"
+    },
+  {
+    category: "photographe",
+    name: "max photographe"
+    },
+  {
+    category: "photographe",
+    name: "xav photographe"
+    },
+  {
+    category: "animations",
+    name: "charles animations"
+    },
+  {
+    category: "animations",
+    name: "pierre animations"
+    },
+  {
+    category: "animations",
+    name: "oliver animations"
+    },
+  {
+    category: "animations",
+    name: "basile animations"
+  }
+])
+
+puts "Services created"
+
+suppliers = Supplier.create!([
+  {
+    owner: "charles",
+    description: "coooool",
+    email: "charles@gmail.com",
+    service: services[0]
+    },
+  {
+    owner: "alicia",
+    description: "coooool",
+    email: "alicia@gmail.com",
+    service: services[1]    },
+  {
+    owner: "yasmina",
+    description: "coooool",
+    email: "yasmina@gmail.com",
+    service: services[2]    },
+  {
+    owner: "kevin",
+    description: "coooool",
+    email: "kevin@gmail.com",
+    service: services[3]    },
+  {
+    owner: "charles",
+    description: "coooool",
+    email: "charles@gmail.com",
+    service: services[4]    },
+  {
+    owner: "alicia",
+    description: "coooool",
+    email: "alicia@gmail.com",
+    service: services[5]    },
+  {
+    owner: "yasmina",
+    description: "coooool",
+    email: "yasmina@gmail.com",
+    service: services[6]    },
+  {
+    owner: "julien",
+    description: "coooool",
+    email: "julien@gmail.com",
+    service: services[7]    },
+  {
+    owner: "charles",
+    description: "coooool",
+    email: "charles@gmail.com",
+    service: services[8]    },
+  {
+    owner: "pierre",
+    description: "coooool",
+    email: "pierre@gmail.com",
+    service: services[9]
+    },
+  {
+    owner: "maxime",
+    description: "coooool",
+    email: "maxime@gmail.com",
+    service: services[10]
+    },
+  {
+    owner: "patrick",
+    description: "coooool",
+    email: "patrick@gmail.com",
+    service: services[11]
+    },
+  {
+    owner: "charles",
+    description: "coooool",
+    email: "charles@gmail.com",
+    service: services[12]
+    },
+  {
+    owner: "pierre",
+    description: "coooool",
+    email: "pierre@gmail.com",
+    service: services[13]
+    },
+  {
+    owner: "max",
+    description: "coooool",
+    email: "max@gmail.com",
+    service: services[14]
+    },
+  {
+    owner: "xav",
+    description: "coooool",
+    email: "xav@gmail.com",
+    service: services[15]
+    },
+  {
+    owner: "charles",
+    description: "coooool",
+    email: "charles@gmail.com",
+    service: services[16]
+    },
+  {
+    owner: "pierre",
+    description: "coooool",
+    email: "pierre@gmail.com",
+    service: services[17]
+    },
+  {
+    owner: "oliver",
+    description: "coooool",
+    email: "oliver@gmail.com",
+    service: services[18]
+    },
+  {
+    owner: "basile",
+    description: "coooool",
+    email: "basile@gmail.com",
+    service: services[19]
+  }
+])
+
+puts "Suppliers created"
+
 yasmina = Supplier.find(2)
 castle = Image.new(supplier: yasmina)
 castle_url = "https://s-ec.bstatic.com/images/hotel/max1024x768/573/57346950.jpg"
 castle.remote_photo_url = castle_url
 castle.save!
-
-puts "finished"
+  
+puts "Finished"

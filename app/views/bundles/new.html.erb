@@ -15,62 +15,76 @@
   </div>
   <%= form_tag bundles_path do %>
     <%= text_field_tag :period, params[:period], class: "form-control styled-form datepicker start_date", placeholder: "Quand ?" %>
-    <%= hidden_field_tag :ends_on, params[:ends_on], class: "form-control styled-form datepicker end_date", placeholder: "Jusqu'au..." %>
+    <%= text_field_tag :ends_on, params[:ends_on], class: "form-control styled-form datepicker end_date", placeholder: "Jusqu'au..." %>
     <%= text_field_tag :where, params[:where], class: "form-control styled-form", placeholder: "Oú ?" %>
     <%= text_field_tag :capacity, params[:capacity], class: "form-control styled-form", placeholder: "Nombre d'invités" %>
     <%= text_field_tag :budget, params[:budget], class: "form-control styled-form", placeholder: "Budget" %>
 
     <div class="service-cards">
 
-    <%= check_box_tag "categories[]", :place, checked=false %>
-       <div class="service-card" id="location">
+
+    <%= check_box_tag "categories[]", :place, checked=false, id: :categories_place, class: "categories" %>
+    <label for="categories_place">
+       <div class="service-card not-selected" id="location">
         <div>
-          <%= image_tag 'wedding-location.png', class:'big-picture' %>
+          <%= image_tag 'lieu.png', class:'big-picture' %>
           <h4>Lieu</h4>
         </div>
       </div>
 
+
+      <div class="service-card selected" id="location">
+        <div>
+          A bien ete ajoute
+        </div>
+      </div>
+    </label>
+
+
     <%= check_box_tag "categories[]", :catering, checked=false %>
+
+    <%= check_box_tag "categories[]", :traiteur, checked=false %>
+
 
      <div class="service-card" id="food">
         <div>
-          <%= image_tag 'food.png', class:'big-picture' %>
+          <%= image_tag 'traiteur.png', class:'big-picture' %>
           <h4>Traiteur</h4>
         </div>
       </div>
 
-    <%= check_box_tag "categories[]", :music, checked=false %>
+    <%= check_box_tag "categories[]", :musique, checked=false %>
 
      <div class="service-card" id="music">
         <div>
-          <%= image_tag 'music.png', class:'big-picture' %>
+          <%= image_tag 'musique.png', class:'big-picture' %>
           <h4>Musique</h4>
         </div>
       </div>
 
-    <%= check_box_tag "categories[]", :flower, checked=false %>
+    <%= check_box_tag "categories[]", :fleuriste, checked=false %>
 
       <div class="service-card" id="flower">
         <div>
-          <%= image_tag 'flower.png', class:'big-picture' %>
+          <%= image_tag 'fleuriste.png', class:'big-picture' %>
           <h4>Fleuriste</h4>
         </div>
       </div>
 
-    <%= check_box_tag "categories[]", :photograph, checked=false %>
+    <%= check_box_tag "categories[]", :photographe, checked=false %>
 
      <div class="service-card" id="photo">
         <div>
-          <%= image_tag 'photo.png', class:'big-picture' %>
+          <%= image_tag 'photographe.png', class:'big-picture' %>
           <h4>Photographe</h4>
         </div>
       </div>
 
-    <%= check_box_tag "categories[]", :entertainment, checked=false %>
+    <%= check_box_tag "categories[]", :animations, checked=false %>
 
      <div class="service-card" id="animation">
         <div>
-          <%= image_tag 'animation.png', class:'big-picture' %>
+          <%= image_tag 'animations.png', class:'big-picture' %>
           <h4>Animations</h4>
         </div>
       </div>

@@ -23,6 +23,6 @@ class Supplier < ApplicationRecord
   private
 
   def is_a_place?
-    return self.service.category == "place"
+    return self.service.category == "lieu"
   end
 end
