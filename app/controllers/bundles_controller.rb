@@ -9,7 +9,7 @@ class BundlesController < ApplicationController
 
   def create
     session[:bundle] = {}
-    session[:bundle][:starts_on] = params[:starts_on]
+    session[:bundle][:period] = params[:period]
     session[:bundle][:ends_on] = params[:ends_on]
     session[:bundle][:where] = params[:where]
     session[:bundle][:capacity] = params[:capacity]
