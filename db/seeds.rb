@@ -118,100 +118,93 @@ areas = [
   {country: "France", region: "La Réunion", department: "976 - Mayotte"}
 ]
 
-counter = 0
-areas.each do |attributes|
-  Area.create!(attributes)
-  counter += 1
-  puts "#{counter} areas created"
-end
-
-
-Supplier.destroy_all
-Service.destroy_all
+puts "Areas created"
 
 services = Service.create([
-          {
-            category: "traiteur",
-            name: "charles traiteur"
-            },
-          {
-            category: "traiteur",
-            name: "alicia traiteur"
-            },
-          {
-            category: "traiteur",
-            name: "yasmina traiteur"
-            },
-          {
-            category: "traiteur",
-            name: "kevin traiteur"
-            },
-          {
-            category: "musique",
-            name: "charles musique"
-            },
-          {
-            category: "musique",
-            name: "alicia musique"
-            },
-          {
-            category: "musique",
-            name: "yasmina musique"
-            },
-          {
-            category: "musique",
-            name: "julien musique"
-            },
-          {
-            category: "fleuriste",
-            name: "charles fleuriste"
-            },
-          {
-            category: "fleuriste",
-            name: "pierre fleuriste"
-            },
-          {
-            category: "fleuriste",
-            name: "maxime fleuriste"
-            },
-          {
-            category: "fleuriste",
-            name: "patrick fleuriste"
-            },
-          {
-            category: "photographe",
-            name: "charles photographe"
-            },
-          {
-            category: "photographe",
-            name: "pierre photographe"
-            },
-          {
-            category: "photographe",
-            name: "max photographe"
-            },
-          {
-            category: "photographe",
-            name: "xav photographe"
-            },
-          {
-            category: "animations",
-            name: "charles animations"
-            },
-          {
-            category: "animations",
-            name: "pierre animations"
-            },
-          {
-            category: "animations",
-            name: "oliver animations"
-            },
-          {
-            category: "animations",
-            name: "basile animations"
-            }]
-            )
-p "creating suppliers"
+  {
+    category: "traiteur",
+    name: "charles traiteur"
+    },
+  {
+    category: "traiteur",
+    name: "alicia traiteur"
+    },
+  {
+    category: "traiteur",
+    name: "yasmina traiteur"
+    },
+  {
+    category: "traiteur",
+    name: "kevin traiteur"
+    },
+  {
+    category: "musique",
+    name: "charles musique"
+    },
+  {
+    category: "musique",
+    name: "alicia musique"
+    },
+  {
+    category: "musique",
+    name: "yasmina musique"
+    },
+  {
+    category: "musique",
+    name: "julien musique"
+    },
+  {
+    category: "fleuriste",
+    name: "charles fleuriste"
+    },
+  {
+    category: "fleuriste",
+    name: "pierre fleuriste"
+    },
+  {
+    category: "fleuriste",
+    name: "maxime fleuriste"
+    },
+  {
+    category: "fleuriste",
+    name: "patrick fleuriste"
+    },
+  {
+    category: "photographe",
+    name: "charles photographe"
+    },
+  {
+    category: "photographe",
+    name: "pierre photographe"
+    },
+  {
+    category: "photographe",
+    name: "max photographe"
+    },
+  {
+    category: "photographe",
+    name: "xav photographe"
+    },
+  {
+    category: "animations",
+    name: "charles animations"
+    },
+  {
+    category: "animations",
+    name: "pierre animations"
+    },
+  {
+    category: "animations",
+    name: "oliver animations"
+    },
+  {
+    category: "animations",
+    name: "basile animations"
+  }
+])
+
+puts "Services created"
+
 suppliers = Supplier.create!([
   {
     owner: "charles",
@@ -325,5 +318,7 @@ suppliers = Supplier.create!([
     email: "basile@gmail.com",
     service: services[19]
   }
-  ])
-p "finished"
+])
+
+puts "Suppliers created"
+puts "Finished"
