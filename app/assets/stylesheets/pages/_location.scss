@@ -5,9 +5,17 @@
 .places-container {
   flex: 1 0 auto;
 }
-#map {
+
+.map-container {
   flex: 0 0 450px;
-  height: 100vh;
+  #lock {
+    display: block;
+    margin: auto;
+  }
+}
+
+#map {
+  height: 70vh;
   position: sticky !important;
   top: 0 !important;
 }
