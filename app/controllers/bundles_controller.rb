@@ -15,12 +15,11 @@ class BundlesController < ApplicationController
     session[:bundle][:capacity] = params[:capacity]
     session[:bundle][:budget] = params[:budget]
     session[:bundle][:categories] = params[:categories]
-
     @bundle = Bundle.new
     @bundle.user = current_user
     @bundle.save
-
-    if params[:categories].include?("location")
+    raise
+    if params[:categories].include?("lieu")
       redirect_to location_bundle_path(@bundle)
     else
       redirect_to services_bundle_path(@bundle)
