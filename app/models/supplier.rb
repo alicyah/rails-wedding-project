@@ -2,16 +2,18 @@ class Supplier < ApplicationRecord
   belongs_to :service
   has_many :bundle_lines
   has_many :supplier_areas
+  has_many :areas, through: :supplier_areas
   has_many :reviews
   has_many :availabilities
   has_many :images, dependent: :destroy
   has_many :areas, through: :supplier_areas
   has_many :users, through: :reviews
-  validates :owner, :description, :email, presence: true
+  validates :owner, :description, presence: true
   validates :address, :capacity, presence: true, if: :is_a_place?
   monetize :price_cents
   geocoded_by :address
   after_validation :geocode, if: :will_save_change_to_address?
+
 
   # include PgSearch
 
