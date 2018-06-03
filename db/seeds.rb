@@ -1,4 +1,7 @@
 Area.destroy_all
+Supplier.destroy_all
+Service.destroy_all
+Bundle.destroy_all
 
 areas = Area.create!([
   {country: "France", region: nil, department: nil},
@@ -120,212 +123,37 @@ areas = Area.create!([
 
 puts "Areas created"
 
-services = Service.create([
-  {
-    category: "traiteur",
-    name: "charles traiteur"
-    },
-  {
-    category: "traiteur",
-    name: "alicia traiteur"
-    },
-  {
-    category: "traiteur",
-    name: "yasmina traiteur"
-    },
-  {
-    category: "traiteur",
-    name: "kevin traiteur"
-    },
-  {
-    category: "musique",
-    name: "charles musique"
-    },
-  {
-    category: "musique",
-    name: "alicia musique"
-    },
-  {
-    category: "musique",
-    name: "yasmina musique"
-    },
-  {
-    category: "musique",
-    name: "julien musique"
-    },
-  {
-    category: "fleuriste",
-    name: "charles fleuriste"
-    },
-  {
-    category: "fleuriste",
-    name: "pierre fleuriste"
-    },
-  {
-    category: "fleuriste",
-    name: "maxime fleuriste"
-    },
-  {
-    category: "fleuriste",
-    name: "patrick fleuriste"
-    },
-  {
-    category: "photographe",
-    name: "charles photographe"
-    },
-  {
-    category: "photographe",
-    name: "pierre photographe"
-    },
-  {
-    category: "photographe",
-    name: "max photographe"
-    },
-  {
-    category: "photographe",
-    name: "xav photographe"
-    },
-  {
-    category: "animations",
-    name: "charles animations"
-    },
-  {
-    category: "animations",
-    name: "pierre animations"
-    },
-  {
-    category: "animations",
-    name: "oliver animations"
-    },
-  {
-    category: "animations",
-    name: "basile animations"
-  }
-])
+place = Service.create(category: "lieu")
+caterer = Service.create(category: "traiteur")
+musician = Service.create(category: "musique")
+florist = Service.create(category: "fleuriste")
+photograph = Service.create(category: "photographe")
+entertainment = Service.create(category: "animations")
 
 puts "Services created"
 
-suppliers = Supplier.create!([
+places = Supplier.create!([
   {
-    owner: "charles",
-    description: "coooool",
-    email: "charles@gmail.com",
-    service: services[0]
-    },
-  {
-    owner: "alicia",
-    description: "coooool",
-    email: "alicia@gmail.com",
-    service: services[1]    },
-  {
-    owner: "yasmina",
-    description: "coooool",
-    email: "yasmina@gmail.com",
-    service: services[2]    },
-  {
-    owner: "kevin",
-    description: "coooool",
-    email: "kevin@gmail.com",
-    service: services[3]    },
-  {
-    owner: "charles",
-    description: "coooool",
-    email: "charles@gmail.com",
-    service: services[4]    },
-  {
-    owner: "alicia",
-    description: "coooool",
-    email: "alicia@gmail.com",
-    service: services[5]    },
-  {
-    owner: "yasmina",
-    description: "coooool",
-    email: "yasmina@gmail.com",
-    service: services[6]    },
-  {
-    owner: "julien",
-    description: "coooool",
-    email: "julien@gmail.com",
-    service: services[7]    },
-  {
-    owner: "charles",
-    description: "coooool",
-    email: "charles@gmail.com",
-    service: services[8]    },
-  {
-    owner: "pierre",
-    description: "coooool",
-    email: "pierre@gmail.com",
-    service: services[9]
-    },
-  {
-    owner: "maxime",
-    description: "coooool",
-    email: "maxime@gmail.com",
-    service: services[10]
-    },
-  {
-    owner: "patrick",
-    description: "coooool",
-    email: "patrick@gmail.com",
-    service: services[11]
-    },
-  {
-    owner: "charles",
-    description: "coooool",
-    email: "charles@gmail.com",
-    service: services[12]
-    },
-  {
-    owner: "pierre",
-    description: "coooool",
-    email: "pierre@gmail.com",
-    service: services[13]
-    },
-  {
-    owner: "max",
-    description: "coooool",
-    email: "max@gmail.com",
-    service: services[14]
-    },
-  {
-    owner: "xav",
-    description: "coooool",
-    email: "xav@gmail.com",
-    service: services[15]
-    },
-  {
-    owner: "charles",
-    description: "coooool",
-    email: "charles@gmail.com",
-    service: services[16]
-    },
-  {
-    owner: "pierre",
-    description: "coooool",
-    email: "pierre@gmail.com",
-    service: services[17]
-    },
-  {
-    owner: "oliver",
-    description: "coooool",
-    email: "oliver@gmail.com",
-    service: services[18]
-    },
-  {
-    owner: "basile",
-    description: "coooool",
-    email: "basile@gmail.com",
-    service: services[19]
-  }
+    service_name: "Château d'Azy",
+    description: "Vivez votre part de rêve dans l'enceinte idyllique d'un Château à taille humaine.
+    Le Château d’Azy vous ouvre ses portes et devient votre demeure le temps d'un weekend, afin de célébrer votre mariage et recevoir vos invités dans un cadre prestigieux et champêtre.
+    Entre l'authenticité d'une demeure classée monument historique au chic néo-contemporain, l'excellence des équipements, son charme si particulier de son architecture Renaissance, le domaine d'Azy sera le théâtre de votre réception.",
+    price: 1900,
+    avg_rating: 4.9,
+    originality: "Les 45 hectares de parc, les terrasses et pelouses, les arbres centenaires, la vue panoramique dominante sur la campagne nivernaise.",
+    capacity: 180,
+    address: "Château d'Azy, 58270 Saint-Benin-d'Azy",
+    service: place,
+  },
 ])
 
-puts "Suppliers created"
+puts "1 place created"
 
-yasmina = Supplier.find(2)
-castle = Image.new(supplier: yasmina)
-castle_url = "https://s-ec.bstatic.com/images/hotel/max1024x768/573/57346950.jpg"
-castle.remote_photo_url = castle_url
-castle.save!
+
+# yasmina = Supplier.find(2)
+# castle = Image.new(supplier: yasmina)
+# castle_url = "https://s-ec.bstatic.com/images/hotel/max1024x768/573/57346950.jpg"
+# castle.remote_photo_url = castle_url
+# castle.save!
 
 puts "Finished"
