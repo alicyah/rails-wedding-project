@@ -1,5 +1,5 @@
 class Service < ApplicationRecord
+  CATEGORIES = ["lieu", "traiteur", "musique", "photographe", "fleuriste", "animations"]
   has_many :suppliers
-  validates :category, presence: true, uniqueness: { scope: :name }
-  validates :name, presence: true
+  validates :category, inclusion: { in: CATEGORIES }
 end

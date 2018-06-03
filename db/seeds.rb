@@ -3,6 +3,7 @@ Supplier.destroy_all
 Service.destroy_all
 Bundle.destroy_all
 
+
 areas = Area.create!([
   {country: "France", region: nil, department: nil},
   {country: "France", region: "Bourgogne - Franche-Comté ", department: nil},
@@ -121,7 +122,9 @@ areas = Area.create!([
   {country: "France", region: "La Réunion", department: "976 - Mayotte"}
 ])
 
+
 puts "Areas created"
+
 
 place = Service.create(category: "lieu")
 caterer = Service.create(category: "traiteur")
@@ -129,6 +132,8 @@ musician = Service.create(category: "musique")
 florist = Service.create(category: "fleuriste")
 photograph = Service.create(category: "photographe")
 entertainment = Service.create(category: "animations")
+
+
 
 puts "Services created"
 
@@ -139,3 +144,4 @@ puts "Services created"
 # castle.save!
 
 puts "Finished"
+
