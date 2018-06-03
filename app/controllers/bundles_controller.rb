@@ -15,12 +15,12 @@ class BundlesController < ApplicationController
     session[:bundle][:capacity] = params[:capacity]
     session[:bundle][:budget] = params[:budget]
     session[:bundle][:categories] = params[:categories]
-
     @bundle = Bundle.new
     @bundle.user = current_user
     @bundle.save
-
-    if params[:categories].include?("location")
+    if params[:categories].nil? || params[:period].nil? || params[:ends_on].nil? || params[:where].nil? || params[:capacity].nil? || params[:budget].nil?
+      render :new
+    elsif params[:categories].include?("lieu")
       redirect_to location_bundle_path(@bundle)
     else
       redirect_to services_bundle_path(@bundle)
@@ -28,32 +28,22 @@ class BundlesController < ApplicationController
   end
 
   def location
-    @places_suppliers = Supplier.near(session[:bundle]["where"], 100).where.not(latitude: nil, longitude: nil)
-    # address is included in the "where" search
-    # check availabilities
-    event_days = (Date.yesterday..Date.tomorrow).map{ |a| a }
-    @places_suppliers = @places_suppliers.select do |place|
-      place.availabilities.map do |avail|
-        (avail.starts_on..avail.ends_on).map{ |a| a }.flatten.uniq.include?(event_days)
-      end
-    end
+    @places_suppliers = Supplier.near(session[:bundle]['where'], 30).where.not(latitude: nil, longitude: nil)
 
-    # nb_days = end_date - start_date
-    nb_days = event_days.count
-    # price*nb_days <= 20% max_budget
-    budget = session[:bundle]["budget"].to_i
-    @places_suppliers = @places_suppliers.select do |place|
-      place.price.to_f*nb_days <= 0.2*budget
-    end
-    # capacity >= nb_people expected
-    nb_people = session[:bundle]["capacity"].to_i
-    @places_suppliers = @places_suppliers.select do |place|
-      place.capacity >= nb_people
-    end
+    dates = session[:bundle]['period'].split(' au ')
+    start_date = DateTime.parse(dates.first)
+    end_date = DateTime.parse(dates.last)
+    @event_days = (start_date..end_date).map{ |a| a }
+
+    # @places_suppliers = check_availabilities(@places_suppliers)
+    @places_suppliers = check_budget(@places_suppliers)
+    @places_suppliers = check_capacity(@places_suppliers)
+    # raise
+
     @markers = @places_suppliers.map do |place|
       {
         lat: place.latitude,
-        lng: place.longitude,
+        lng: place.longitude#,
         # infoWindow: { content: render_to_string(partial: "/places/map_box", locals: { flat: flat }) }
       }
     end
@@ -61,5 +51,32 @@ class BundlesController < ApplicationController
   end
 
   def services
+    @suppliers = Supplier.all
+    @services_selected = session[:bundle]["categories"]
+    # case @services_selected
+    # when "l"
+  end
+
+  def check_availabilities(suppliers)
+    return suppliers.select do |supplier|
+      supplier.availabilities.map do |avail|
+        (avail.starts_on..avail.ends_on).map{ |a| a }.flatten.uniq.include?(@event_days)
+      end
+    end
+  end
+
+  def check_budget(suppliers)
+    nb_days = @event_days.count
+    budget = session[:bundle]['budget'].to_i
+    return suppliers.select do |supplier|
+      (supplier.price.to_f * nb_days) <= (0.2 * budget)
+    end
+  end
+
+  def check_capacity(suppliers)
+    nb_people = session[:bundle]['capacity'].to_i
+    return suppliers.select do |supplier|
+      supplier.capacity >= nb_people
+    end
   end
 end

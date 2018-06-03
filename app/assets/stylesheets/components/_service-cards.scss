@@ -2,6 +2,7 @@
   display:flex;
   justify-content: space-around;
   align-items: center;
+  margin: 20px;
 }
 
 .service-card {
@@ -47,4 +48,8 @@
 
 .inactive {
   z-index: 1
+}
+
+.categories, .hidden {
+  display: none;
 }

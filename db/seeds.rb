@@ -1,4 +1,9 @@
-areas = [
+Area.destroy_all
+Supplier.destroy_all
+Service.destroy_all
+Bundle.destroy_all
+
+areas = Area.create!([
   {country: "France", region: nil, department: nil},
   {country: "France", region: "Bourgogne - Franche-Comté ", department: nil},
   {country: "France", region: "Nouvelle Aquitaine", department: nil},
@@ -114,11 +119,40 @@ areas = [
   {country: "France", region: "Guyane", department: "973 - Guyane"},
   {country: "France", region: "La Réunion", department: "974 - La Réunion"},
   {country: "France", region: "La Réunion", department: "976 - Mayotte"}
-]
+])
 
-counter = 0
-areas.each do |attributes|
-  Area.create!(attributes)
-  counter += 1
-  puts "#{counter} areas created"
-end
+
+puts "Areas created"
+
+place = Service.create(category: "lieu")
+caterer = Service.create(category: "traiteur")
+musician = Service.create(category: "musique")
+florist = Service.create(category: "fleuriste")
+photograph = Service.create(category: "photographe")
+entertainment = Service.create(category: "animations")
+
+puts "Services created"
+
+places = Supplier.create!([
+  {
+    service_name: "Château d'Azy",
+    description: "Vivez votre part de rêve dans l'enceinte idyllique d'un Château à taille humaine.
+    Le Château d’Azy vous ouvre ses portes et devient votre demeure le temps d'un weekend, afin de célébrer votre mariage et recevoir vos invités dans un cadre prestigieux et champêtre.
+    Entre l'authenticité d'une demeure classée monument historique au chic néo-contemporain, l'excellence des équipements, son charme si particulier de son architecture Renaissance, le domaine d'Azy sera le théâtre de votre réception.",
+    price: 1900,
+    avg_rating: 4.9,
+    originality: "Les 45 hectares de parc, les terrasses et pelouses, les arbres centenaires, la vue panoramique dominante sur la campagne nivernaise.",
+    capacity: 180,
+    address: "Château d'Azy, 58270 Saint-Benin-d'Azy",
+    service: place,
+  },
+])
+
+# yasmina = Supplier.find(2)
+# castle = Image.new(supplier: yasmina)
+# castle_url = "https://s-ec.bstatic.com/images/hotel/max1024x768/573/57346950.jpg"
+# castle.remote_photo_url = castle_url
+# castle.save!
+
+puts "Finished"
+
