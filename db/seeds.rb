@@ -148,8 +148,6 @@ places = Supplier.create!([
   },
 ])
 
-puts "1 place created"
-
 # yasmina = Supplier.find(2)
 # castle = Image.new(supplier: yasmina)
 # castle_url = "https://s-ec.bstatic.com/images/hotel/max1024x768/573/57346950.jpg"
