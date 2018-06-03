@@ -8,7 +8,7 @@ class Supplier < ApplicationRecord
   has_many :images, dependent: :destroy
   has_many :areas, through: :supplier_areas
   has_many :users, through: :reviews
-  validates :owner, :description, presence: true
+  validates :description, presence: true
   validates :address, :capacity, presence: true, if: :is_a_place?
   monetize :price_cents
   geocoded_by :address

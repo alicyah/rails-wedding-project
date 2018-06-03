@@ -3,7 +3,6 @@ Supplier.destroy_all
 Service.destroy_all
 Bundle.destroy_all
 
-
 areas = Area.create!([
   {country: "France", region: nil, department: nil},
   {country: "France", region: "Bourgogne - Franche-Comté ", department: nil},
@@ -125,7 +124,6 @@ areas = Area.create!([
 
 puts "Areas created"
 
-
 place = Service.create(category: "lieu")
 caterer = Service.create(category: "traiteur")
 musician = Service.create(category: "musique")
@@ -133,9 +131,22 @@ florist = Service.create(category: "fleuriste")
 photograph = Service.create(category: "photographe")
 entertainment = Service.create(category: "animations")
 
-
-
 puts "Services created"
+
+places = Supplier.create!([
+  {
+    service_name: "Château d'Azy",
+    description: "Vivez votre part de rêve dans l'enceinte idyllique d'un Château à taille humaine.
+    Le Château d’Azy vous ouvre ses portes et devient votre demeure le temps d'un weekend, afin de célébrer votre mariage et recevoir vos invités dans un cadre prestigieux et champêtre.
+    Entre l'authenticité d'une demeure classée monument historique au chic néo-contemporain, l'excellence des équipements, son charme si particulier de son architecture Renaissance, le domaine d'Azy sera le théâtre de votre réception.",
+    price: 1900,
+    avg_rating: 4.9,
+    originality: "Les 45 hectares de parc, les terrasses et pelouses, les arbres centenaires, la vue panoramique dominante sur la campagne nivernaise.",
+    capacity: 180,
+    address: "Château d'Azy, 58270 Saint-Benin-d'Azy",
+    service: place,
+  },
+])
 
 # yasmina = Supplier.find(2)
 # castle = Image.new(supplier: yasmina)
