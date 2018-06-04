@@ -5,8 +5,6 @@ Supplier.destroy_all
 Service.destroy_all
 Bundle.destroy_all
 
-
-
 # CREATING SERVICES
 
 puts "Creating services"

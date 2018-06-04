@@ -41,7 +41,57 @@ puts "Starting to create Images"
 #       "https://www.photogo.fr/media/cache/zoom/uploads/gallery/741/2877/95de078c9d3961f8cfb39c26d9280336.jpeg"
 #     ]
 #   ],
-# }
+# 
+
+  caterers: [
+    [
+      "http://www.jstraiteur.fr/assets/images/nos-plats/traiteur-seminaire-lyon-01.jpg",
+      "http://www.jstraiteur.fr/assets/images/nos-plats/traiteur-seminaire-lyon-02.jpg",
+      "http://www.jstraiteur.fr/assets/images/nos-plats/traiteur-seminaire-lyon-06.jpg",
+      "http://www.jstraiteur.fr/assets/images/nos-plats/traiteur-seminaire-lyon-08.jpg",
+      "http://www.jstraiteur.fr/assets/images/nos-plats/traiteur-seminaire-lyon-21.jpg"
+    ],
+    [
+      "https://cdn20.traiteurs.fr/site/company/65/39161/images/350123/buffet_ci3.jpg",
+      "https://cdn0.mariages.net/opinion/fotos/8/9/2/8/t30_132946.jpg",
+      "https://cdn0.mariages.net/opinion/fotos/8/7/2/3/t30_73198.jpg",
+      "https://cdn0.mariages.net/opinion/fotos/8/9/1/6/t30_132946.jpg",
+      "https://cdn0.mariages.net/opinion/fotos/8/9/1/8/t30_132946.jpg",
+      "https://cdn0.mariages.net/opinion/fotos/8/9/2/4/t30_132946.jpg"
+    ],
+    [
+      "https://cdn0.mariages.net/opinion/fotos/4/1/2/8/t30_139658.jpg",
+      "https://cdn0.mariages.net/opinion/fotos/2/2/4/2/t30_125650.jpg",
+      "https://cdn0.mariages.net/opinion/fotos/4/1/2/0/t30_139658.jpg",
+      "https://cdn0.mariages.net/opinion/fotos/1/7/1/2/t30_182640.jpg",
+      "http://www.mariage-epicurien.com/assets/cache/images/dineretsoiree/e52.jpg",
+      "http://www.mariage-epicurien.com/assets/cache/images/dineretsoiree/1000x-diner10.b0c.jpg"
+    ]
+  ],
+  entertainments: [
+    [
+      "http://www.weddingmarathon.com/wp-content/uploads/2015/12/wed-confetti.jpg",
+      "http://www.geelongfireworks.com.au/resources/windmillwed.jpg",
+      "http://www.weddingwindow.com/blog/wp-content/uploads/2013/10/Wedding-DJ.jpg",
+      "http://www.adeleleephotography.com/website/wp-content/uploads/2017/07/2017-07-05_0024.jpg"
+
+    ],
+    [
+      "https://i.ytimg.com/vi/7K-3IlSJ3zI/maxresdefault.jpg",
+      "http://cdn1.mariages.net/emp/videos/2/1/4/21655t30_jay-witlox-teaser-2014.jpg",
+      "http://www.designingentertainment.lu/uploads/2/6/1/9/26195533/___1460090144.png",
+      "https://cdn0.mariages.net/opinion/fotos/3/5/1/2/t30_116214.jpg",
+      "https://cdn0.mariages.net/opinion/fotos/3/5/1/4/t30_116214.jpg"
+    ],
+    [
+      "https://www.hitched.co.uk/images/articles/unusual-photobooth.jpg",
+      "https://mon-photobooth.fr/img/cms/photobooth-mariage.jpg",
+      "https://i.pinimg.com/originals/00/ed/0f/00ed0f0ab84c132bf963e0adbacf8266.jpg",
+      "https://i.pinimg.com/originals/8a/4e/13/8a4e138ad349ff29206eae4a544c4458.jpg",
+      "https://des-clics-photos.fr//img/cms/stand_photobooth02.jpg"
+     ],
+  ]
+}
 
 # def create_images(hash, key, suppliers)
 #   hash[key].each_with_index do |array_url, index|
@@ -53,8 +103,9 @@ puts "Starting to create Images"
 #   end
 # end
 
-# create_images(hash_urls, :places, @places)
-# create_images(hash_urls, :photographs, @photographs)
-
+create_images(hash_urls, :places, @places)
+create_images(hash_urls, :photographs, @photographs)
+create_images(hash_urls, :caterers, @caterers)
+create_images(hash_urls, :entertainments, @entertainments)
 
 puts "Images created"
