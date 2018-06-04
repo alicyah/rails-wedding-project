@@ -51,10 +51,27 @@ class BundlesController < ApplicationController
   end
 
   def services
+    raise
     @suppliers = Supplier.all
+
     @services_selected = session[:bundle]["categories"]
-    # case @services_selected
-    # when "l"
+    # geocoder.search(session[:bundle]['where'])
+
+    @suppliers_areas = @suppliers.areas
+    @services_suppliers = @suppliers_areas
+    # dates = session[:bundle]['period'].split(' au ')
+    # start_date = DateTime.parse(dates.first)
+    # end_date = DateTime.parse(dates.last)
+    # @event_days = (start_date..end_date).map{ |a| a }
+
+    # check session where en fct des areas des suppliers (autres services)
+    # @services_suppliers =
+
+    # check availabilities
+    # check budget (somme des services restants =< au budget restant(= 80% budget))
+    @services_suppliers = @services_suppliers.each { |supplier| supplier.price <= params[:budget] }
+
+    # check capacity
   end
 
   def check_availabilities(suppliers)

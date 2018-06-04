@@ -4,7 +4,7 @@
   <div class="tabs">
     <% @services_selected.each do |service| %>
       <a class="tab" data-target="<%= service %>">
-        <h3><%= service.capitalize %></h3>
+        <%= image_tag "#{service}.png", class:'extra-small-picture' %><h3><%= service.capitalize %></h3>
       </a>
     <% end %>
   </div>
