@@ -12,7 +12,6 @@ Rails.application.routes.draw do
     end
   end
 
-
   resources :suppliers, only: [:index, :new, :create] do
     resources :services, only: [:index]
     resources :availabilities, only: [:new, :create]
