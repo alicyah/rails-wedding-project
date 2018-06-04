@@ -1,4 +1,6 @@
 # CREATING AREAS
+puts "Creating areas"
+
 areas = Area.create!([
   {country: "France", region: nil, department: nil},
   {country: "France", region: "Bourgogne - Franche-Comté ", department: nil},
