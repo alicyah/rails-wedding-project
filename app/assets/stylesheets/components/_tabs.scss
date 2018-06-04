@@ -24,6 +24,8 @@
   text-align: center;
   padding: 15px 0;
   background: $blue;
+  display: flex;
+  justify-content: space-around;
 }
 .tab:first-child {
   border-radius: 10px 0 0 0;
