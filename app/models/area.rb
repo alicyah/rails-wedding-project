@@ -1,5 +1,10 @@
 class Area < ApplicationRecord
+  has_many :suppliers
   before_validation :validation_area
+
+  def working_area
+    "#{department}, #{region}, #{country}"
+  end
 
   private
 

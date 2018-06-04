@@ -1,0 +1,21 @@
+.results-container {
+  display: flex;
+}
+
+.places-container {
+  flex: 1 0 auto;
+}
+
+.map-container {
+  flex: 0 0 450px;
+  #lock {
+    display: block;
+    margin: auto;
+  }
+}
+
+#map {
+  height: 70vh;
+  position: sticky !important;
+  top: 0 !important;
+}

@@ -1,0 +1,40 @@
+.tabs {
+  display: flex;
+  padding: 10px 10px 0 10px
+}
+.tabs a {
+  color: $yellow;
+}
+.tabs a:hover {
+  cursor: pointer;
+  text-decoration: none;
+  opacity: 0.8;
+}
+.tabs h3 {
+  font-size: 17px;
+  font-weight: bold;
+  margin-top: 0;
+}
+.tabs p {
+  opacity: 0.5;
+  margin-bottom: 0;
+}
+.tab {
+  flex: 0 0 20%;
+  text-align: center;
+  padding: 15px 0;
+  background: $blue;
+  display: flex;
+  justify-content: space-around;
+}
+.tab:first-child {
+  border-radius: 10px 0 0 0;
+}
+.tab:last-child {
+  border-radius: 0 10px 0 0;
+}
+.tab.active {
+  color: $blue;
+  background: $light-gray;
+  border: solid $blue 1px;
+}
