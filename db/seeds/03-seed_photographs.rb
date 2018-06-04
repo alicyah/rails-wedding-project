@@ -1,5 +1,5 @@
 # CREATING PHOTOGRAPHS
-puts "Starting to create Photographs"
+puts "Creating Photographs"
 @photographs = Supplier.create!([
   {
     service_name: "Neuville Photography",

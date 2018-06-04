@@ -1,5 +1,5 @@
 # CREATING PLACES
-puts "Starting to create Places"
+puts "Creating Places"
 @places = Supplier.create!([
   {
     service_name: "Château d'Azy",
