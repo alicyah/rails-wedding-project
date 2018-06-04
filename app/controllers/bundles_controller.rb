@@ -51,12 +51,13 @@ class BundlesController < ApplicationController
   end
 
   def services
-    raise
     @suppliers = Supplier.all
 
     @services_selected = session[:bundle]["categories"]
     # geocoder.search(session[:bundle]['where'])
-
+    geocode_where = Geocoder.search(session[:bundle]['where'])
+    region = geocode_where.first.address_components[2]["long_name"]
+    raise
     @suppliers_areas = @suppliers.areas
     @services_suppliers = @suppliers_areas
     # dates = session[:bundle]['period'].split(' au ')
