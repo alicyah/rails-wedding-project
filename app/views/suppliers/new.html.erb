@@ -12,10 +12,10 @@
     <%= f.input :capacity %>
     <%= f.input :address %>
     <%= f.input :service_name %>
-    <%= f.association :service, collection: Service.order(:category), prompt: "Choose a service" %>
-    <%= f.association :areas, collection: Area.order(:region), prompt: "Choose an area" %>
+    <%= f.association :service, collection: Service.order(:category), label_method: :category, prompt: "Choose a service" %>
+    <%= f.association :areas, collection: Area.order(:region), as: :check_boxes, label_method: :working_area, prompt: "Choose an area" %>
     <%= f.simple_fields_for :images do |p| %>
-      <%= p.input :photo %>
+      <%= p.input :photo, as: :file %>
       <%= p.input :photo_cache, as: :hidden %>
     <% end %>
     <%= f.simple_fields_for :availabilities do |p| %>
@@ -27,7 +27,7 @@
 
 
     <br>
-    <%= f.submit class:'btn btn-primary' %>
+    <%= f.submit class:'btn-validate' %>
   <% end %>
 </div>
 
