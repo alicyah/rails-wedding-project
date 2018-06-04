@@ -9,7 +9,7 @@ class BundlesController < ApplicationController
 
   def create
     session[:bundle] = {}
-    session[:bundle][:period] = params[:period]
+    session[:bundle][:starts_on] = params[:starts_on]
     session[:bundle][:ends_on] = params[:ends_on]
     session[:bundle][:where] = params[:where]
     session[:bundle][:capacity] = params[:capacity]
@@ -18,7 +18,7 @@ class BundlesController < ApplicationController
     @bundle = Bundle.new
     @bundle.user = current_user
     @bundle.save
-    if params[:categories].nil? || params[:period].nil? || params[:ends_on].nil? || params[:where].nil? || params[:capacity].nil? || params[:budget].nil?
+    if params[:categories].nil? || params[:starts_on].nil? || params[:ends_on].nil? || params[:where].nil? || params[:capacity].nil? || params[:budget].nil?
       render :new
     elsif params[:categories].include?("lieu")
       redirect_to location_bundle_path(@bundle)
@@ -28,11 +28,13 @@ class BundlesController < ApplicationController
   end
 
   def location
-    @places_suppliers = Supplier.near(session[:bundle]['where'], 30).where.not(latitude: nil, longitude: nil)
-
-    dates = session[:bundle]['period'].split(' au ')
-    start_date = DateTime.parse(dates.first)
-    end_date = DateTime.parse(dates.last)
+    @bundle = Bundle.find(params[:id])
+    @places_suppliers = Supplier.near(session[:bundle]['where'], 80).where.not(latitude: nil, longitude: nil)
+    start_date = DateTime.parse(session[:bundle]['starts_on'])
+    end_date = DateTime.parse(session[:bundle]['ends_on'])
+    # dates = session[:bundle]['starts_on'].split(' au ')
+    # start_date = DateTime.parse(dates.first)
+    # end_date = DateTime.parse(dates.last)
     @event_days = (start_date..end_date).map{ |a| a }
 
     # @places_suppliers = check_availabilities(@places_suppliers)
@@ -43,8 +45,9 @@ class BundlesController < ApplicationController
     @markers = @places_suppliers.map do |place|
       {
         lat: place.latitude,
-        lng: place.longitude#,
-        # infoWindow: { content: render_to_string(partial: "/places/map_box", locals: { flat: flat }) }
+        lng: place.longitude,
+        supplier_id: place.id,
+        infoWindow: { content: render_to_string(partial: "/bundles/map_box", locals: { place: place }) }
       }
     end
     @places_suppliers
@@ -56,6 +59,12 @@ class BundlesController < ApplicationController
 
     # check session where en fct des areas des suppliers (autres services)
     @services_selected = session[:bundle]["categories"]
+    # geocoder.search(session[:bundle]['where'])
+    geocode_where = Geocoder.search(session[:bundle]['where'])
+    region = geocode_where.first.address_components[2]["long_name"]
+    @suppliers_areas = @suppliers.areas
+    @services_suppliers = @suppliers_areas
+    # dates = session[:bundle]['starts_on'].split(' au ')
     # geocode_where = Geocoder.search(session[:bundle]['where'])
     # region = geocode_where.first.address_components[2]["long_name"]
 
@@ -68,6 +77,7 @@ class BundlesController < ApplicationController
     # end
 
     # dates = session[:bundle]['period'].split(' au ')
+    
     # start_date = DateTime.parse(dates.first)
     # end_date = DateTime.parse(dates.last)
     # @event_days = (start_date..end_date).map{ |a| a }
@@ -92,7 +102,7 @@ class BundlesController < ApplicationController
     nb_days = @event_days.count
     budget = session[:bundle]['budget'].to_i
     return suppliers.select do |supplier|
-      (supplier.price.to_f * nb_days) <= (0.2 * budget)
+      (supplier.price.to_f * nb_days) <= (0.3 * budget)
     end
   end
 
