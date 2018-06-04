@@ -1,6 +1,6 @@
 puts "Starting to create Caterers"
 
-@caterers = Supplier.create!([
+array_caterers = [
   {
     owner: "Jerôme Sanchez",
     service_name: "JS Traiteur",
@@ -33,6 +33,14 @@ puts "Starting to create Caterers"
     originality: "Non seulement les boissons et de delicieux cocktails sont inclus dans la formule, l’épicurien des Vignes peut aussi vous proposer une solution globale pour votre événement du mobilier aux chapiteaux en passant par la pyrotechnie personnalisée.",
     service: @caterer,
     },
-])
+]
+
+@caterers = []
+array_caterers.each do |supplier|
+  new_supplier = Supplier.new(supplier)
+  new_supplier.area = Area.where(region: "Bourgogne-Franche-Comté").first
+  new_supplier.save!
+  @caterers << new_supplier
+end
 
 puts "Caterers created"

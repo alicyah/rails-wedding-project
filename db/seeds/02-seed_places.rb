@@ -1,6 +1,6 @@
 # CREATING PLACES
 puts "Creating Places"
-@places = Supplier.create!([
+array_suppliers = [
   {
     service_name: "Château d'Azy",
     description: "Vivez votre part de rêve dans l'enceinte idyllique d'un Château à taille humaine.
@@ -35,6 +35,14 @@ puts "Creating Places"
     address: "Les Places, 71600 Volesvres, 71600 Volesvres",
     service: @place,
   }
-])
+]
+
+@places = []
+array_suppliers.each do |supplier|
+  new_supplier = Supplier.new(supplier)
+  new_supplier.area = Area.where(region: "Bourgogne-Franche-Comté").first
+  new_supplier.save!
+  @places << new_supplier
+end
 
 puts "Places created"

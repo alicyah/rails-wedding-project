@@ -1,6 +1,6 @@
 puts "Starting to create Entertainments"
 
-@entertainments = Supplier.create!([
+array_entertainments = [
   {
     service_name: "Evènement 21",
     description: "Les professionnels, artistes et techniciens d'événement 21 n'ont qu'une seule mission: vous satisfaire. Pour cela, ils mettront tout en œuvre pour faire de votre soirée une véritable réussite.
@@ -29,6 +29,13 @@ puts "Starting to create Entertainments"
     originality: "Profitez de 500 impressions immédiates, un cadre photo et un fond personnalisé, ainsi qu'un lot d'accessoires!",
     service: @entertainment,
     },
-])
+]
+@entertainments = []
+array_entertainments.each do |supplier|
+  new_supplier = Supplier.new(supplier)
+  new_supplier.area = Area.where(region: "Bourgogne-Franche-Comté").first
+  new_supplier.save!
+  @entertainments << new_supplier
+end
 
 puts "Entertainments created"
