@@ -1,0 +1,26 @@
+.modal-content {
+  border-radius: 7px;
+}
+
+.modal-header {
+  background-color: $blue;
+  color: $yellow;
+  border-radius-top: 7px;
+  text-align: center;
+  h4 {
+    font-weight: 700;
+  }
+}
+
+.service-photos {
+  background-size: cover;
+  height: 100px;
+}
+
+
+.service-description {
+  text-align: justify;
+  p {
+    font-size: 12px;
+  }
+}
