@@ -2,15 +2,13 @@ puts "Starting to create Entertainments"
 
 @entertainments = Supplier.create!([
   {
-    service_name: "Evenement 21",
-    description: "Evenement 21, ce sont des professionnels, artistes et techniciens au service de votre soirée. Ces experts n'ont qu'une seule mission, vous satisfaire. Pour cela, ils mettront tout en œuvre pour faire de votre soirée une véritable réussite.
-      Grâce à un vaste parc de matériel haut de gamme, ces professionnels pourront répondre à tous vos besoins, du mariage intime aux cérémonies de plus grande envergure. Ils sont en mesure de répondre à tous vos besoins en matière de sonorisation,
-      éclairage, projection, machine à effets, mascotte, diffusion d'images, feux d'artifices, etc.
-      Vous pouvez en être sûrs: ils feront de votre événement un moment inoubliable!
-      Evènement 21 fera preuve d'écoute et sera attentif à toutes vos attentes.",
+    service_name: "Evènement 21",
+    description: "Les professionnels, artistes et techniciens d'événement 21 n'ont qu'une seule mission: vous satisfaire. Pour cela, ils mettront tout en œuvre pour faire de votre soirée une véritable réussite.
+      Grâce à un vaste parc de matériel haut de gamme, ces experts pourront répondre à tous vos besoins en matière de sonorisation, éclairage, projection, machine à effets, mascotte, diffusion d'images, feux d'artifices, etc.
+       Evènement 21 fera preuve d'écoute et sera attentif à toutes vos attentes.",
     price: 700,
-    originality: "Evenement 21 se charge aussi de la musique pour la cérémonie, ainsi que pour le vin d'honneur et la soirée dansante (karaoké, audiovisuel, et DJ inclus).",
     avg_rating: 5,
+    originality: "Evènement 21 se charge aussi de la musique pour la cérémonie, ainsi que pour le vin d'honneur et la soirée dansante (karaoké, audiovisuel, et DJ inclus).",
     service: @entertainment,
     },
     {
@@ -28,7 +26,7 @@ puts "Starting to create Entertainments"
       Livraison, installation, et récupération (jusqu'à 60km) inclus.",
     price: 590,
     avg_rating: 5,
-    originiality: "Profitez de 500 impressions immédiates, un cadre photo et un fond personnalisés, ainsi qu'un lot d'accessoires!"
+    originality: "Profitez de 500 impressions immédiates, un cadre photo et un fond personnalisés, ainsi qu'un lot d'accessoires!"
     service: @entertainment,
     },
 ])
