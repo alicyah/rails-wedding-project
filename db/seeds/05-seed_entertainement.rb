@@ -17,7 +17,7 @@ puts "Starting to create Entertainments"
       Véritable show, ce divertissement sera l'un des temps forts de votre soirée : apparition de colombes et d'un perroquet, tours interactifs avec vos convives, lévitation avec la participation de l'un de vos invités, disparation de l'assistante du magicien sous vos yeux ébahis.",
     price: 650,
     avg_rating: 4.5,
-    originality: "Si l'espace le permet vous pourrez opter pour la prestation Grandes-Illusions pour un moment hors du commun!"
+    originality: "Si l'espace le permet vous pourrez opter pour la prestation Grandes-Illusions pour un moment hors du commun!",
     service: @entertainment,
     },
     {
@@ -26,7 +26,7 @@ puts "Starting to create Entertainments"
       Livraison, installation, et récupération (jusqu'à 60km) inclus.",
     price: 590,
     avg_rating: 5,
-    originality: "Profitez de 500 impressions immédiates, un cadre photo et un fond personnalisés, ainsi qu'un lot d'accessoires!"
+    originality: "Profitez de 500 impressions immédiates, un cadre photo et un fond personnalisé, ainsi qu'un lot d'accessoires!",
     service: @entertainment,
     },
 ])
