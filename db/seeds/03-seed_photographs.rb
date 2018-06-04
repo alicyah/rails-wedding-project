@@ -1,6 +1,6 @@
 # CREATING PHOTOGRAPHS
 puts "Creating Photographs"
-@photographs = Supplier.create!([
+array_photographs = [
   {
     service_name: "Neuville Photography",
     description: "Olivier Neuville travaille dans événementiel et le milieu artistique depuis plus de 15 ans. Il n'a pas de genre photographique de prédilection et apprécie de travailler sur tous les sujets, que ce soit sur les mariages, sur l'architecture ou bien avec des artistes. En somme, il place ses compétences au service de votre Jour J, pour réaliser des souvenirs de grande qualité.",
@@ -26,6 +26,14 @@ puts "Creating Photographs"
     originality: "Paul Ly travaille avec la lumière naturelle et retouche ses clichés avec parcimonie pour préserver votre personnalité.",
     service: @photograph,
   }
-])
+]
+
+@photographs = []
+array_photographs.each do |supplier|
+  new_supplier = Supplier.new(supplier)
+  new_supplier.area = Area.where(region: "Bourgogne-Franche-Comté").first
+  new_supplier.save!
+  @photographs << new_supplier
+end
 
 puts "Photographs created"

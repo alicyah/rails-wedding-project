@@ -1,12 +1,17 @@
-Area.destroy_all
+User.destroy_all
 Image.destroy_all
 Availability.destroy_all
 Supplier.destroy_all
 Service.destroy_all
+Area.destroy_all
 Bundle.destroy_all
 
-# CREATING SERVICES
+#CREATING A USER
+puts "Creating user"
+user = User.create!(first_name: "Alicia", last_name: "Yahiaoui", email: "alicia@wedpacker.party", password: "123456")
+puts "User created"
 
+# CREATING SERVICES
 puts "Creating services"
 
 @place = Service.create!(category: "lieu")
@@ -24,7 +29,7 @@ puts "Creating areas"
 
 @areas = Area.create!([
   {country: "France", region: nil},
-  {country: "France", region: "Bourgogne-Franche-Comté "},
+  {country: "France", region: "Bourgogne-Franche-Comté"},
   {country: "France", region: "Nouvelle Aquitaine"},
   {country: "France", region: "Normandie"},
   {country: "France", region: "Grand Est"},
@@ -43,13 +48,4 @@ puts "Areas created"
 
 Dir[File.join(Rails.root, 'db', 'seeds', '*.rb')].sort.each { |seed| load seed }
 
-# ASSIGNING AREAS TO SUPPLIERS
-
-Supplier.all.each do |supplier|
-  supplier.area = Area.where(region: "Bourgogne-Franche-Comté")
-  supplier.save!
-end
-
-puts "Suppliers updated"
 puts "Finished"
-
