@@ -16,6 +16,7 @@ puts "Services created"
 
 Dir[File.join(Rails.root, 'db', 'seeds', '*.rb')].sort.each { |seed| load seed }
 
+
 # yasmina = Supplier.find(2)
 # castle = Image.new(supplier: yasmina)
 # castle_url = "https://s-ec.bstatic.com/images/hotel/max1024x768/573/57346950.jpg"

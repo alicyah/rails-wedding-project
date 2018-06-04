@@ -14,13 +14,15 @@
     <div class="item"></div>
   </div>
 
+
+
   <div class="form-search">
     <%= form_tag bundles_path do %>
-      <%= text_field_tag :period, params[:period], class: "form-control styled-form datepicker start_date", placeholder: "Quand ?" %>
-      <%= hidden_field_tag :ends_on, params[:ends_on], class: "form-control styled-form datepicker end_date", placeholder: "Jusqu'au..." %>
-      <%= text_field_tag :where, params[:where], class: "form-control styled-form", placeholder: "Oú ?" %>
-      <%= text_field_tag :capacity, params[:capacity], class: "form-control styled-form", placeholder: "Nombre d'invités" %>
-      <%= text_field_tag :budget, params[:budget], class: "form-control styled-form", placeholder: "Budget" %>
+    <%= text_field_tag :period, params[:period], class: "form-control styled-form datepicker start_date", placeholder: "Quand ?" %>
+    <%= text_field_tag :ends_on, params[:ends_on], class: "form-control styled-form datepicker end_date", placeholder: "Jusqu'au..." %>
+    <%= text_field_tag :where, params[:where], class: "form-control styled-form", placeholder: "Oú ?" %>
+    <%= text_field_tag :capacity, params[:capacity], class: "form-control styled-form", placeholder: "Nombre d'invités" %>
+    <%= text_field_tag :budget, params[:budget], class: "form-control styled-form", placeholder: "Budget" %>
   </div>
     <div class="service-cards">
       <%= check_box_tag "categories[]", :lieu, checked=false, id: :categories_place, class: "categories" %>
