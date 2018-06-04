@@ -5,8 +5,6 @@ class SuppliersController < ApplicationController
     @supplier = Supplier.new
     @availability = Availability.new
     @image = Image.new
-    @supplier_area = SupplierArea.new
-
   end
 
   def create

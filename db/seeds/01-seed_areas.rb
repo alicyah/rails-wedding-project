@@ -1,7 +1,7 @@
 # CREATING AREAS
 puts "Creating areas"
 
-areas = Area.create!([
+@areas = Area.create!([
   {country: "France", region: nil},
   {country: "France", region: "Bourgogne-Franche-Comté "},
   {country: "France", region: "Nouvelle Aquitaine"},
