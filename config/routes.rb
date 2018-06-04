@@ -17,7 +17,6 @@ Rails.application.routes.draw do
     resources :services, only: [:index]
     resources :availabilities, only: [:new, :create]
     resources :images, only: [:new, :create]
-    resources :supplier_areas, only: [:new, :create]
   end
 
 end

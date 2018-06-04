@@ -1,12 +1,10 @@
 class Supplier < ApplicationRecord
   belongs_to :service
+  belongs_to :area
   has_many :bundle_lines
-  has_many :supplier_areas
-  has_many :areas, through: :supplier_areas
   has_many :reviews
   has_many :availabilities
   has_many :images, dependent: :destroy
-  has_many :areas, through: :supplier_areas
   has_many :users, through: :reviews
   validates :description, presence: true
   validates :address, :capacity, presence: true, if: :is_a_place?

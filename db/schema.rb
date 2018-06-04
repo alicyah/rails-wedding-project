@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_04_100925) do
+ActiveRecord::Schema.define(version: 2018_06_04_103706) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -78,15 +78,6 @@ ActiveRecord::Schema.define(version: 2018_06_04_100925) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "supplier_areas", force: :cascade do |t|
-    t.bigint "area_id"
-    t.bigint "supplier_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["area_id"], name: "index_supplier_areas_on_area_id"
-    t.index ["supplier_id"], name: "index_supplier_areas_on_supplier_id"
-  end
-
   create_table "suppliers", force: :cascade do |t|
     t.string "owner"
     t.text "description"
@@ -102,6 +93,8 @@ ActiveRecord::Schema.define(version: 2018_06_04_100925) do
     t.float "longitude"
     t.integer "price_cents", default: 0, null: false
     t.string "service_name"
+    t.bigint "area_id"
+    t.index ["area_id"], name: "index_suppliers_on_area_id"
     t.index ["service_id"], name: "index_suppliers_on_service_id"
   end
 
@@ -131,7 +124,6 @@ ActiveRecord::Schema.define(version: 2018_06_04_100925) do
   add_foreign_key "images", "suppliers"
   add_foreign_key "reviews", "suppliers"
   add_foreign_key "reviews", "users"
-  add_foreign_key "supplier_areas", "areas"
-  add_foreign_key "supplier_areas", "suppliers"
+  add_foreign_key "suppliers", "areas"
   add_foreign_key "suppliers", "services"
 end
