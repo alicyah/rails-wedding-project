@@ -1,4 +1,5 @@
 puts "Starting to create Caterers"
+
 @caterers = Supplier.create!([
   {
     owner: "Jerôme Sanchez",
@@ -9,7 +10,7 @@ puts "Starting to create Caterers"
       N'hésitez pas à contacter dès maintenant JS Traiteur qui vous épaulera dans votre choix et votre sélection de plats en fonction de vos envies, vos goûts et votre budget.",
     price: 50,
     avg_rating: 4.7,
-    originality: "Nous créons pour chaque mariages un menu selon vos envies, vos goûts et votre budget. Nous travaillons avec des producteurs locaux et la qualité des produits est notre engagement. Nous proposons le luxe du sur mesure accessible à tous.",
+    originality: "Nous créons pour chaque mariage un menu selon vos envies, vos goûts et votre budget. Nous travaillons avec des producteurs locaux et la qualité des produits est notre engagement. Nous proposons le luxe du sur mesure accessible à tous.",
     service: @caterer,
     },
     {
@@ -20,7 +21,7 @@ puts "Starting to create Caterers"
       Membre de l'Association des Traiteurs de France, la fraicheur et la qualité des produits utilisés, vous est garantie par leur Charte de Qualité.",
     price: 60,
     avg_rating: 4.5,
-    originality: "cuisine française élaborée et gastronomique",
+    originality: "Cuisine française élaborée et gastronomique",
     service: @caterer,
     },
     {
@@ -31,8 +32,9 @@ puts "Starting to create Caterers"
       L’efficacité de l’épicurien des Vignes n’est plus à prouver, ils vous garantissent une logistique discrète et bien réglé afin de vous permettre de profiter pleinement de vos invités. L’épicurien des vignes peut vous proposer une solution globale pour votre événement du mobilier aux chapiteaux en passant par la pyrotechnie personnalisée.",
     price: 30,
     avg_rating: 5,
-    originality: "Petit plus: formules tout compris (boissons et cocktails incroyables)",
+    originality: "Petit plus: formules tout compris (boissons et cocktails incroyables).",
     service: @caterer,
     },
 ])
+
 puts "Caterers created"
