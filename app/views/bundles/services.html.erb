@@ -1,127 +1,135 @@
 <div class="container" id="container-tabs">
-  <h2>Voici les services sélectionnés.</h2>
-  <h5>Cliquez sur chacun d'entre eux pour pouvoir voir les prestataires qui matchent tous vos déirs !</h5>
-  <div class="thread">
-    <div class="b-box b-box--dots">
-      <span class="b-box--dots__item is-active">   </span>
-      <span class="b-box--dots__item is-active"></span>
-      <span class="b-box--dots__item is-active"></span>
-      <span class="b-box--dots__item"></span>
-      <span class="b-box--dots__item big">Total Price</span>
+  <% if @suppliers == [] %>
+    <div>
+      <h3>Nous sommes désolés.<br>Aucun résultat ne correspond à votre recherche</h3>
+      <%= link_to "Relancer une recherche", new_bundle_path, class: "btn-validate" %>
     </div>
-    <div class="list-items">
-      <div class="item">Recherche</div>
-      <div class="item">Lieu</div>
-      <div class="item">Services</div>
-      <div class="item"></div>
-    </div>
-  </div>
-  <div class="tabs">
-    <% @services_selected.each do |service| %>
-      <a class="tab" data-target="<%= service %>">
-        <%= image_tag "#{service}.png", class:'extra-small-picture' %><h3><%= service.capitalize %></h3>
-      </a>
-    <% end %>
-  </div>
-  <% @services_selected.each do |service| %>
-    <div class="tab-content hidden" id="<%= service %>">
-      <div class="row ">
-        <% @suppliers.joins(:service).where(services: { category: service }).each do |supplier| %>
-          <div class="col-xs-4">
-            <div class="card-supplier">
-              <%= link_to "#" do %>
-                <div class="card-supplier-image" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)),
-                   url('<%= cl_image_path supplier.images.first.photo, crop: :fill %>')" %>
-                  <div class="card-supplier-image">
-                    <div class="supplier-lock">
-                      <i class="fas fa-lock-open"></i>
-                    </div>
-                    <div class="supplier-lock-animation hidden">
-                      <i class="fas fa-lock-open"></i>
-                    </div>
-                  </div>
-                </div>
-              <% end %>
-              <div class="card-supplier-footer">
-                <h3><%= supplier.service_name %></h3>
-                <p id="card-rating">
-                  <% if supplier.avg_rating >= 4.5 && supplier.avg_rating <= 4.75 %>
-                    <% supplier.avg_rating.to_i.times do %>
-                      <i class="fas fa-star"></i>
-                    <% end %>
-                    <i class="fas fa-star-half"></i>
-                  <% else %>
-                    <% supplier.avg_rating.ceil.times do %>
-                        <i class="fas fa-star"></i>
-                      <% end %>
-                  <% end %>
-                </p>
-                <% if service == "traiteur" %>
-                  <p id="card-price" ><%= (supplier.price * session[:bundle]["capacity"].to_i).to_i %> <i class="fas fa-euro-sign"></i></p>
-                <% else %>
-                  <p id="card-price" ><%= supplier.price.to_i %> <i class="fas fa-euro-sign"></i></p>
-                <% end %>
-                <!-- data-toggle/data-target are there for modals -->
-                <%= link_to "+ Détails", "#", class: "card-details", data: { toggle: "modal", target: "#modal-supplier#{supplier.id}"} %>
-              </div>
-
-              <!-- Modal -->
-              <div class="modal fade" id="modal-supplier<%= supplier.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                <div class="modal-dialog" role="document">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                      <h4 class="modal-title" id="myModalLabel"><%= supplier.service_name %></h4>
-                    </div>
-                    <div class="modal-body">
-                      <!-- Image Slider -->
-                      <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-                        <!-- Indicators -->
-                        <ol class="carousel-indicators">
-                          <% supplier.images.each_with_index do |_image, index| %>
-                            <li data-target="#carousel-example-generic" data-slide-to="<%= index %>" class="<%= 'active' if index == 0 %>"></li>
-                          <% end %>
-                        </ol>
-
-                        <!-- Wrapper for slides -->
-                        <div class="carousel-inner" role="listbox">
-                          <% supplier.images.each_with_index do |image, index| %>
-                            <div class="item<%= ' active' if index == 0 %>">
-                              <%= cl_image_tag image.photo, width: 900, height: 500 %>
-                            </div>
-                          <% end %>
-                        </div>
-
-                        <!-- Controls -->
-                        <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-                          <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-                          <span class="sr-only">Previous</span>
-                        </a>
-                        <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-                          <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-                          <span class="sr-only">Next</span>
-                        </a>
-                      </div>
-                      <div class="service-description">
-                        <p><%= supplier.description %></p>
-                      </div>
-                    </div>
-                    <div class="modal-footer">
-                      <% if service == "traiteur" %>
-                        <p id="card-price" ><%= (supplier.price * session[:bundle]["capacity"].to_i).to_i %> <i class="fas fa-euro-sign"></i></p>
-                      <% else %>
-                        <p id="card-price" ><%= supplier.price.to_i %> <i class="fas fa-euro-sign"></i></p>
-                      <% end %>
-                      <button type="button" class="btn-validate">Réservez</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        <% end %>
+  <% else %>
+    <h2>Voici les services sélectionnés.</h2>
+    <h5>Cliquez sur chacun d'entre eux pour pouvoir voir les prestataires qui matchent tous vos déirs !</h5>
+    <div class="thread">
+      <div class="b-box b-box--dots">
+        <span class="b-box--dots__item is-active">   </span>
+        <span class="b-box--dots__item is-active"></span>
+        <span class="b-box--dots__item is-active"></span>
+        <span class="b-box--dots__item"></span>
+        <span class="b-box--dots__item big">Total Price</span>
+      </div>
+      <div class="list-items">
+        <div class="item">Recherche</div>
+        <div class="item">Lieu</div>
+        <div class="item">Services</div>
+        <div class="item"></div>
       </div>
     </div>
+    <div class="tabs">
+      <% @services_selected.each do |service| %>
+        <a class="tab" data-target="<%= service %>">
+          <%= image_tag "#{service}.png", class:'extra-small-picture' %><h3><%= service.capitalize %></h3>
+        </a>
+      <% end %>
+    </div>
+    <% @services_selected.each do |service| %>
+      <div class="tab-content hidden" id="<%= service %>">
+        <div class="row ">
+          <% @suppliers.joins(:service).where(services: { category: service }).each do |supplier| %>
+            <div class="col-xs-4">
+              <div class="card-supplier">
+                <%= link_to "#" do %>
+                  <div class="card-supplier-image" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)),
+                     url('<%= cl_image_path supplier.images.first.photo, crop: :fill %>')" %>
+                    <div class="card-supplier-image">
+                      <div class="supplier-lock">
+                        <i class="fas fa-lock-open"></i>
+                      </div>
+                      <div class="supplier-lock-animation hidden">
+                        <i class="fas fa-lock-open"></i>
+                      </div>
+                    </div>
+                  </div>
+                <% end %>
+                <div class="card-supplier-footer">
+                  <h3><%= supplier.service_name %></h3>
+                  <p id="card-rating">
+                    <% if supplier.avg_rating >= 4.5 && supplier.avg_rating <= 4.75 %>
+                      <% supplier.avg_rating.to_i.times do %>
+                        <i class="fas fa-star"></i>
+                      <% end %>
+                      <i class="fas fa-star-half"></i>
+                    <% else %>
+                      <% supplier.avg_rating.ceil.times do %>
+                        <i class="fas fa-star"></i>
+                      <% end %>
+                      <i class="fas fa-star-half"></i>
+                    <% else %>
+                      <% supplier.avg_rating.ceil.times do %>
+                        <i class="fas fa-star"></i>
+                      <% end %>
+                    <% end %>
+                  </p>
+                    <% if service == "traiteur" %>
+                      <p id="card-price" ><%= (supplier.price * session[:bundle]["capacity"].to_i) %> <i class="fas fa-euro-sign"></i></p>
+                    <% else %>
+                      <p id="card-price" ><%= supplier.price.to_i %> <i class="fas fa-euro-sign"></i></p>
+                    <% end %>
+                    <!-- data-toggle/data-target are there for modals -->
+                    <%= link_to "+ Détails", "#", class: "card-details", data: { toggle: "modal", target: "#modal-supplier#{supplier.id}"} %>
+                </div>
+
+                  <!-- Modal -->
+                <div class="modal fade" id="modal-supplier<%= supplier.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel"><%= supplier.service_name %></h4>
+                      </div>
+                      <div class="modal-body">
+                        <!-- Image Slider -->
+                        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                          <!-- Indicators -->
+                          <ol class="carousel-indicators">
+                            <% supplier.images.each_with_index do |_image, index| %>
+                              <li data-target="#carousel-example-generic" data-slide-to="<%= index %>" class="<%= 'active' if index == 0 %>"></li>
+                            <% end %>
+                          </ol>
+
+                          <!-- Wrapper for slides -->
+                          <div class="carousel-inner" role="listbox">
+                            <% supplier.images.each_with_index do |image, index| %>
+                              <div class="item<%= ' active' if index == 0 %>">
+                                <%= cl_image_tag image.photo, width: 900, height: 500 %>
+                              </div>
+                            <% end %>
+                          </div>
+
+                          <!-- Controls -->
+                          <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                          </a>
+                          <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                          </a>
+                        </div>
+                      </div>
+                      <div class="modal-footer">
+                        <% if service == "traiteur" %>
+                          <p id="card-price" ><%= (supplier.price * session[:bundle]["capacity"].to_i).to_i %> <i class="fas fa-euro-sign"></i></p>
+                        <% else %>
+                          <p id="card-price" ><%= supplier.price.to_i %> <i class="fas fa-euro-sign"></i></p>
+                        <% end %>
+                        <button type="button" class="btn-validate">Réservez</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>  
+          <% end %>
+        </div>
+      </div>
+    <% end %>
   <% end %>
 </div>
-
