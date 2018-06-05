@@ -17,31 +17,29 @@
     </div>
   </div>
   <div class="tabs">
-    <% @services_selected.each do |service| %>
-      <a class="tab" data-target="<%= service %>">
+    <% @services_selected.each_with_index do |service, index| %>
+      <a class="tab <%= 'active' if index == 0 %>" data-target="<%= service %>">
         <%= image_tag "#{service}.png", class:'extra-small-picture' %><h3><%= service.capitalize %></h3>
       </a>
     <% end %>
   </div>
-  <% @services_selected.each do |service| %>
-    <div class="tab-content hidden" id="<%= service %>">
+  <% @services_selected.each_with_index do |service, index| %>
+    <div class="tab-content <%= 'hidden' if index != 0 %>" id="<%= service %>">
       <div class="row ">
         <% @suppliers.joins(:service).where(services: { category: service }).each do |supplier| %>
           <div class="col-xs-4">
             <div class="card-supplier">
-              <%= link_to "#" do %>
-                <div class="card-supplier-image" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)),
-                   url('<%= cl_image_path supplier.images.first.photo, crop: :fill %>')" %>
-                  <div class="card-supplier-image">
-                    <div class="supplier-lock">
-                      <i class="fas fa-lock-open"></i>
-                    </div>
-                    <div class="supplier-lock-animation hidden">
-                      <i class="fas fa-lock-open"></i>
-                    </div>
+              <div class="card-supplier-image" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)),
+                 url('<%= cl_image_path supplier.images.first.photo, crop: :fill %>')" %>
+                <div id="<%=  supplier.id %>"class="card-supplier-image" onclick="addSupplier()">
+                  <div class="supplier-lock">
+                    <i class="fas fa-lock-open"></i>
+                  </div>
+                  <div class="supplier-lock-animation hidden">
+                    <i class="fas fa-lock-open"></i>
                   </div>
                 </div>
-              <% end %>
+              </div>
               <div class="card-supplier-footer">
                 <h3><%= supplier.service_name %></h3>
                 <p id="card-rating">
@@ -112,7 +110,14 @@
                       <% else %>
                         <p id="card-price" ><%= supplier.price.to_i %> <i class="fas fa-euro-sign"></i></p>
                       <% end %>
-                      <button type="button" class="btn-validate">Réservez</button>
+                      <button type="button" class="btn-validate">
+                        <div class="supplier-lock">
+                          <i class="fas fa-lock-open"></i>
+                        </div>
+                        <div class="supplier-lock-animation hidden">
+                          <i class="fas fa-lock-open"></i>
+                        </div>
+                      </button>
                     </div>
                   </div>
                 </div>
@@ -123,5 +128,27 @@
       </div>
     </div>
   <% end %>
+
+  <div>
+    <%= form_tag bundle_bundle_lines_path(@bundle), method: :post, class: "form-inline text-center" do %>
+      <%= hidden_field_tag :supplier_ids %>
+      <%= button_tag class:'btn-validate', id: 'lock', type: "submit" do %>
+        <i class="fas fa-lock-open"></i>
+        <span>Réservez</span>
+      <% end %>
+    <% end %>
+  </div>
 </div>
 
+<script>
+  function addSupplier() {
+    const supplierIds = document.getElementById("supplier_ids");
+    if (supplierIds.value.includes(event.currentTarget.id)) {
+      supplierIds.value = supplierIds.value.replace( event.currentTarget.id, "")
+    } else {
+      // check if a service of the same type is checked
+        // if yes unlock and remove the id from input
+      supplierIds.value = supplierIds.value + " "+ event.currentTarget.id;
+    };
+  }
+</script>
