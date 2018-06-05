@@ -18,7 +18,21 @@
     <div class="item-last">Récapitulatif</div>
   </div>
 
+<!-- TEST -->
+  <%# @bundle.suppliers.each do |supplier| %>
+    <%#= supplier.price %>
+    <%#= @bundle.starts_on %>
+    <%#= @bundle.ends_on %>
+  <%# end %>
 
+  <% if @bundle.state == "pending" %>
+    <%= content_for :before_js do %>
+      <script src="https://checkout.stripe.com/checkout.js"></script>
+    <% end %>
 
+    <%= render "pending_payment", bundle: @bundle %>
 
+  <% else %>
+    <!-- display confirmation message -->
+  <% end %>
 </div>
