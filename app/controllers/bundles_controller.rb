@@ -1,6 +1,6 @@
 class BundlesController < ApplicationController
   def show
-
+    @bundle = Bundle.find(params[:id])
   end
 
   def new
@@ -77,7 +77,7 @@ class BundlesController < ApplicationController
     # end
 
     # dates = session[:bundle]['period'].split(' au ')
-    
+
     # start_date = DateTime.parse(dates.first)
     # end_date = DateTime.parse(dates.last)
     # @event_days = (start_date..end_date).map{ |a| a }

@@ -1,8 +1,4 @@
-<h1>Bundles#show</h1>
-<p>Find me in app/views/bundles/show.html.erb</p>
-
 <div class="container">
-
   <div class="b-box b-box--dots">
     <span class="b-box--dots__item is-active"></span>
     <span class="b-box--dots__item is-active"></span>
@@ -20,18 +16,18 @@
 
 
   <div class="row">
-    <div class="col-xs-12">
-      <div class="list-element first">
-        <% bundle_line.supplier.each |supplier| %>
-        <% end  %>
-        <div class="list-image"><%= image_tag 'lieu.png', class:'small-picture' %></div>
-        <div class="list-title"><h3>Domaine de Normandoux</h3></div>
-        <div class="price">
-          <div><h5>Prix</h5></div>
-          <div><h4>4000 <i class="fas fa-euro-sign"></i></h4></div>
+    <div class="col-s-12">
+      <% @bundle.bundle_lines.each do |bundle_line|  %>
+        <div class="list-element first">
+          <div class="list-image"><%= image_tag 'lieu.png', class:'small-picture' %></div>
+          <div class="list-title"><h3> <%= bundle_line  %> </h3></div>
+          <div class="price">
+            <div><h5>Prix</h5></div>
+            <div><h4>4000 <i class="fas fa-euro-sign"></i></h4></div>
+          </div>
+          <div class="angle"><i class="fas fa-angle-right"></i></div>
         </div>
-        <div class="angle"><i class="fas fa-angle-right"></i></div>
-      </div>
+      <% end %>
     </div>
     <div class="col-xs-12">
       <div class="active-element">
