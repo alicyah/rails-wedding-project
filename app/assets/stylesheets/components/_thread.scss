@@ -86,16 +86,18 @@
   padding-left: 15px;
   text-align: centre;
 }
-.list-items {
-  color: $blue;
-  display: flex;
-  width: 80%;
-  margin: auto;
-  padding-top: 10px;
-}
-.item {
-  width: calc(770/4 * 1px);
-}
-.item-last {
-  width: calc(770/4 * 1px);
+.thread {
+  .list-items {
+    color: $blue;
+    display: flex;
+    width: 80%;
+    margin: auto;
+    padding-top: 10px;
+  }
+  .item {
+    width: calc(770/4 * 1px);
+  }
+  .item-last {
+    width: calc(770/4 * 1px);
+  }
 }

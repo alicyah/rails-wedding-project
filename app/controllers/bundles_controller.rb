@@ -60,10 +60,10 @@ class BundlesController < ApplicationController
     # check session where en fct des areas des suppliers (autres services)
     @services_selected = session[:bundle]["categories"]
     # geocoder.search(session[:bundle]['where'])
-    geocode_where = Geocoder.search(session[:bundle]['where'])
-    region = geocode_where.first.address_components[2]["long_name"]
-    @suppliers_areas = @suppliers.areas
-    @services_suppliers = @suppliers_areas
+    # geocode_where = Geocoder.search(session[:bundle]['where'])
+    # region = geocode_where.first.address_components[2]["long_name"]
+    # @suppliers_areas = @suppliers.areas
+    # @services_suppliers = @suppliers_areas
     # dates = session[:bundle]['starts_on'].split(' au ')
     # geocode_where = Geocoder.search(session[:bundle]['where'])
     # region = geocode_where.first.address_components[2]["long_name"]
@@ -77,7 +77,7 @@ class BundlesController < ApplicationController
     # end
 
     # dates = session[:bundle]['period'].split(' au ')
-    
+
     # start_date = DateTime.parse(dates.first)
     # end_date = DateTime.parse(dates.last)
     # @event_days = (start_date..end_date).map{ |a| a }
