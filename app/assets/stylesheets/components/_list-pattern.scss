@@ -31,6 +31,9 @@
   h3, h4 {
     font-weight: 700;
   }
+  a {
+    color: #FFD460;
+  }
 }
 
 .list-title {
@@ -60,3 +63,24 @@
 .last {
   border-bottom: solid $blue 4px;
 }
+.card-body {
+  background-color: white;
+  display: flex;
+  justify-content: space-around;
+  text-align: justify;
+  height: 500px;
+  .description {
+    width: 40%;
+  }
+}
+.card-image {
+  margin-top: 20px;
+  width: 400px;
+  height: 400px;
+
+}
+
+.plus {
+  font-size: 16px;
+}
+

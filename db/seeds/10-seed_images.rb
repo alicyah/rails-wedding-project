@@ -62,7 +62,8 @@ hash_urls = {
       "https://cdn0.mariages.net/opinion/fotos/2/2/4/2/t30_125650.jpg",
       "https://cdn0.mariages.net/opinion/fotos/4/1/2/0/t30_139658.jpg",
       "https://cdn0.mariages.net/opinion/fotos/1/7/1/2/t30_182640.jpg",
-      "http://www.mariage-epicurien.com/assets/cache/images/dineretsoiree/1000x-diner10.b0c.jpg"
+      "http://www.mariage-epicurien.com/assets/cache/images/dineretsoiree/1000x-diner10.b0c.jpg",
+      https://cdn.pixabay.com/photo/2015/09/20/14/01/cocktails-948353_1280.jpg
     ]
   ],
   entertainments: [
