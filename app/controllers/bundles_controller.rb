@@ -1,6 +1,6 @@
 class BundlesController < ApplicationController
   def show
-
+    @bundle = Bundle.find(params[:id])
   end
 
   def new
@@ -17,6 +17,9 @@ class BundlesController < ApplicationController
     session[:bundle][:categories] = params[:categories]
     @bundle = Bundle.new
     @bundle.user = current_user
+    @bundle.starts_on = params[:starts_on]
+    @bundle.ends_on = params[:ends_on]
+    @bundle.capacity = params[:capacity]
     @bundle.save
     if params[:categories].nil? || params[:starts_on].nil? || params[:ends_on].nil? || params[:where].nil? || params[:capacity].nil? || params[:budget].nil?
       render :new
@@ -37,10 +40,9 @@ class BundlesController < ApplicationController
     # end_date = DateTime.parse(dates.last)
     @event_days = (start_date..end_date).map{ |a| a }
 
-    # @places_suppliers = check_availabilities(@places_suppliers)
+    @places_suppliers = check_availabilities(@places_suppliers)
     @places_suppliers = check_budget(@places_suppliers)
     @places_suppliers = check_capacity(@places_suppliers)
-    # raise
 
     @markers = @places_suppliers.map do |place|
       {
@@ -55,6 +57,7 @@ class BundlesController < ApplicationController
 
   def services
     @suppliers = Supplier.all
+    @bundle = Bundle.find(params[:id])
 
 
     # check session where en fct des areas des suppliers (autres services)
