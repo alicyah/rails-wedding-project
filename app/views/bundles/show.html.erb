@@ -49,7 +49,9 @@
         </div>
         <div class="collapse" id="bundle-line-details-<%= bundle_line.id %>">
           <div class= "card card-body">
-            <div class="card-image"> <%= cl_image_tag bundle_line.supplier.images.first.photo , width: 400, height: 400 %></div>
+            <div class="card-image">
+             <%= cl_image_tag bundle_line.supplier.images.first.photo, crop: :fill, height: 400, width: 400 %>
+            </div>
             <div class="description">
               <h2><%= bundle_line.supplier.service_name %></h2>
               <p> <%= bundle_line.supplier.description %></p>
