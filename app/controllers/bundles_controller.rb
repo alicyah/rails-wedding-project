@@ -57,6 +57,7 @@ class BundlesController < ApplicationController
 
   def services
     @suppliers = Supplier.all
+    @bundle = Bundle.find(params[:id])
 
 
     # check session where en fct des areas des suppliers (autres services)
