@@ -18,8 +18,8 @@
 
   <div class="form-search">
     <%= form_tag bundles_path do %>
-    <%= text_field_tag :starts_on, params[:starts_on], class: "form-control styled-form datepicker start_date", placeholder: "Quand ?" %>
-    <%= text_field_tag :ends_on, params[:ends_on], class: "form-control styled-form datepicker end_date", placeholder: "Jusqu'au..." %>
+    <%= text_field_tag :starts_on, params[:starts_on], class: "form-control styled-form datepicker start_date", placeholder: "Du..." %>
+    <%= text_field_tag :ends_on, params[:ends_on], class: "form-control styled-form datepicker end_date", placeholder: "Au..." %>
     <%= text_field_tag :where, params[:where], class: "form-control styled-form", placeholder: "Oú ?" %>
     <%= text_field_tag :capacity, params[:capacity], class: "form-control styled-form", placeholder: "Nombre d'invités" %>
     <%= text_field_tag :budget, params[:budget], class: "form-control styled-form", placeholder: "Budget" %>
