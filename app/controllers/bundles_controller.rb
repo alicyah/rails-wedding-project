@@ -37,10 +37,9 @@ class BundlesController < ApplicationController
     # end_date = DateTime.parse(dates.last)
     @event_days = (start_date..end_date).map{ |a| a }
 
-    # @places_suppliers = check_availabilities(@places_suppliers)
+    @places_suppliers = check_availabilities(@places_suppliers)
     @places_suppliers = check_budget(@places_suppliers)
     @places_suppliers = check_capacity(@places_suppliers)
-    # raise
 
     @markers = @places_suppliers.map do |place|
       {
@@ -54,41 +53,36 @@ class BundlesController < ApplicationController
   end
 
   def services
-    @suppliers = Supplier.all
+    # 1 - Selection of all suppliers that are not 'lieu'
+    @services_supplier = Supplier.joins(:service).where.not(services: { category: 'lieu' })
+    # 2 - bundle that we are building
     @bundle = Bundle.find(params[:id])
-
-
-    # check session where en fct des areas des suppliers (autres services)
+    # 3 - selected services on the new bundle page
     @services_selected = session[:bundle]["categories"]
-    # geocoder.search(session[:bundle]['where'])
-    # geocode_where = Geocoder.search(session[:bundle]['where'])
-    # region = geocode_where.first.address_components[2]["long_name"]
-    # @suppliers_areas = @suppliers.areas
-    # @services_suppliers = @suppliers_areas
-    # dates = session[:bundle]['starts_on'].split(' au ')
-    # geocode_where = Geocoder.search(session[:bundle]['where'])
-    # region = geocode_where.first.address_components[2]["long_name"]
+    # 4 - check session where en fct des areas des suppliers (autres services)
+    # a) get region from address put in the form by the user
+    geocode_where = Geocoder.search(session[:bundle]['where'])
+    array_geocode = geocode_where.first.address_components
+    region = ""
+    array_geocode.each do |address_component|
+      if address_component["types"].first == "administrative_area_level_1"
+        region = address_component["long_name"]
+      end
+    end
+    # b) keep only suppliers which area is variable region
+    @services_supplier = @services_supplier.select do |service_supplier|
+      service_supplier.area == region
+    end
+    # 5 - check availabilities by comparing dates of user and availabilities of suppliers
+    # a) get  start and end dates entered by user and transform it in an array of dates
+    start_date = DateTime.parse(session[:bundle]['starts_on'])
+    end_date = DateTime.parse(session[:bundle]['ends_on'])
+    @event_days = (start_date..end_date).map{ |a| a }
+    # b) call check_availabilities method to filter suppliers
+    @services_supplier = check_availabilities(@services_supplier)
 
-    # @services_suppliers = Supplier.joins(:area).where(area: {region: region})
-
-
-    # nb_people = session[:bundle]['capacity'].to_i
-    # total_price_per_supplier = @services_suppliers.each do |service_supplier|
-    #   service_supplier.price.nb_people
-    # end
-
-    # dates = session[:bundle]['period'].split(' au ')
-
-    # start_date = DateTime.parse(dates.first)
-    # end_date = DateTime.parse(dates.last)
-    # @event_days = (start_date..end_date).map{ |a| a }
-    # @services_suppliers =
-
-    # check availabilities
-    # check budget (somme des services restants =< au budget restant(= 80% budget))
-    # @services_suppliers = @services_suppliers.each { |supplier| supplier.price <= params[:budget] }
-
-    # check capacity
+    # what's above is ok
+    #--------------------------------------------------------------------------
   end
 
   def check_availabilities(suppliers)
@@ -97,6 +91,7 @@ class BundlesController < ApplicationController
         (avail.starts_on..avail.ends_on).map{ |a| a }.flatten.uniq.include?(@event_days)
       end
     end
+    raise
   end
 
   def check_budget(suppliers)
