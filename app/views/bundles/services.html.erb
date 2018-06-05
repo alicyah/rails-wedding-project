@@ -10,9 +10,76 @@
   </div>
   <% @services_selected.each do |service| %>
     <div class="tab-content hidden" id="<%= service %>">
-      <% @suppliers.each do |supplier| %>
-        <%= supplier.service.category = service %>
-      <% end %>
+      <div class="row ">
+        <% @suppliers.joins(:service).where(services: { category: service }).each do |supplier| %>
+          <div class="col-xs-4">
+            <div class="card-supplier">
+              <%= link_to "#" do %>
+                <% if supplier.images.first&.photo&.present? %>
+                  <div class="card-supplier-image" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)),
+                     url('<%= cl_image_tag supplier.images.first.photo, crop: :fill %>')" %>
+                     <i class="fas fa-lock-open lock"></i>
+                  </div>
+                <% else %>
+                  <div class="card-supplier-image">
+                    <div class="supplier-lock">
+                      <i class="fas fa-lock-open"></i>
+                    </div>
+                    <div class="supplier-lock-animation hidden">
+                      <i class="fas fa-lock-open"></i>
+                    </div>
+                  </div>
+                <% end %>
+              <% end %>
+              <div class="card-supplier-footer">
+                <h3><%= supplier.service_name %></h3>
+                <p id="card-rating">
+                  <% if supplier.avg_rating > 4.5 && supplier.avg_rating <= 4.75 %>
+                    <% supplier.avg_rating.to_i.times do %>
+                      <i class="fas fa-star"></i>
+                    <% end %>
+                    <i class="fas fa-star-half"></i>
+                  <% else %>
+                    <% supplier.avg_rating.ceil.times do %>
+                        <i class="fas fa-star"></i>
+                      <% end %>
+                  <% end %>
+                </p>
+                <% if service == "traiteur" %>
+                  <p id="card-price" ><%= (supplier.price * session[:bundle]["capacity"].to_i) %> <i class="fas fa-euro-sign"></i></p>
+                <% else %>
+                  <p id="card-price" ><%= supplier.price.to_i %> <i class="fas fa-euro-sign"></i></p>
+                <% end %>
+                <!-- data-toggle/data-target are there for modals -->
+                <%= link_to "+ Détails", "#", class: "card-details", data: { toggle: "modal", target: "#modal-supplier#{supplier.id}"} %>
+              </div>
+
+              <!-- Modal -->
+              <div class="modal fade" id="modal-supplier<%= supplier.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                      <h4 class="modal-title" id="myModalLabel"><%= supplier.service_name %></h4>
+                    </div>
+                    <div class="modal-body">
+                      <div class="service-photos">
+                        <%= image_tag 'wedding-banner-2.jpeg' %>
+                      </div>
+                      <div class="service-description">
+                        <p><%= supplier.description %></p>
+                      </div>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn-validate">Réservez ce <%= supplier.service.category %></button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
     </div>
   <% end %>
 </div>

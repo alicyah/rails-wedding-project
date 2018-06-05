@@ -20,7 +20,7 @@
     <div class="places-container">
       <div class="places-image">
         <% @places_suppliers.each do |supplier| %>
-          <%= cl_image_tag supplier.images.first.photo %>
+          <%= cl_image_tag supplier.images.first.photo, class: "supplier-photo #{'hidden' unless @places_suppliers.first == supplier }", id: "supplier-photo-#{supplier.id}"%>
         <% end %>
       </div>
     </div>
@@ -28,7 +28,20 @@
       <div
         id="map" style="width: 100%;" data-markers="<%= @markers.to_json %>"
       ></div>
-      <div class="btn-validate" id="lock"><i class="fas fa-lock-open">  Réservez</i></div>
+      <div>
+        <%= form_tag bundle_bundle_lines_path(@bundle), method: :post, class: "form-inline text-center" do %>
+          <%= hidden_field_tag :supplier_id, @places_suppliers.first.id %>
+          <%= button_tag class:'btn-validate', id: 'lock', type: "submit" do %>
+            <i class="fas fa-lock-open"></i>
+            <span>Réservez</span>
+          <% end %>
+        <% end %>
+      </div>
+
+
+      <%#= link_to bundle_bundle_lines_path(@bundle), method: :post, class: 'btn-validate', id: 'lock' do %>
+        <!-- <i class="fas fa-lock-open">  Réservez</i> -->
+      <%# end %>
     </div>
   </div>
 </div>

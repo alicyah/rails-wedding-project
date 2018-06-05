@@ -1,7 +1,7 @@
 class BundleLinesController < ApplicationController
   def create
-    @bundle_line = BundleLine.new(bundle_params)
     @bundle = Bundle.find(params[:bundle_id])
+    @bundle_line = BundleLine.new(bundle: @bundle)
     @supplier = Supplier.find(params[:id])
     @bundle_line.bundle = @bundle
     @bundle_line.supplier = @supplier
@@ -17,9 +17,4 @@ class BundleLinesController < ApplicationController
 
   end
 
-  private
-
-  def bundle_params
-    params.require(:bundle_line).permit(:bundle_id, :supplier_id)
-  end
 end

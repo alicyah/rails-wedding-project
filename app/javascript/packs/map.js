@@ -6,7 +6,24 @@ const mapElement = document.getElementById('map');
 if (mapElement) { // don't try to build a map if there's no div#map to inject in
   const map = new GMaps({ el: '#map', lat: 0, lng: 0 });
   const markers = JSON.parse(mapElement.dataset.markers);
-  map.addMarkers(markers);
+
+  markers.forEach((marker) => {
+
+    const mapMarker = map.createMarker(marker);
+    mapMarker.addListener('click', function() {
+      // get supplier id from marker
+      const id = mapMarker.supplier_id
+      // change slideShow
+      const photoToHide = document.querySelector('.supplier-photo:not(.hidden)')
+      photoToHide.classList.add('hidden')
+      const photoToDisplay = document.getElementById(`supplier-photo-${id}`)
+      photoToDisplay.classList.remove('hidden')
+      // fill the form with new value of supplier_id
+      const input = document.querySelector("form #supplier_id");
+      input.value = id;
+    });
+    map.addMarker(mapMarker);
+  });
   if (markers.length === 0) {
     map.setZoom(2);
   } else if (markers.length === 1) {
