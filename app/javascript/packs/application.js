@@ -4,6 +4,7 @@ import { lockingLock } from '../components/button';
 import "../plugins/flatpickr";
 import { selectCards } from "../components/cards";
 import { selectList } from "../components/list";
+import { customStripeButton } from "../components/stripe";
 
 selectCards()
 selectList()
@@ -15,5 +16,4 @@ if (document.getElementById("container-tabs")) {
 
 lockingLock();
 
-
-
+customStripeButton();

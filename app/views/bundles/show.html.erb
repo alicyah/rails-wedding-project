@@ -15,7 +15,8 @@
       <div class="item-last">Récapitulatif</div>
     </div>
   </div>
-
+  
+  <% if @bundle.state == "pending" %>
 
   <div class="row">
     <% @bundle.bundle_lines.each do |bundle_line| %>
@@ -64,4 +65,13 @@
       </div>
     <% end %>
   </div>
+  <%= content_for :before_js do %>
+    <script src="https://checkout.stripe.com/checkout.js"></script>
+  <% end %>
+  
+  <%= render "pending_payment", bundle: @bundle %>
+
+    <% else %>
+      <!-- display confirmation message -->
+  <% end %>
 </div>
