@@ -49,7 +49,7 @@ class BundlesController < ApplicationController
         lat: place.latitude,
         lng: place.longitude,
         supplier_id: place.id,
-        place_price: ActionController::Base.helpers.humanized_money_with_symbol(place.price * @event_days.count, symbol_first: false, no_cents: true),
+        place_price: ActionController::Base.helpers.humanized_money(place.price * @event_days.count, symbol_first: false, no_cents: true),
         infoWindow: { content: render_to_string(partial: "/bundles/map_box", locals: { place: place }) }
       }
     end
