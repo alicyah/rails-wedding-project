@@ -33,12 +33,12 @@ class BundlesController < ApplicationController
   def location
     @bundle = Bundle.find(params[:id])
     @places_suppliers = Supplier.near(session[:bundle]['where'], 80).where.not(latitude: nil, longitude: nil)
-    start_date = DateTime.parse(session[:bundle]['starts_on'])
-    end_date = DateTime.parse(session[:bundle]['ends_on'])
+    # start_date = DateTime.parse(session[:bundle]['starts_on'])
+    # end_date = DateTime.parse(session[:bundle]['ends_on'])
     # dates = session[:bundle]['starts_on'].split(' au ')
     # start_date = DateTime.parse(dates.first)
     # end_date = DateTime.parse(dates.last)
-    @event_days = (start_date..end_date).map{ |a| a }
+    @event_days = (@bundle.starts_on..@bundle.ends_on).map{ |a| a }
 
     @places_suppliers = check_availabilities(@places_suppliers)
     @places_suppliers = check_budget(@places_suppliers)
@@ -49,6 +49,7 @@ class BundlesController < ApplicationController
         lat: place.latitude,
         lng: place.longitude,
         supplier_id: place.id,
+        place_price: ActionController::Base.helpers.humanized_money_with_symbol(place.price * @event_days.count, symbol_first: false, no_cents: true),
         infoWindow: { content: render_to_string(partial: "/bundles/map_box", locals: { place: place }) }
       }
     end
@@ -110,9 +111,8 @@ class BundlesController < ApplicationController
   end
 
   def check_capacity(suppliers)
-    nb_people = session[:bundle]['capacity'].to_i
     return suppliers.select do |supplier|
-      supplier.capacity >= nb_people
+      supplier.capacity >= @bundle.capacity
     end
   end
 end
