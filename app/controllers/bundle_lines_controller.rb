@@ -11,7 +11,7 @@ class BundleLinesController < ApplicationController
       end
     else
       @bundle_line = BundleLine.new(bundle: @bundle)
-      @supplier = Supplier.find(params[:id])
+      @supplier = Supplier.find(params[:supplier_id])
       @bundle_line.supplier = @supplier
     end
     if @bundle_line.save

@@ -71,7 +71,7 @@ class BundlesController < ApplicationController
     end
     # b) keep only suppliers which area is variable region
     @services_supplier = @services_supplier.select do |service_supplier|
-      service_supplier.area == region
+      service_supplier.area.region == region
     end
     # 5 - check availabilities by comparing dates of user and availabilities of suppliers
     # a) get  start and end dates entered by user and transform it in an array of dates
@@ -80,9 +80,57 @@ class BundlesController < ApplicationController
     @event_days = (start_date..end_date).map{ |a| a }
     # b) call check_availabilities method to filter suppliers
     @services_supplier = check_availabilities(@services_supplier)
-
     # what's above is ok
     #--------------------------------------------------------------------------
+
+    # 6 - check budget
+    # a) check if lieu was selected to build a remaining budget
+    # b) differenciate budget traiteur with other services
+    total_budget = Money.new(session[:bundle]['budget'].to_i * 100, "eur")
+    capacity = session[:bundle]['capacity'].to_i
+    @services_supplier = @services_supplier.select do |service_supplier|
+      if @services_selected.include?("lieu")
+        # get price of the chosen lieu
+        location_budget = Money.new(@bundle.suppliers.first.price.to_i * @event_days.count * 100, "eur")
+        remaining_budget = total_budget - location_budget
+        nb_of_other_services = @services_selected.count - 1
+        if @services_selected.include?("traiteur")
+          nb_of_other_services = @services_selected.count - 2
+          caterer_budget = 0.4 * remaining_budget
+          if service_supplier.service.category == "traiteur"
+            service_supplier.price * capacity <= caterer_budget
+          else
+            remaining_budget = remaining_budget - caterer_budget
+            other_services_budget = remaining_budget / nb_of_other_services
+            service_supplier.price <= other_services_budget
+          end
+        else
+          other_services_budget = remaining_budget / nb_of_other_services
+          service_supplier.price <= other_services_budget
+        end
+      else
+        remaining_budget = session[:bundle]['budget'].to_i
+        nb_of_other_services = @services_selected.count
+        if @services_selected.include?("traiteur")
+          nb_of_other_services = @services_selected.count - 1
+          caterer_budget = 0.4 * remaining_budget
+          if service_supplier.service == "traiteur"
+            services_supplier.price <= caterer_budget
+          else
+            remaining_budget = remaining_budget - caterer_budget
+            other_services_percentage = (remaining_budget / nb_of_other_services) / 100
+            other_services_budget = other_services_percentage * remaining_budget
+            service_supplier.price.to_i <= other_services_budget
+          end
+        else
+          other_services_percentage = (remaining_budget / nb_of_other_services) / 100
+          other_services_budget = other_services_percentage * remaining_budget
+          service_supplier.price.to_i <= other_services_budget
+        end
+      end
+    end
+    @services_selected.delete("lieu")
+    @services_supplier
   end
 
   def check_availabilities(suppliers)
@@ -91,7 +139,6 @@ class BundlesController < ApplicationController
         (avail.starts_on..avail.ends_on).map{ |a| a }.flatten.uniq.include?(@event_days)
       end
     end
-    raise
   end
 
   def check_budget(suppliers)
