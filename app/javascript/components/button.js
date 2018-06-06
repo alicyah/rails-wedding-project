@@ -22,6 +22,23 @@ function mouseOut(animationLock) {
   });
 };
 
+function updateTotalAmount() {
+  // ajouter une classe aux lockers principaux
+  // const lockedIcons = document.querySelectorAll('.hidden .fa-lock')
+
+  const lockedIcons = document.querySelectorAll('.card-supplier-image .supplier-lock .fa-lock');
+  const amount = document.getElementById('amount');
+  let totalPrice = parseFloat(amount.dataset.amount);
+
+  lockedIcons.forEach((icon) => {
+    const card = icon.closest('.card-supplier');
+    const priceCard = parseInt(card.querySelector('.card-price').innerText);
+    totalPrice += priceCard;
+  });
+
+  amount.innerText = totalPrice;
+}
+
 function clickingLock(animationLock) {
   animationLock.addEventListener("click", (event) => {
     const animationIcon = animationLock.querySelector('i');
@@ -34,6 +51,7 @@ function clickingLock(animationLock) {
       lockIcon.classList.add("fa-lock");
       lockIcon.classList.remove("fa-lock-open");
     }
+    updateTotalAmount()
   });
 };
 

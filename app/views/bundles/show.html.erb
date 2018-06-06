@@ -1,3 +1,4 @@
+
 <div class="container">
   <div class="thread">
     <div class="b-box b-box--dots">
@@ -5,7 +6,12 @@
       <span class="b-box--dots__item is-active"></span>
       <span class="b-box--dots__item is-active"></span>
       <span class="b-box--dots__item is-active"></span>
-      <span class="b-box--dots__item big"><%= @bundle.amount.to_i %> € </span>
+      <span class="b-box--dots__item big">
+        <span data-amount=<%= @bundle.amount %> id="amount">
+          <%= humanized_money(@bundle.amount) %>
+        </span>
+        €
+      </span>
     </div>
 
     <div class="list-items">

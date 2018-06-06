@@ -13,7 +13,13 @@
         </span>
         <span class="b-box--dots__item"></span>
         <span class="b-box--dots__item"></span>
-        <span class="b-box--dots__item big euro"> 0 € </span>
+        <span class="b-box--dots__item big">
+          <span data-amount=<%= @bundle.amount %> id="amount">
+            <%= humanized_money(@bundle.amount) %>
+          </span>
+          €
+        </span>
+
 
       </div>
       <div class="list-items">
@@ -63,8 +69,6 @@
   <!-- Carousel -->
         <div class="places-details">
           <h3>NOM DE LA PRESTATION</h3>
-          <p id="card-rating">Rating</p>
-          <p id="card-price" >5000€</p>
           <%= link_to "+ Détails", "", class: "card-details" %>
         </div>
       </div>
