@@ -12,15 +12,21 @@ if (mapElement) { // don't try to build a map if there's no div#map to inject in
     const mapMarker = map.createMarker(marker);
     mapMarker.addListener('click', function() {
       // get supplier id from marker
-      const id = mapMarker.supplier_id
+      const id = mapMarker.supplier_id;
+      const place_price = mapMarker.place_price;
       // change slideShow
       const photoToHide = document.querySelector('.supplier-photo:not(.hidden)')
       photoToHide.classList.add('hidden')
       const photoToDisplay = document.getElementById(`supplier-photo-${id}`)
       photoToDisplay.classList.remove('hidden')
+      console.log(mapMarker);
       // fill the form with new value of supplier_id
       const input = document.querySelector("form #supplier_id");
       input.value = id;
+
+      const amount = document.getElementById("amount");
+      amount.innerText = place_price.toString();
+
     });
     map.addMarker(mapMarker);
   });
