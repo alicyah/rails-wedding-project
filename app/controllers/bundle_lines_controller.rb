@@ -24,7 +24,6 @@ class BundleLinesController < ApplicationController
       update_bundle_amount
 
       if session[:bundle]["categories"].include?("lieu") && session[:bundle]["categories"].count > 1
-        # TO DO HERE : add amount as params => redirect_to services_bundle_path(@bundle, amount: amount)
         redirect_to services_bundle_path(@bundle)
       else
         redirect_to bundle_path(@bundle)
