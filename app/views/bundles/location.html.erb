@@ -78,7 +78,6 @@
           <div id="map" data-markers="<%= @markers.to_json %>"></div>
           <div>
             <%= form_tag bundle_bundle_lines_path(@bundle), method: :post, class: "form-inline text-center" do %>
-              <!-- HERE ADD HIDDEN FIELD WITH TOTAL AMOUNT -->
               <%= hidden_field_tag :supplier_id, @places_suppliers.first.id %>
               <%= button_tag class:'btn-validate', id: 'lock', type: "submit" do %>
                 <i class="fas fa-lock-open"></i>
