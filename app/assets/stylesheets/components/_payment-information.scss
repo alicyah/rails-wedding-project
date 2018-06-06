@@ -1,0 +1,22 @@
+.payment-info  {
+  margin: 50px;
+  border: 1px solid $blue;
+  width: 20%;
+  height: 30%;
+  .btn-validate {
+    margin-top: 150px;
+    text-align: center;
+  }
+}
+
+.payment-info {
+  h6 {
+    text-decoration: underline;
+    text-decoration-color: $yellow;
+    text-align: center;
+  }
+  p {
+    text-align: center;
+  }
+}
+

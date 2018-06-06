@@ -69,7 +69,11 @@
     <script src="https://checkout.stripe.com/checkout.js"></script>
   <% end %>
 
-  <%= render "pending_payment", bundle: @bundle %>
+  <div class="payment-info">
+    <h6>Prix Total:</h6>
+    <p>EUR <strong><%= @bundle.amount %></strong></p>
+    <%= render "pending_payment", bundle: @bundle %>
+  </div>
 
     <% else %>
       <!-- display confirmation message -->
