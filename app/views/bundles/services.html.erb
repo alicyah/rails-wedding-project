@@ -6,6 +6,7 @@
       <span class="b-box--dots__item is-active"></span>
       <span class="b-box--dots__item"></span>
       <span class="b-box--dots__item big"> <%= @bundle.bundle_lines.first.supplier.price.to_i %> € </span>
+
     </div>
     <div class="list-items">
       <div class="item">Recherche</div>
@@ -26,7 +27,7 @@
   <% @services_selected.each_with_index do |service, index| %>
     <div class="tab-content <%= 'hidden' if index != 0 %>" id="<%= service %>">
       <div class="row ">
-        <% @suppliers.joins(:service).where(services: { category: service }).each do |supplier| %>
+        <% @services_supplier.select { |supplier| supplier.service.category == service }.each do |supplier| %>
           <div class="col-xs-4">
             <div class="card-supplier">
               <div class="card-supplier-image" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)),
