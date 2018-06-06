@@ -14,6 +14,7 @@ if (mapElement) { // don't try to build a map if there's no div#map to inject in
       // get supplier id from marker
       const id = mapMarker.supplier_id;
       const place_price = mapMarker.place_price;
+
       // change slideShow
       const photoToHide = document.querySelector('.supplier-photo:not(.hidden)')
       photoToHide.classList.add('hidden')
