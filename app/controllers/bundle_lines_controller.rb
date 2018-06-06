@@ -40,7 +40,7 @@ class BundleLinesController < ApplicationController
     supplier = @bundle_line.supplier
 
     if supplier.service.category == "lieu"
-      nb_days = @bundle.ends_on - @bundle.starts_on
+      nb_days = (@bundle.ends_on - @bundle.starts_on) + 1
       @bundle_line.amount_cents = supplier.price_cents * nb_days
     elsif supplier.service.category == "traiteur"
       @bundle_line.amount_cents = supplier.price_cents * @bundle.capacity
