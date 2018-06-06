@@ -1,10 +1,10 @@
-User.destroy_all
 Image.destroy_all
 Availability.destroy_all
 Supplier.destroy_all
 Service.destroy_all
 Area.destroy_all
 Bundle.destroy_all
+User.destroy_all
 
 #CREATING A USER
 puts "Creating user"
