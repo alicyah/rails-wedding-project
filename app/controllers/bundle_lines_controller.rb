@@ -18,11 +18,11 @@ class BundleLinesController < ApplicationController
       @supplier = Supplier.find(params[:supplier_id])
       @bundle_line.supplier = @supplier
       set_bundle_line_amount
+      @bundle_line.save
     end
 
     if @bundle_line.save
       update_bundle_amount
-
       if session[:bundle]["categories"].include?("lieu") && session[:bundle]["categories"].count > 1
         redirect_to services_bundle_path(@bundle)
       else
