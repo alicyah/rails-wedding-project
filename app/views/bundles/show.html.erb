@@ -5,7 +5,7 @@
       <span class="b-box--dots__item is-active"></span>
       <span class="b-box--dots__item is-active"></span>
       <span class="b-box--dots__item is-active"></span>
-      <span class="b-box--dots__item big">Total Price</span>
+      <span class="b-box--dots__item big"><%= @bundle.amount.to_i %> € </span>
     </div>
 
     <div class="list-items">
@@ -15,7 +15,7 @@
       <div class="item-last">Récapitulatif</div>
     </div>
   </div>
-  
+
   <% if @bundle.state == "pending" %>
 
   <div class="row">
@@ -40,7 +40,7 @@
           <div class="list-title"><h3><%= bundle_line.supplier.service_name  %></h3></div>
           <div class="price">
             <div><h5>Prix</h5></div>
-            <div><h4> <%=bundle_line.supplier.price.to_i %> <i class="fas fa-euro-sign"></i></h4></div>
+            <div><h4> <%= bundle_line.amount.to_i %> <i class="fas fa-euro-sign"></i></h4></div>
           </div>
           <div class="angle">
             <a class="" data-toggle="collapse" href="#bundle-line-details-<%= bundle_line.id %>" role="button" aria-expanded="false" aria-controls="collapseExample">
@@ -68,7 +68,7 @@
   <%= content_for :before_js do %>
     <script src="https://checkout.stripe.com/checkout.js"></script>
   <% end %>
-  
+
   <%= render "pending_payment", bundle: @bundle %>
 
     <% else %>

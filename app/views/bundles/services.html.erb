@@ -1,13 +1,12 @@
 <div class="container" id="container-tabs">
-  <h2>Voici les services sélectionnés.</h2>
-  <h5>Cliquez sur chacun d'entre eux pour pouvoir voir les prestataires qui matchent tous vos déirs !</h5>
   <div class="thread">
     <div class="b-box b-box--dots">
       <span class="b-box--dots__item is-active">   </span>
       <span class="b-box--dots__item is-active"></span>
       <span class="b-box--dots__item is-active"></span>
       <span class="b-box--dots__item"></span>
-      <span class="b-box--dots__item big" id="amount">Total Price</span>
+      <span class="b-box--dots__item big"> <%= @bundle.bundle_lines.first.supplier.price.to_i %> € </span>
+
     </div>
     <div class="list-items">
       <div class="item">Recherche</div>
@@ -16,6 +15,8 @@
       <div class="item"></div>
     </div>
   </div>
+  <h2>Voici les services sélectionnés.</h2>
+  <h5>Cliquez sur chacun d'entre eux pour pouvoir voir les prestataires qui matchent tous vos déirs !</h5>
   <div class="tabs">
     <% @services_selected.each_with_index do |service, index| %>
       <a class="tab <%= 'active' if index == 0 %>" data-target="<%= service %>">
