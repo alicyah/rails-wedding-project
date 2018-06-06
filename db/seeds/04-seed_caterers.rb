@@ -25,12 +25,12 @@ array_caterers = [
     {
     owner: "Philippe Queneau",
     service_name: "L'épicurien des Vignes",
-    description: "Incontournable traiteur et organisateur de réceptions dans les régions de Saône-et-Loire, Bourgogne, Allier et Rhône-Alpes, l'épicurien des Vignes propose ses services afin que vous passiez une soirées inoubliable. Derrière ce projet et derrière les fourneaux, vous retrouverez Philippe Queneau, Maitre Restaurateur. Fort de 20 ans d'expérience et formé par de grands chefs triplement étoilés, le chef saura vous proposer la prestation qui convient le mieux à vos goûts et votre budget. Pour cela il a imaginé un large choix de formules et de menus.
-      Tous les produits sont rigoureusement sélectionnés par une équipe de professionnels qualifiés. Toutes les préparations sont effectuées dans le respect des normes d‘hygiène HACCP. Pour toujours rester au goût du jour, le chef attache une grande importance à suivre les dernières tendances en matière d’événements et de gastronomie.
+    description: "Derrière ce projet et derrière les fourneaux, vous retrouverez Philippe Queneau, Maitre Restaurateur. Fort de 20 ans d'expérience et formé par de grands chefs triplement étoilés, le chef saura vous proposer la prestation qui convient le mieux à vos goûts et votre budget. Pour cela il a imaginé un large choix de formules et de menus.
+      Tous les produits sont rigoureusement sélectionnés par une équipe de professionnels qualifiés.
       L’efficacité de l’épicurien des Vignes n’est plus à prouver, ils vous garantissent une logistique discrète et bien réglé afin de vous permettre de profiter pleinement de vos invités.",
     price: 30,
     avg_rating: 5,
-    originality: "Non seulement les boissons et de delicieux cocktails sont inclus dans la formule, l’épicurien des Vignes peut aussi vous proposer une solution globale pour votre événement du mobilier aux chapiteaux en passant par la pyrotechnie personnalisée.",
+    originality: "Non seulement de delicieux cocktails sont inclus dans la formule, l’épicurien des Vignes propose également une solution globale pour votre événement du mobilier (chapitaux, pyrotechnie personnalisée, etc.).",
     service: @caterer,
     },
 ]

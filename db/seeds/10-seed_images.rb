@@ -55,7 +55,7 @@ hash_urls = {
       "http://www.instants-traiteur.fr/oktThemes/ra105-s/images/traiteur-mariage/mariage2.jpg",
       "https://theflyingpan.co.za/wp-content/uploads/2015/06/plated-wedding-food.jpg",
       "https://cdn0.mariages.net/opinion/fotos/8/7/2/3/t30_73198.jpg",
-      "https://cdn0.mariages.net/opinion/fotos/8/9/2/4/t30_132946.jpg"
+      "https://cdn0.mariages.net/opinion/fotos/8/9/2/4/t30_132946.jpg",
       "http://www.mariage-epicurien.com/assets/cache/images/dineretsoiree/1000x-diner10.b0c.jpg",
     ],
 
