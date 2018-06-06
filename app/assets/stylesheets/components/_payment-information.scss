@@ -19,8 +19,14 @@
 }
 
 .confirmation {
+  display: flex;
   strong {
     text-decoration: underline;
     text-decoration-color: $yellow;
   }
+}
+.tossing-bouquet {
+  border-radius: 50%;
+  box-shadow: 3px;
+  margin: 20px;
 }
