@@ -71,7 +71,7 @@
 
   <div class="payment-info">
     <h3>Prix Total:</h3>
-    <h4>EUR <strong><%= @bundle.amount %></strong></h4>
+    <h4>EUR <strong><%= @bundle.amount.to_i %></strong></h4>
     <%= render "pending_payment", bundle: @bundle %>
   </div>
 
