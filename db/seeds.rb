@@ -3,6 +3,7 @@ Availability.destroy_all
 Supplier.destroy_all
 Service.destroy_all
 Area.destroy_all
+BundleLine.destroy_all
 Bundle.destroy_all
 User.destroy_all
 
