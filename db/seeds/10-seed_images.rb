@@ -43,27 +43,29 @@ hash_urls = {
   ],
   caterers: [
     [
-      "http://www.jstraiteur.fr/assets/images/nos-plats/traiteur-seminaire-lyon-01.jpg",
-      "http://www.jstraiteur.fr/assets/images/nos-plats/traiteur-seminaire-lyon-02.jpg",
-      "http://www.jstraiteur.fr/assets/images/nos-plats/traiteur-seminaire-lyon-06.jpg",
-      "http://www.jstraiteur.fr/assets/images/nos-plats/traiteur-seminaire-lyon-08.jpg",
-      "http://www.jstraiteur.fr/assets/images/nos-plats/traiteur-seminaire-lyon-21.jpg"
+      "https://www.larstraiteur.com/sites/default/files/galerie/lars-traiteur-mariage-4.jpg",
+      "http://www.gaudefroy-receptions.com/media/cache/jadro_resize/rc/7aAoIcUU1521623317/jadroRoot/medias/5735e8f795cf2/5735ea2793423/entree-1-.jpg",
+      "http://www.traiteur-paillard.com/images/specialite-traiteur-23.jpg",
+      "http://www.traiteur-paillard.com/images/specialite-traiteur-17.jpg",
+      "http://www.guylesommer.fr/images/dessert4.jpg",
+      "http://www.traiteur-brest.com/wp-content/uploads/2014/04/Fotolia_50595012_S.jpg",
     ],
     [
-      "https://cdn20.traiteurs.fr/site/company/65/39161/images/350123/buffet_ci3.jpg",
-      "https://cdn0.mariages.net/opinion/fotos/8/9/2/8/t30_132946.jpg",
+      "https://www.justacote.com/photos_entreprises/girard--traiteur-mariage-pour-marseille-marseille-13891058300.jpg",
+      "http://www.instants-traiteur.fr/oktThemes/ra105-s/images/traiteur-mariage/mariage2.jpg",
+      "https://theflyingpan.co.za/wp-content/uploads/2015/06/plated-wedding-food.jpg",
       "https://cdn0.mariages.net/opinion/fotos/8/7/2/3/t30_73198.jpg",
-      "https://cdn0.mariages.net/opinion/fotos/8/9/1/6/t30_132946.jpg",
-      "https://cdn0.mariages.net/opinion/fotos/8/9/1/8/t30_132946.jpg",
       "https://cdn0.mariages.net/opinion/fotos/8/9/2/4/t30_132946.jpg"
-    ],
-    [
-      "https://cdn0.mariages.net/opinion/fotos/4/1/2/8/t30_139658.jpg",
-      "https://cdn0.mariages.net/opinion/fotos/2/2/4/2/t30_125650.jpg",
-      "https://cdn0.mariages.net/opinion/fotos/4/1/2/0/t30_139658.jpg",
-      "https://cdn0.mariages.net/opinion/fotos/1/7/1/2/t30_182640.jpg",
       "http://www.mariage-epicurien.com/assets/cache/images/dineretsoiree/1000x-diner10.b0c.jpg",
-      https://cdn.pixabay.com/photo/2015/09/20/14/01/cocktails-948353_1280.jpg
+    ],
+
+    [
+      "https://cuisineoncue.com/wp-content/uploads/2017/05/RoomThreeSixty_web-113.jpg",
+      "https://cuisineoncue.com/wp-content/uploads/2017/05/RoomThreeSixty_web-126.jpg",
+      "https://cuisineoncue.com/wp-content/uploads/2017/05/RoomThreeSixty_web-104.jpg",
+      "https://cuisineoncue.com/wp-content/uploads/2017/05/RoomThreeSixty_web-131.jpg",
+      "https://cuisineoncue.com/wp-content/uploads/2016/08/QUT-Gardens-Theatre-71.jpg",
+      "https://cdn.pixabay.com/photo/2015/09/20/14/01/cocktails-948353_1280.jpg",
     ]
   ],
   entertainments: [
