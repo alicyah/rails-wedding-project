@@ -57,8 +57,12 @@ class BundlesController < ApplicationController
   end
 
   def services
+    # @initial_price =
     @suppliers = Supplier.all
     @bundle = Bundle.find(params[:id])
+
+    # TO DO HERE
+    # @amount = params[:amount]
 
 
     # check session where en fct des areas des suppliers (autres services)

@@ -7,7 +7,8 @@
       <span class="b-box--dots__item is-active"></span>
       <span class="b-box--dots__item is-active"></span>
       <span class="b-box--dots__item"></span>
-      <span class="b-box--dots__item big">Total Price</span>
+      <!-- <span class="b-box--dots__item big" id= "amount"><%= @amount %></span> -->
+      <span class="b-box--dots__item big" id= "amount">Total Price</span>
     </div>
     <div class="list-items">
       <div class="item">Recherche</div>
@@ -42,7 +43,7 @@
               </div>
               <div class="card-supplier-footer">
                 <h3><%= supplier.service_name %></h3>
-                <p id="card-rating">
+                <p class="card-rating">
                   <% if supplier.avg_rating >= 4.5 && supplier.avg_rating <= 4.75 %>
                     <% supplier.avg_rating.to_i.times do %>
                       <i class="fas fa-star"></i>
@@ -55,9 +56,9 @@
                   <% end %>
                 </p>
                 <% if service == "traiteur" %>
-                  <p id="card-price" ><%= (supplier.price * session[:bundle]["capacity"].to_i).to_i %> <i class="fas fa-euro-sign"></i></p>
+                  <p class="card-price" ><%= (supplier.price * session[:bundle]["capacity"].to_i).to_i %> <i class="fas fa-euro-sign"></i></p>
                 <% else %>
-                  <p id="card-price" ><%= supplier.price.to_i %> <i class="fas fa-euro-sign"></i></p>
+                  <p class="card-price" ><%= supplier.price.to_i %> <i class="fas fa-euro-sign"></i></p>
                 <% end %>
                 <!-- data-toggle/data-target are there for modals -->
                 <%= link_to "+ Détails", "#", class: "card-details", data: { toggle: "modal", target: "#modal-supplier#{supplier.id}"} %>
@@ -106,9 +107,9 @@
                     </div>
                     <div class="modal-footer">
                       <% if service == "traiteur" %>
-                        <p id="card-price" ><%= (supplier.price * session[:bundle]["capacity"].to_i).to_i %> <i class="fas fa-euro-sign"></i></p>
+                        <p class="card-price" ><%= (supplier.price * session[:bundle]["capacity"].to_i).to_i %> <i class="fas fa-euro-sign"></i></p>
                       <% else %>
-                        <p id="card-price" ><%= supplier.price.to_i %> <i class="fas fa-euro-sign"></i></p>
+                        <p class="card-price" ><%= supplier.price.to_i %> <i class="fas fa-euro-sign"></i></p>
                       <% end %>
                       <button type="button" class="btn-validate">
                         <div class="supplier-lock">
