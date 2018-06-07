@@ -20,8 +20,11 @@
 }
 
 .confirmation {
+  background-image: linear-gradient(-225deg, rgba(0,133,168,0.3) , rgba(237,203,188,0.6) 80%), asset-url('confirmation1');
+  height: 100vh;
   display: flex;
   align-items: center;
+  padding: 80px;
   p {
   strong {
     text-decoration: underline;
@@ -40,6 +43,15 @@
   font-size: 24px;
 }
 .confirmation-message {
-  text-align: justify;
-
+  width: 418px;
+  background-color: rgba(255,255,255,.6);
+  padding: 35px;
+  border-radius: 5px;
+  :hover {
+    text-decoration: none;
+  }
+}
+#team-logo {
+  color: $blue;
+  font-size: 30px;
 }
