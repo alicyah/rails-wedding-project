@@ -3,17 +3,21 @@
   justify-content: center;
   flex-wrap: wrap;
   margin-top: 30px;
+  align-items: flex-start;
 }
 
 .places-content {
   flex: 0 0 auto;
   min-width: 400px;
-  height: 600px;
   margin-left: 60px;
   .places-images {
     height: 50vh;
     background-size: cover;
     background-position: center;
+  }
+  .places-details {
+    background-color: white;
+    padding: 10px;
   }
 }
 .carousel-control {
