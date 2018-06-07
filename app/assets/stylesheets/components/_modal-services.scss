@@ -39,3 +39,14 @@
     font-size: 14px;
   }
 }
+
+.carousel-image {
+  height: 400px;
+  background-size: cover;
+  background-position: center;
+}
+
+.glyphicon {
+  color: $yellow;
+  background-color: transparent;
+}

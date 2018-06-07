@@ -60,7 +60,7 @@
                   <% if service == "traiteur" %>
                     <p class="card-price" ><%= humanized_money(supplier.price * session[:bundle]["capacity"].to_i) %> <i class="fas fa-euro-sign"></i></p>
                   <% else %>
-                    <p class="card-price" ><%= humanized_money(supplier.price.to_i) %> <i class="fas fa-euro-sign"></i></p>
+                    <p class="card-price" ><%= humanized_money(supplier.price) %> <i class="fas fa-euro-sign"></i></p>
                   <% end %>
                   <!-- data-toggle/data-target are there for modals -->
                   <%= link_to "+ Détails", "#", class: "card-details", data: { toggle: "modal", target: "#modal-supplier#{supplier.id}"} %>
@@ -87,8 +87,8 @@
                           <!-- Wrapper for slides -->
                           <div class="carousel-inner" role="listbox">
                             <% supplier.images.each_with_index do |image, index| %>
-                              <div class="item<%= ' active' if index == 0 %>">
-                                <%= cl_image_tag image.photo, width: 900, height: 500 %>
+                              <div class="carousel-image item<%= ' active' if index == 0 %>" style='background-image: url(<%= cl_image_path image.photo%>)'>
+                                <%#= cl_image_tag image.photo, width: 900, height: 500 %>
                               </div>
                             <% end %>
                           </div>
