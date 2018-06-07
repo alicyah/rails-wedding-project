@@ -5,13 +5,16 @@ Rails.application.routes.draw do
   get 'pages/design', to: 'pages#design'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :bundles, only: [:new, :create, :show] do
-    resources :bundle_lines, only: :create
+    resources :bundle_lines, only: [:create, :edit, :update]
     resources :payments, only: [:create]
     member do
       get 'location'
       get 'services'
     end
   end
+
+  resources :bundle_lines, only: :destroy
+
 
   resources :suppliers, only: [:index, :new, :create] do
     resources :services, only: [:index]

@@ -33,6 +33,21 @@ class BundleLinesController < ApplicationController
     end
   end
 
+  def edit
+  end
+
+  def update
+  end
+
+  def destroy
+    @bundle_line = BundleLine.find(params[:id])
+    @bundle = @bundle_line.bundle
+    @bundle_line.destroy
+    update_bundle_amount
+    redirect_to bundle_path(@bundle)
+  end
+
+
   private
 
   def set_bundle_line_amount

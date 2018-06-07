@@ -47,7 +47,7 @@
         &:before {
           position: absolute;
           display: block;
-          content: '';
+          content: ' ';
 
           top: 50%;
           right: 1px;
@@ -55,7 +55,6 @@
           height: 2px;
           width: calc(870/4 * 1px);
 
-          background: gray;
           background: $blue;
 
           transform: translateY(-50%);

@@ -16,10 +16,10 @@
 
 
       <div class="list-items">
-        <div class="item-last">Recherche</div>
-        <div class="item-last">Lieu</div>
-        <div class="item-last">Services</div>
-        <div class="item-last">Récapitulatif</div>
+        <div class="item-last"><%= link_to "Recherche", new_bundle_path %></div>
+        <div class="item-last"><%= link_to "Lieu", location_bundle_path(@bundle) %></div>
+        <div class="item-last"><%= link_to "Services", services_bundle_path(@bundle) %></div>
+        <div class="item-last"><%= link_to "Récapitulatif", bundle_path(@bundle) %></div>
       </div>
     </div>
     <h4>Voici un récapitulatif des services séléctionnés. </h4>
@@ -62,6 +62,10 @@
                 <p> <%= bundle_line.supplier.description %></p>
                 <p>
                   <strong>Le petit <i class="fas fa-plus plus"></i></strong> : <%= bundle_line.supplier.originality%>
+                  <br>
+                  <%= link_to bundle_line_path(bundle_line), method: :delete, data: { confirm: "Etes vous sûr de vouloir supprimer cette prestation ?" } do %>
+                  <i class="fas fa-trash-alt trash"></i> Supprimer
+                  <% end %>
                 </p>
               </div>
             </div>
