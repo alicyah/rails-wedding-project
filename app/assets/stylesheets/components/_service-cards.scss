@@ -37,10 +37,12 @@
   justify-content: space-around;
   align-items: center;
   border: none;
+  margin-bottom: 7px;
+  margin-top: 7px;
   .far {
     font-size: 46px;
   }
-  h4 {
+  h5 {
     font-size: 16px;
     font-weight: 700;
   }
@@ -56,4 +58,9 @@
 
 .categories {
   display: none;
+}
+.card-body {
+  p {
+    font-size: 14px;
+  }
 }
