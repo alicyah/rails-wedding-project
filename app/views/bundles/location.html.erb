@@ -17,8 +17,6 @@
           </span>
           €
         </span>
-
-
       </div>
       <div class="list-items">
         <div class="item"><%= link_to "Recherche", new_bundle_path %></div>
@@ -29,11 +27,17 @@
     </div>
 
     <div class="results-container">
+      <!-- Column with Map -->
+      <div class="map-container">
+        <div id="map" data-markers="<%= @markers.to_json %>"></div>
+      </div>
+      <!-- Column with Card -->
       <div class="places-content">
-  <!--       <%# @places_suppliers.each do |supplier| %>
-          <%#= cl_image_tag supplier.images.first.photo, width: 700, crop: :fit, class: "places-images supplier-photo #{"hidden" unless @places_suppliers.first == supplier}", id: "supplier-photo-#{supplier.id}" %>
-        <%# end %> -->
-  <!-- Trying carrousel -->
+        <!--<%# @places_suppliers.each do |supplier| %>
+                <%#= cl_image_tag supplier.images.first.photo, width: 700, crop: :fit, class: "places-images supplier-photo #{"hidden" unless @places_suppliers.first == supplier}", id: "supplier-photo-#{supplier.id}" %>
+            <%# end %> -->
+
+        <!-- Carousel -->
         <% @places_suppliers.each do |supplier| %>
           <div id="supplier-photo-<%= supplier.id %>" class="supplier-photo <%= "hidden" unless @places_suppliers.first == supplier %> ">
             <div id="carousel-supllier-<%= supplier.id %>" class="carousel slide" data-ride="carousel" data-interval="false">
@@ -46,8 +50,8 @@
               <!-- Wrapper for slides -->
               <div class="carousel-inner" role="listbox">
                   <% supplier.images.each_with_index do |image, index| %>
-                    <div class="item<%= ' active' if index == 0 %>">
-                      <%= cl_image_tag image.photo, width: 500, crop: :fit, class: "places-images" %>
+                    <div class="places-images item<%= ' active' if index == 0 %>" style='background-image: url(<%= cl_image_path image.photo %>);'>
+                      <%#= cl_image_tag image.photo, width: 500, crop: :fit, class: "places-images" %>
                     </div>
                   <% end %>
               </div>
@@ -63,28 +67,22 @@
             </div>
           </div>
         <% end %>
+        <!-- Carousel end -->
 
-  <!-- Carousel -->
         <div class="places-details">
           <h3>NOM DE LA PRESTATION</h3>
           <%= link_to "+ Détails", "", class: "card-details" %>
         </div>
       </div>
-
-      <div class="second-column">
-        <div class="map-container">
-          <div id="map" data-markers="<%= @markers.to_json %>"></div>
-          <div>
-            <%= form_tag bundle_bundle_lines_path(@bundle), method: :post, class: "form-inline text-center" do %>
-              <%= hidden_field_tag :supplier_id, @places_suppliers.first.id %>
-              <%= button_tag class:'btn-validate', id: 'lock', type: "submit" do %>
-                <i class="fas fa-lock-open"></i>
-                <span>Réservez</span>
-              <% end %>
-            <% end %>
-          </div>
-        </div>
-      </div>
+    </div>
+    <div>
+      <%= form_tag bundle_bundle_lines_path(@bundle), method: :post, class: "form-inline text-center" do %>
+        <%= hidden_field_tag :supplier_id, @places_suppliers.first.id %>
+        <%= button_tag class:'btn-validate', id: 'lock', type: "submit" do %>
+          <i class="fas fa-lock-open"></i>
+          <span>Réservez</span>
+        <% end %>
+      <% end %>
     </div>
   <% end %>
 </div>
