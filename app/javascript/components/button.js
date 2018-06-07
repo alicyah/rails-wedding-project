@@ -47,13 +47,24 @@ function clickingLock(animationLock) {
     if (animationIcon.classList.contains("fa-lock-open")) {
       lockIcon.classList.add("fa-lock-open");
       lockIcon.classList.remove("fa-lock");
+      toggleServicesAvailability(lock);
     } else {
       lockIcon.classList.add("fa-lock");
       lockIcon.classList.remove("fa-lock-open");
+      toggleServicesAvailability(lock);
     }
     updateTotalAmount()
   });
 };
+
+function toggleServicesAvailability(lock) {
+  // get service category from lock
+  const serviceImage = lock.dataset.service;
+  console.log(serviceImage);
+  // select all cards of that category except current card
+
+  // toggle lock display
+}
 
 // function onlyOneLock() {
 //   const locked = document.querySelector(".fa-lock")
