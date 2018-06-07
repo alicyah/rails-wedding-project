@@ -18,11 +18,11 @@ class BundleLinesController < ApplicationController
       @supplier = Supplier.find(params[:supplier_id])
       @bundle_line.supplier = @supplier
       set_bundle_line_amount
+      @bundle_line.save
     end
 
     if @bundle_line.save
       update_bundle_amount
-
       if session[:bundle]["categories"].include?("lieu") && session[:bundle]["categories"].count > 1
         redirect_to services_bundle_path(@bundle)
       else
@@ -39,7 +39,7 @@ class BundleLinesController < ApplicationController
     supplier = @bundle_line.supplier
 
     if supplier.service.category == "lieu"
-      nb_days = @bundle.ends_on - @bundle.starts_on
+      nb_days = (@bundle.ends_on - @bundle.starts_on) + 1
       @bundle_line.amount_cents = supplier.price_cents * nb_days
     elsif supplier.service.category == "traiteur"
       @bundle_line.amount_cents = supplier.price_cents * @bundle.capacity

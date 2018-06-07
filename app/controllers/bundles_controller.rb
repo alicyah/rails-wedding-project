@@ -49,7 +49,7 @@ class BundlesController < ApplicationController
         lat: place.latitude,
         lng: place.longitude,
         supplier_id: place.id,
-        place_price: ActionController::Base.helpers.humanized_money_with_symbol(place.price * @event_days.count, symbol_first: false, no_cents: true),
+        place_price: ActionController::Base.helpers.humanized_money(place.price * @event_days.count, symbol_first: false, no_cents: true),
         infoWindow: { content: render_to_string(partial: "/bundles/map_box", locals: { place: place }) }
       }
     end
@@ -113,23 +113,20 @@ class BundlesController < ApplicationController
           service_supplier.price <= other_services_budget
         end
       else
-        remaining_budget = session[:bundle]['budget'].to_i
-        nb_of_other_services = @services_selected.count
+        remaining_budget = Money.new(session[:bundle]['budget'].to_i * 100, "eur")
         if @services_selected.include?("traiteur")
           nb_of_other_services = @services_selected.count - 1
           caterer_budget = 0.4 * remaining_budget
-          if service_supplier.service == "traiteur"
-            services_supplier.price <= caterer_budget
+          if service_supplier.service.category == "traiteur"
+            service_supplier.price * capacity <= caterer_budget
           else
             remaining_budget = remaining_budget - caterer_budget
-            other_services_percentage = (remaining_budget / nb_of_other_services) / 100
-            other_services_budget = other_services_percentage * remaining_budget
-            service_supplier.price.to_i <= other_services_budget
+            other_services_budget = remaining_budget / nb_of_other_services
+            service_supplier.price <= other_services_budget
           end
         else
-          other_services_percentage = (remaining_budget / nb_of_other_services) / 100
-          other_services_budget = other_services_percentage * remaining_budget
-          service_supplier.price.to_i <= other_services_budget
+          other_services_budget = remaining_budget / nb_of_other_services
+          service_supplier.price <= other_services_budget
         end
       end
     end
