@@ -100,7 +100,7 @@ class BundlesController < ApplicationController
         nb_of_other_services = @services_selected.count - 1
         if @services_selected.include?("traiteur")
           nb_of_other_services = @services_selected.count - 2
-          caterer_budget = 0.4 * remaining_budget
+          caterer_budget = 0.7 * remaining_budget
           if service_supplier.service.category == "traiteur"
             service_supplier.price * capacity <= caterer_budget
           else
@@ -116,7 +116,7 @@ class BundlesController < ApplicationController
         remaining_budget = Money.new(session[:bundle]['budget'].to_i * 100, "eur")
         if @services_selected.include?("traiteur")
           nb_of_other_services = @services_selected.count - 1
-          caterer_budget = 0.4 * remaining_budget
+          caterer_budget = 0.7 * remaining_budget
           if service_supplier.service.category == "traiteur"
             service_supplier.price * capacity <= caterer_budget
           else
