@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
   get 'pages/design', to: 'pages#design'
+  get 'pages/home-page-v2', to: 'pages#home_2'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :bundles, only: [:new, :create, :show] do
     resources :bundle_lines, only: [:create, :edit, :update]

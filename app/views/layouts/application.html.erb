@@ -24,7 +24,7 @@
     <%= stylesheet_pack_tag 'application' %>
   </head>
   <body>
-    <%= render 'shared/navbar' if params[:action] != 'home'  %>
+    <%= render 'shared/navbar' if params[:action] != 'home' %>
     <%= render 'shared/flashes' %>
     <div class="wrapper">
       <%= yield %>
