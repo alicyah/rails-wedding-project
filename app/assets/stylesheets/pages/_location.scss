@@ -20,9 +20,6 @@
     padding: 10px;
   }
 }
-.carousel-control {
-  z-index: 10;
-}
 // .carousel-inner > .item > img {
 //   height: 70vh;
 //   width: 600px;
@@ -51,4 +48,8 @@
   font-size: 16px;
   font-weight: bold;
   font-family: "Karla";
+}
+
+.carousel-control {
+  z-index: 10;
 }
