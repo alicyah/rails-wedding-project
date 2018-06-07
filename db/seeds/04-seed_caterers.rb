@@ -6,7 +6,7 @@ array_caterers = [
     service_name: "JS Traiteur",
     description: "Pour faire de votre banquet de noces la réception qui se doit, faites appel à des professionnels de la gastronomie avec JS Traiteur.
       C'est une cuisine savoureuse et raffinée qui est la marque de cette maison. Travaillant uniquement des matières premières de grande qualité et des produits frais, la brigade vous régalera avec de merveilleux buffets chauds et froids composés de verrines, bouchées et autres délices, et des plats de gastromie française et d’ailleurs",
-    price: 85,
+    price: 50,
     avg_rating: 4.7,
     originality: "Réalisant une prestation sur-mesure pour vous offrir ce dont vous rêvez, ce traiteur d'exception saura être à votre écoute et à vos côtés tout au long de votre collaboration.",
     service: @caterer,
