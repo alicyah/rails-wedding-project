@@ -16,7 +16,7 @@ array_caterers = [
     service_name: "Festins",
     description: "Votre traiteur Festins vous offre ses services et vous propose de savourer une cuisine gastronomique de qualité.
       Membre de l'Association des Traiteurs de France, la fraîcheur et la qualité des produits utilisés par Festins vous est garantie par leur Charte de Qualité.",
-    price: 60,
+    price: 70,
     avg_rating: 4.5,
     originality: "Cuisine française élaborée et gastronomique",
     service: @caterer,
@@ -27,7 +27,7 @@ array_caterers = [
     description: "Derrière ce projet et derrière les fourneaux, vous retrouverez Philippe Queneau, Maître Restaurateur. Fort de 20 ans d'expérience et formé par de grands chefs triplement étoilés, le chef saura vous proposer la prestation qui convient le mieux à vos goûts et votre budget. Pour cela il a imaginé un large choix de formules et de menus.
       Tous les produits sont rigoureusement sélectionnés par une équipe de professionnels qualifiés.
       L’efficacité de l’épicurien des Vignes n’est plus à prouver, ils vous garantissent une logistique discrète et bien réglée afin de vous permettre de profiter pleinement de vos invités.",
-    price: 30,
+    price: 60,
     avg_rating: 5,
     originality: "Non seulement de delicieux cocktails sont inclus dans la formule, l’épicurien des Vignes propose également une solution globale pour votre événement du mobilier (chapitaux, pyrotechnie personnalisée, etc.).",
     service: @caterer,

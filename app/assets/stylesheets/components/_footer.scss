@@ -15,10 +15,10 @@
   justify-content: center;
   font-size: 12px;
   text-transform: capitalize;
-  :hover {
-    color: $yellow;
-  }
   margin-top: 10px;
+  a:hover {
+    color:$yellow;
+  }
 
 }
 .social-links a {

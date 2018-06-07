@@ -17,8 +17,6 @@
           </span>
           €
         </span>
-
-
       </div>
       <div class="list-items">
         <div class="item"><%= link_to "Recherche", new_bundle_path %></div>
@@ -29,62 +27,61 @@
     </div>
 
     <div class="results-container">
+      <!-- Column with Map -->
+      <div class="map-container">
+        <div id="map" data-markers="<%= @markers.to_json %>"></div>
+      </div>
+      <!-- Column with Card -->
       <div class="places-content">
-  <!--       <%# @places_suppliers.each do |supplier| %>
-          <%#= cl_image_tag supplier.images.first.photo, width: 700, crop: :fit, class: "places-images supplier-photo #{"hidden" unless @places_suppliers.first == supplier}", id: "supplier-photo-#{supplier.id}" %>
-        <%# end %> -->
-  <!-- Trying carrousel -->
+        <!--<%# @places_suppliers.each do |supplier| %>
+                <%#= cl_image_tag supplier.images.first.photo, width: 700, crop: :fit, class: "places-images supplier-photo #{"hidden" unless @places_suppliers.first == supplier}", id: "supplier-photo-#{supplier.id}" %>
+            <%# end %> -->
+
+        <!-- Carousel -->
         <% @places_suppliers.each do |supplier| %>
           <div id="supplier-photo-<%= supplier.id %>" class="supplier-photo <%= "hidden" unless @places_suppliers.first == supplier %> ">
-            <div id="carousel-supllier-<%= supplier.id %>" class="carousel slide" data-ride="carousel" data-interval="false">
+            <div id="carousel-supplier-<%= supplier.id %>" class="carousel slide" data-ride="carousel" data-interval="false">
               <!-- Indicators -->
               <ol class="carousel-indicators">
                   <% supplier.images.each_with_index do |_image, index| %>
-                    <li data-target="#carousel-supllier-<%= supplier.id %>" data-slide-to="<%= index %>" class="<%= 'active' if index == 0 %>"></li>
+                    <li data-target="#carousel-supplier-<%= supplier.id %>" data-slide-to="<%= index %>" class="<%= 'active' if index == 0 %>"></li>
                   <% end %>
               </ol>
               <!-- Wrapper for slides -->
               <div class="carousel-inner" role="listbox">
                   <% supplier.images.each_with_index do |image, index| %>
-                    <div class="item<%= ' active' if index == 0 %>">
-                      <%= cl_image_tag image.photo, width: 500, crop: :fit, class: "places-images" %>
+                    <div class="places-images item<%= ' active' if index == 0 %>" style='background-image: url(<%= cl_image_path image.photo %>);'>
+                      <%#= cl_image_tag image.photo, width: 500, crop: :fit, class: "places-images" %>
                     </div>
                   <% end %>
               </div>
               <!-- Controls -->
-              <a class="left carousel-control" href="#carousel-supllier-<%= supplier.id %>" role="button" data-slide="prev">
+              <a class="left carousel-control" href="#carousel-supplier-<%= supplier.id %>" role="button" data-slide="prev">
                 <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
                 <span class="sr-only">Previous</span>
               </a>
-              <a class="right carousel-control" href="#carousel-supllier-<%= supplier.id %>" role="button" data-slide="next">
+              <a class="right carousel-control" href="#carousel-supplier-<%= supplier.id %>" role="button" data-slide="next">
                 <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
                 <span class="sr-only">Next</span>
               </a>
             </div>
           </div>
         <% end %>
+        <!-- Carousel end -->
 
-  <!-- Carousel -->
         <div class="places-details">
           <h3>NOM DE LA PRESTATION</h3>
           <%= link_to "+ Détails", "", class: "card-details" %>
         </div>
       </div>
-
-      <div class="second-column">
-        <div class="map-container">
-          <div id="map" data-markers="<%= @markers.to_json %>"></div>
-          <div>
-            <%= form_tag bundle_bundle_lines_path(@bundle), method: :post, class: "form-inline text-center" do %>
-              <%= hidden_field_tag :supplier_id, @places_suppliers.first.id %>
-              <%= button_tag class:'btn-validate', id: 'lock', type: "submit" do %>
-                <i class="fas fa-lock-open"></i>
-                <span>Réservez</span>
-              <% end %>
-            <% end %>
-          </div>
-        </div>
-      </div>
+    </div>
+    <div>
+      <%= form_tag bundle_bundle_lines_path(@bundle), method: :post, class: "form-inline text-center" do %>
+        <%= hidden_field_tag :supplier_id, @places_suppliers.first.id %>
+        <%= button_tag class:'btn-validate', id: 'lock', type: "submit" do %>
+          <span>Réserver</span>
+        <% end %>
+      <% end %>
     </div>
   <% end %>
 </div>
