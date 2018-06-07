@@ -32,7 +32,7 @@ function updateTotalAmount() {
 
   lockedIcons.forEach((icon) => {
     const card = icon.closest('.card-supplier');
-    const priceCard = parseInt(card.querySelector('.card-price').innerText);
+    const priceCard = parseInt(card.querySelector('.card-price').innerText.replace(/\s/g, ''));
     totalPrice += priceCard;
   });
 
