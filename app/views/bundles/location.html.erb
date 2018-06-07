@@ -7,8 +7,8 @@
   <% else %>
     <div class="thread">
       <div class="b-box b-box--dots">
-        <span><%= link_to "", new_bundle_path, class: "b-box--dots__item is-active" %></span>
-        <span><%= link_to "", location_bundle_path(@bundle), class: "b-box--dots__item is-active" %></span>
+        <span class="b-box--dots__item is-active"></span>
+        <span class="b-box--dots__item is-active"></span>
         <span class="b-box--dots__item"></span>
         <span class="b-box--dots__item"></span>
         <span class="b-box--dots__item big">
@@ -21,8 +21,8 @@
 
       </div>
       <div class="list-items">
-        <div class="item">Recherche</div>
-        <div class="item">Lieu</div>
+        <div class="item"><%= link_to "Recherche", new_bundle_path %></div>
+        <div class="item"><%= link_to "Lieu", location_bundle_path(@bundle) %></div>
         <div class="item"></div>
         <div class="item"></div>
       </div>
