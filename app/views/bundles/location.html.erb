@@ -14,7 +14,7 @@
         <span class="b-box--dots__item"></span>
         <span class="b-box--dots__item"></span>
         <span class="b-box--dots__item big">
-          <span data-amount=<%= @bundle.amount %> id="amount">
+          <span data-amount=<%= @bundle.amount.to_i %> id="amount">
             <%= humanized_money(@bundle.amount) %>
           </span>
           €

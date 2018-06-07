@@ -6,7 +6,7 @@
       <span class="b-box--dots__item is-active"></span>
       <span class="b-box--dots__item"></span>
       <span class="b-box--dots__item big">
-        <span data-amount=<%= @bundle.amount %> id="amount">
+        <span data-amount=<%= @bundle.amount.to_i %> id="amount">
           <%= humanized_money(@bundle.amount) %>
         </span>
         €
@@ -60,9 +60,9 @@
                   <% end %>
                 </p>
                 <% if service == "traiteur" %>
-                  <p class="card-price" ><%= (supplier.price * session[:bundle]["capacity"].to_i).to_i %> <i class="fas fa-euro-sign"></i></p>
+                  <p class="card-price"><%= humanized_money(supplier.price * session[:bundle]["capacity"].to_i) %> <i class="fas fa-euro-sign"></i></p>
                 <% else %>
-                  <p class="card-price" ><%= supplier.price.to_i %> <i class="fas fa-euro-sign"></i></p>
+                  <p class="card-price" ><%= humanized_money(supplier.price) %> <i class="fas fa-euro-sign"></i></p>
                 <% end %>
                 <!-- data-toggle/data-target are there for modals -->
                 <%= link_to "+ Détails", "#", class: "card-details", data: { toggle: "modal", target: "#modal-supplier#{supplier.id}"} %>
@@ -111,9 +111,9 @@
                     </div>
                     <div class="modal-footer">
                       <% if service == "traiteur" %>
-                        <p class="card-price" ><%= (supplier.price * session[:bundle]["capacity"].to_i).to_i %> <i class="fas fa-euro-sign"></i></p>
+                        <p class="card-price" ><%= humanized_money(supplier.price * session[:bundle]["capacity"].to_i) %> <i class="fas fa-euro-sign"></i></p>
                       <% else %>
-                        <p class="card-price" ><%= supplier.price.to_i %> <i class="fas fa-euro-sign"></i></p>
+                        <p class="card-price" ><%= humanized_money(supplier.price) %> <i class="fas fa-euro-sign"></i></p>
                       <% end %>
                       <button type="button" class="btn-validate">
                         <div class="supplier-lock">
