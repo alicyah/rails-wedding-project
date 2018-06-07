@@ -1,5 +1,5 @@
 .b-box {
-  margin-top: 150px;
+  margin-top: 80px;
   margin-left: 10%;
   &--dots {
     position: relative;
@@ -105,7 +105,7 @@
   }
 }
 .thread {
-  margin-bottom: 50px;
+  margin-bottom: 10px;
   @media (max-width: $screen-xs) {
     display: none;
   }
