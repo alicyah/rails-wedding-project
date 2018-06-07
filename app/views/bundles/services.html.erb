@@ -57,9 +57,9 @@
                     <% end %>
                   </p>
                   <% if service == "traiteur" %>
-                    <p class="card-price" ><%= (supplier.price * session[:bundle]["capacity"].to_i).to_i %> <i class="fas fa-euro-sign"></i></p>
+                    <p class="card-price" ><%= humanized_money(supplier.price * session[:bundle]["capacity"].to_i) %> <i class="fas fa-euro-sign"></i></p>
                   <% else %>
-                    <p class="card-price" ><%= supplier.price.to_i %> <i class="fas fa-euro-sign"></i></p>
+                    <p class="card-price" ><%= humanized_money(supplier.price.to_i) %> <i class="fas fa-euro-sign"></i></p>
                   <% end %>
                   <!-- data-toggle/data-target are there for modals -->
                   <%= link_to "+ Détails", "#", class: "card-details", data: { toggle: "modal", target: "#modal-supplier#{supplier.id}"} %>
