@@ -46,11 +46,9 @@
             <div class="price">
               <div><h5><%= humanized_money(bundle_line.amount) %>€</h5></div>
             </div>
-            <div class="supprimer">
               <%= link_to bundle_line_path(bundle_line), method: :delete, data: { confirm: "Etes vous sûr de vouloir supprimer cette prestation ?" } do %>
                 <i class="fas fa-times-circle trash"></i>
               <% end %>
-            </div>
             <div class="angle">
               <a class="" data-toggle="collapse" href="#bundle-line-details-<%= bundle_line.id %>" role="button" aria-expanded="false" aria-controls="collapseExample">
                 <i class="fas fa-angle-right"></i>
