@@ -43,7 +43,7 @@ hash_urls = {
   ],
   caterers: [
     [
-      "https://www.larstraiteur.com/sites/default/files/galerie/lars-traiteur-mariage-4.jpg",
+      "https://www.justacote.com/photos_entreprises/girard--traiteur-mariage-pour-marseille-marseille-13891058300.jpg",
       "http://www.gaudefroy-receptions.com/media/cache/jadro_resize/rc/7aAoIcUU1521623317/jadroRoot/medias/5735e8f795cf2/5735ea2793423/entree-1-.jpg",
       "http://www.traiteur-paillard.com/images/specialite-traiteur-23.jpg",
       "http://www.traiteur-paillard.com/images/specialite-traiteur-17.jpg",
@@ -51,7 +51,7 @@ hash_urls = {
       "http://www.traiteur-brest.com/wp-content/uploads/2014/04/Fotolia_50595012_S.jpg",
     ],
     [
-      "https://www.justacote.com/photos_entreprises/girard--traiteur-mariage-pour-marseille-marseille-13891058300.jpg",
+      "https://www.larstraiteur.com/sites/default/files/galerie/lars-traiteur-mariage-4.jpg",
       "http://www.instants-traiteur.fr/oktThemes/ra105-s/images/traiteur-mariage/mariage2.jpg",
       "https://theflyingpan.co.za/wp-content/uploads/2015/06/plated-wedding-food.jpg",
       "https://cdn0.mariages.net/opinion/fotos/8/7/2/3/t30_73198.jpg",
