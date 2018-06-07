@@ -1,0 +1,17 @@
+<div class="container">
+  <br>
+  <div class="confirmation">
+    <div class="confirmation-photo">
+      <%= image_tag "bouquet.jpg", class:"tossing-bouquet", crop: :fill, width: 450, height: 450%>
+    </div>
+    <div class="confirmation-message">
+      <h4><strong>Félicitations <%= current_user.first_name %> !</strong></h4><br>
+      <p>
+        <i class="fas fa-check-circle check"></i> Votre paiement a bien été effectué.
+        <br>
+        <br>Il ne vous reste plus rien à faire: nous nous occupons de tout! Nous contacterons et réserverons les services que vous avez choisi pour le jour J.<br><br> Un email contenant un <strong>récapitulatif</strong> de votre commande, ainsi que les <strong>informations</strong> de tous vos préstataires vous a été envoyé. <br><br> N'hésitez pas à nous contacter par <strong>email</strong> sur <%= link_to("customer.service@wedpacker.com") %> pour plus de renseignements.
+        <br><br> Wedpacker vous remercie pour votre confiance !
+      </p>
+    </div>
+  </div>
+</div>

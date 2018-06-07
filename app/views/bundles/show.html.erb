@@ -1,4 +1,3 @@
-
 <div class="container">
   <% if @bundle.state == "pending" %>
     <div class="thread">
@@ -14,6 +13,7 @@
           €
         </span>
       </div>
+
 
       <div class="list-items">
         <div class="item-last">Recherche</div>
@@ -81,5 +81,6 @@
 
   <% else %>
       <!-- display confirmation message -->
+      <%= render "confirmation" %>
   <% end %>
 </div>

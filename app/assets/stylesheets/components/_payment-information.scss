@@ -18,3 +18,27 @@
   }
 }
 
+.confirmation {
+  display: flex;
+  align-items: center;
+  p {
+  strong {
+    text-decoration: underline;
+    text-decoration-color: $yellow;
+    }
+  }
+}
+.tossing-bouquet {
+  border-radius: 50%;
+  box-shadow: 2px $blue;
+  margin: 20px;
+}
+
+.check {
+  color: green;
+  font-size: 24px;
+}
+.confirmation-message {
+  text-align: justify;
+
+}
