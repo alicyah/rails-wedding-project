@@ -47,6 +47,13 @@
 }
 
 .glyphicon {
-  color: $yellow;
-  background-color: transparent;
+  color: white;
+}
+
+.glyphicon-chevron-left {
+  margin-left: -30px !important;
+}
+
+.glyphicon-chevron-right {
+  margin-right: -30px !important;
 }

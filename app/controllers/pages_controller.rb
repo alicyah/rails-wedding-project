@@ -6,4 +6,7 @@ class PagesController < ApplicationController
 
   def design
   end
+
+  def home_2
+  end
 end
