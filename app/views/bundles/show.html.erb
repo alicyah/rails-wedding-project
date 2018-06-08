@@ -22,8 +22,7 @@
         <div class="item-last"><%= link_to "Récapitulatif", bundle_path(@bundle) %></div>
       </div>
     </div>
-    <div class="col-xs-8 col-xs-offset-2"><h4>Voici un récapitulatif des services séléctionnés : </h4></div>
-    <div class="row">
+    <div class="row" style="margin-top: 40px">
       <% @bundle.bundle_lines.each do |bundle_line| %>
         <div class="col-xs-8 col-xs-offset-2 bundle-recap" data-id="<%= bundle_line.id %>">
           <div class="list-element">

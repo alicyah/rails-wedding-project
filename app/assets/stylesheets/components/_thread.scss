@@ -97,6 +97,12 @@
   &:hover {
     text-decoration: none;
   }
+  a {
+    color: $blue;
+    &:hover {
+      text-decoration: none;
+    }
+  }
 }
 .thread {
   .item {
