@@ -68,4 +68,7 @@
 
 .carousel-control {
   z-index: 10;
+  text-shadow: 0 1px 0px rgba(0, 0, 0, 0.4) !important;
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 100%) !important;
 }
+
