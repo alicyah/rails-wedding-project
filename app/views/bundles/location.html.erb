@@ -83,11 +83,15 @@
                 <% end %>
               </p>
               <p class="card-price" ><%= humanized_money(supplier.price * @event_days.count) %>€</p>
-              <%= link_to "+ Détails", "#", class: "card-details", id: "button-details" %>
+              <%= link_to "#", class: "card-details card-details-flex", id: "button-details" do %>
+                <p>Détails </p><i class="fas fa-angle-up"></i>
+              <% end %>
             </div>
             <div class="place-description supplier-description <%= "hidden" unless @places_suppliers.first == supplier %>" id="supplier-description-<%= supplier.id %>">
-              <p><%= supplier.description %></p>
-              <i class="fas fa-angle-down"></i>
+              <div class="place-description-content">
+                <p><i class="fas fa-quote-left"></i> <%= supplier.description %> <i class="fas fa-quote-right"></i></p>
+                <i class="fas fa-angle-down"></i>
+              </div>
             </div>
           <% end %>
         </div>

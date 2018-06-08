@@ -4,7 +4,7 @@
   width: 80%;
   margin: auto;
   flex-wrap: wrap;
-  margin-top: 30px;
+  margin-top: 20px;
   align-items: flex-start;
 }
 
@@ -34,11 +34,53 @@
   background: white;
   overflow: hidden;
   transition: all ease 0.3s;
+  p {
+    font-size: 16px;
+    line-height: 25px;
+  }
   &.open {
     top: 0;
-    padding: 20px;
+    padding: 23px 25px;
+    color: $blue;
   }
 }
+
+.place-description-content{
+  position: relative;
+  height: 100%;
+  width: 100%;
+  .fa-angle-down {
+    position: absolute;
+    right: 10px;
+    bottom: 0px;
+    font-size: 22px;
+    color: $blue;
+  }
+}
+
+.fa-quote-left{
+  margin-right: 10px;
+}
+
+.fa-quote-right{
+  margin-left: 10px;
+}
+
+a.card-details-flex {
+  display: flex;
+  align-items: center;
+  &:hover {
+    font-weight: normal !important;
+    font-size: 14px !important;
+  }
+  p {
+    margin: 0 10px;
+  }
+  .fa-angle-up {
+    font-size: 22px;
+  }
+}
+
 // .carousel-inner > .item > img {
 //   height: 70vh;
 //   width: 600px;
