@@ -48,7 +48,6 @@ hash_urls = {
       "http://www.traiteur-paillard.com/images/specialite-traiteur-23.jpg",
       "http://www.traiteur-paillard.com/images/specialite-traiteur-17.jpg",
       "http://www.guylesommer.fr/images/dessert4.jpg",
-      "http://www.traiteur-brest.com/wp-content/uploads/2014/04/Fotolia_50595012_S.jpg",
     ],
     [
       "https://www.larstraiteur.com/sites/default/files/galerie/lars-traiteur-mariage-4.jpg",
